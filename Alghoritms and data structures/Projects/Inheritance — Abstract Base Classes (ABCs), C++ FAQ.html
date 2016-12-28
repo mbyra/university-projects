@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)https://isocpp.org/wiki/faq/abcs -->
+<html lang="en" class="wf-proximanova-n7-active wf-proximanova-n4-active wf-proximanovaextracondensed-n7-active wf-elenawebbasic-n4-active wf-elenawebbasic-i4-active wf-proximanova-i4-active wf-proximanovaextracondensed-i7-active wf-proximanova-i7-inactive wf-proximanovaextracondensed-i4-inactive wf-proximanovaextracondensed-n4-inactive wf-elenawebbasic-n7-inactive wf-elenawebbasic-i7-inactive wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Inheritance — Abstract Base Classes (ABCs), C++ FAQ</title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://isocpp.org/favicon.ico" rel="shortcut icon">
+    <link rel="apple-touch-icon" href="https://isocpp.org/wiki/faq/apple-touch-icon-57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://isocpp.org/wiki/faq/apple-touch-icon-72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://isocpp.org/wiki/faq/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://isocpp.org/wiki/faq/apple-touch-icon-144.png">
+    
+    <link href="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/saved_resource" rel="stylesheet" media="all" type="text/css">
+    <script type="text/javascript" async="" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/embed.js"></script><script id="twitter-wjs" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/widgets.js"></script><script type="text/javascript" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/prettify.min.js"></script>
+    
+    <link href="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/saved_resource(1)" rel="stylesheet" media="all" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/saved_resource(2)" type="text/javascript"></script><script type="text/javascript" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/saved_resource(3)"></script>
+    
+    <script type="text/javascript" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/kml7swa.js"></script>
+    <style type="text/css">.tk-proxima-nova{font-family:"proxima-nova",sans-serif;}.tk-proxima-nova-extra-condensed{font-family:"proxima-nova-extra-condensed",sans-serif;}.tk-elena-web-basic{font-family:"elena-web-basic",sans-serif;}</style><style type="text/css">@font-face{font-family:proxima-nova;src:url(https://use.typekit.com/af/8439af/00000000000000000001499c/21/l?subset_id=2&fvd=n7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff2"),url(https://use.typekit.com/af/8439af/00000000000000000001499c/21/d?subset_id=2&fvd=n7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff"),url(https://use.typekit.com/af/8439af/00000000000000000001499c/21/a?subset_id=2&fvd=n7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("opentype");font-weight:700;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.com/af/b75da8/0000000000000000000148a9/21/l?subset_id=2&fvd=i7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff2"),url(https://use.typekit.com/af/b75da8/0000000000000000000148a9/21/d?subset_id=2&fvd=i7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff"),url(https://use.typekit.com/af/b75da8/0000000000000000000148a9/21/a?subset_id=2&fvd=i7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("opentype");font-weight:700;font-style:italic;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.com/af/17b290/0000000000000000000148a4/21/l?subset_id=2&fvd=n4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff2"),url(https://use.typekit.com/af/17b290/0000000000000000000148a4/21/d?subset_id=2&fvd=n4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff"),url(https://use.typekit.com/af/17b290/0000000000000000000148a4/21/a?subset_id=2&fvd=n4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("opentype");font-weight:400;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.com/af/badb8e/0000000000000000000148a5/21/l?subset_id=2&fvd=i4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff2"),url(https://use.typekit.com/af/badb8e/0000000000000000000148a5/21/d?subset_id=2&fvd=i4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff"),url(https://use.typekit.com/af/badb8e/0000000000000000000148a5/21/a?subset_id=2&fvd=i4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("opentype");font-weight:400;font-style:italic;}@font-face{font-family:proxima-nova-extra-condensed;src:url(https://use.typekit.com/af/08238d/00000000000000000000ffe5/21/l?subset_id=2&fvd=i7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff2"),url(https://use.typekit.com/af/08238d/00000000000000000000ffe5/21/d?subset_id=2&fvd=i7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff"),url(https://use.typekit.com/af/08238d/00000000000000000000ffe5/21/a?subset_id=2&fvd=i7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("opentype");font-weight:700;font-style:italic;}@font-face{font-family:proxima-nova-extra-condensed;src:url(https://use.typekit.com/af/3ab27d/00000000000000000000ffe4/21/l?subset_id=2&fvd=n7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff2"),url(https://use.typekit.com/af/3ab27d/00000000000000000000ffe4/21/d?subset_id=2&fvd=n7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff"),url(https://use.typekit.com/af/3ab27d/00000000000000000000ffe4/21/a?subset_id=2&fvd=n7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("opentype");font-weight:700;font-style:normal;}@font-face{font-family:proxima-nova-extra-condensed;src:url(https://use.typekit.com/af/493be2/00000000000000000000ffe9/21/l?subset_id=2&fvd=i4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff2"),url(https://use.typekit.com/af/493be2/00000000000000000000ffe9/21/d?subset_id=2&fvd=i4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff"),url(https://use.typekit.com/af/493be2/00000000000000000000ffe9/21/a?subset_id=2&fvd=i4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("opentype");font-weight:400;font-style:italic;}@font-face{font-family:proxima-nova-extra-condensed;src:url(https://use.typekit.com/af/91b247/00000000000000000000ffe8/21/l?subset_id=2&fvd=n4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff2"),url(https://use.typekit.com/af/91b247/00000000000000000000ffe8/21/d?subset_id=2&fvd=n4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff"),url(https://use.typekit.com/af/91b247/00000000000000000000ffe8/21/a?subset_id=2&fvd=n4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("opentype");font-weight:400;font-style:normal;}@font-face{font-family:elena-web-basic;src:url(https://use.typekit.com/af/25660c/0000000000000000000151b1/21/l?subset_id=2&fvd=n7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff2"),url(https://use.typekit.com/af/25660c/0000000000000000000151b1/21/d?subset_id=2&fvd=n7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff"),url(https://use.typekit.com/af/25660c/0000000000000000000151b1/21/a?subset_id=2&fvd=n7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("opentype");font-weight:700;font-style:normal;}@font-face{font-family:elena-web-basic;src:url(https://use.typekit.com/af/38df5e/0000000000000000000151b2/21/l?subset_id=2&fvd=i7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff2"),url(https://use.typekit.com/af/38df5e/0000000000000000000151b2/21/d?subset_id=2&fvd=i7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff"),url(https://use.typekit.com/af/38df5e/0000000000000000000151b2/21/a?subset_id=2&fvd=i7&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("opentype");font-weight:700;font-style:italic;}@font-face{font-family:elena-web-basic;src:url(https://use.typekit.com/af/11a426/0000000000000000000151af/21/l?subset_id=2&fvd=n4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff2"),url(https://use.typekit.com/af/11a426/0000000000000000000151af/21/d?subset_id=2&fvd=n4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff"),url(https://use.typekit.com/af/11a426/0000000000000000000151af/21/a?subset_id=2&fvd=n4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("opentype");font-weight:400;font-style:normal;}@font-face{font-family:elena-web-basic;src:url(https://use.typekit.com/af/1609c2/0000000000000000000151b0/21/l?subset_id=2&fvd=i4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff2"),url(https://use.typekit.com/af/1609c2/0000000000000000000151b0/21/d?subset_id=2&fvd=i4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("woff"),url(https://use.typekit.com/af/1609c2/0000000000000000000151b0/21/a?subset_id=2&fvd=i4&token=Ogt8wuaoNypudn2uOVgoGhMcvVx4BwMz93AbK%2FoR1FJ2CWuDB%2BUZIq7J6BYMzKU5zCeSR8HWFWhFWXmfSr8kE6eMPAZ6fmTQyyC55TZZqlDJIc8qDbHrAqMwxnvszpHy%2Fgb%2Ft8jh%2FIGpn3T47tZbxYf5o%2FiLXhwnMYrRm%2B2iN8S3SocNCVItq0F%2B06N%2FrpSHJDd77Xe6rjSQ09EaXdhVEA5c%2FK6u9rKpdU3wYwJVp%2BSNowpSQLkPQV4E1Fgs02AtjAlLvQRE%2BHFa%2FnA5RKmH%2B6RBb%2FLJpKiWGOVbnrvrROM%3D) format("opentype");font-weight:400;font-style:italic;}</style><script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    
+  <script type="text/javascript" charset="utf-8" async="" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/timeline.af7715ccfd05761b10e680b0b0b2117b.js"></script></head>
+  
+  <body class="hide-sidebar">
+    <div id="root">
+    
+      <div id="crown">
+        <a id="sidebar-toggle" href="https://isocpp.org/wiki/faq/abcs#sidebar">Show sidebar »</a>
+        <ul class="user">
+                          <li><a href="https://isocpp.org/member/login">Sign In / Suggest an Article</a></li>
+          <li><a href="https://isocpp.org/member/register">Register</a></li>
+                </ul>
+      </div>
+
+      <header id="top" role="banner">
+        <div class="container">
+          <h1>
+            <a href="https://isocpp.org/"><img src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/logo-sun.jpg" alt="Standard C++"></a>
+          </h1>
+          <nav role="navigation">
+            <ul id="nav-sub">
+<li class="first"><a href="https://isocpp.org/get-started">Get Started!</a></li>
+<li><a href="https://isocpp.org/tour">Tour</a></li>
+<li><a href="https://isocpp.org/faq">C++ Super-FAQ</a></li>
+<li><a href="https://isocpp.org/blog">Blog</a></li>
+<li><a href="https://isocpp.org/forums">Forums</a></li>
+<li><a href="https://isocpp.org/std">Standardization</a></li>
+<li class="last"><a href="https://isocpp.org/about">About</a></li>
+</ul>
+          </nav><select id="nav-select"><option value="" selected="selected">Go to...</option><option value="https://isocpp.org/get-started">Get Started!</option><option value="https://isocpp.org/tour">Tour</option><option value="https://isocpp.org/faq">C++ Super-FAQ</option><option value="https://isocpp.org/blog">Blog</option><option value="https://isocpp.org/forums">Forums</option><option value="https://isocpp.org/std">Standardization</option><option value="https://isocpp.org/about">About</option></select>
+          <form action="https://isocpp.org/search/google">
+            <input type="text" name="q" id="q" maxlength="100" value="" class="textbox">
+            <input type="submit" value="Search" class="button">
+          </form>
+          <!--
+          <form method="post" action="https://isocpp.org/"  >
+<div class='hiddenFields'>
+<input type="hidden" name="ACT" value="6" />
+<input type="hidden" name="XID" value="bacdc0dd95e9e7dd8404a52ec4aa3b6c0698e9be" />
+<input type="hidden" name="RES" value="" />
+<input type="hidden" name="meta" value="zYMKgX58Zs8+1aclN9tC7heLzqeMS/BIDf2KWaqfUPy9IuEVYHdFD1dlGh34VWoTLfYfqx2VVNOeAsrIgIvvoFDyH5RKx1rRrjSIJmrlV4WTNhwE+/Onu3ISLsbzAk2awqSU6A+hVvt+f/zJn30d7+qnYdsX9iFLWu40TELdyhIN7OvZg7LuJknFB0gZ7nQTklJ/9coWuk9SURbQpuERR2hTSI2C5xLtlwfiI61PqkKwyrlOKG6XDMBSEtvAIHOCp+adyiqHkYhNSPC8wgrdUEXu/O1ACVY3yqa/hYv3qY5COcgp3UflhKiNqQvGfAikDLrb28Jq5FJxzSTO4kcq1kRWnkMAIa+DJDX1Ri9lxnSoesPEDjJwSIcqjcXXIxh1l0qg2xNSdmuOrE+KB+C8x3zG6M/Rmrrfc9CHMGWIs3c=" />
+<input type="hidden" name="site_id" value="1" />
+</div>
+
+
+            <input type="text" name="keywords" id="keywords" maxlength="100" value="M50o93H7pQ09L8X1t49cHY01Z5j4TT91fGfr" class="textbox" />
+            <input type="submit" value="Search" class="button" />
+          </form>
+          -->
+        </div>
+      </header>
+
+      <div id="content" class="hide-sidebar" role="main">
+        <div class="container">
+    
+      <div id="sidebar">
+              <section>
+              <header>Features</header>
+            <div class="sidebar-section-content prettify">
+        <p style="text-align: center;">
+	&nbsp;</p>
+<p>
+	<a href="https://github.com/cplusplus/draft"><img alt="" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/github.png" style="width: 90px; height: 48px; margin-right: 5px; margin-left: 5px; float: right;"></a><a href="http://open-std.org/JTC1/SC22/WG21/docs/papers/2016/n4618.pdf"><strong>Working Draft</strong> of the next&nbsp;standard</a></p>
+<p>
+	&nbsp;</p>
+<p>
+	<a href="https://isocpp.org/std/status">Current ISO C++ status</a></p>
+<p>
+	&nbsp;</p>
+<p>
+	<a href="https://isocpp.org/std/meetings-and-participation/upcoming-meetings">Upcoming ISO C++ meetings</a></p>
+<p>
+	&nbsp;</p>
+<p>
+	<a href="http://en.cppreference.com/w/cpp/compiler_support">Compiler conformance status</a></p>
+      </div>
+    </section>
+  
+  
+  
+        <nav>
+          <section>
+            <header>
+              Navigation
+            </header>
+            <ul>
+              <li><a href="https://isocpp.org/wiki/faq">FAQ Home</a></li>
+              <li><a href="https://isocpp.org/themes/wiki_themes/isocpp/rss/faq-revisions-rss.php" class="icon rss">FAQ RSS Feed</a></li>
+              <li><a href="https://isocpp.org/wiki/faq/editinfo">FAQ Help</a></li>
+                          </ul>
+          </section>
+        
+        
+          <section>
+            <header>
+              Search this Wiki
+            </header>
+            <form method="post" action="https://isocpp.org/wiki/faq/Special:Search_results">
+              <input type="hidden" name="XID" value="41d74546303c6b934f07ba5a6055b63463c7ec9d">
+              <input type="text" class="input" name="keywords" size="20" value="" maxlength="80"><input type="submit" class="submit" value="Go">
+            </form>
+          </section>
+          
+          <section>
+            <header>
+              Go to Page
+            </header>
+            <form method="post" action="https://isocpp.org/wiki/faq/Special:Find_page">
+              <input type="hidden" name="XID" value="27f2650d407344ecb11aa1f82da64a3a11a81dd0">
+              <input type="text" class="input" name="title" size="20" value="" maxlength="80"><input type="submit" class="submit" value="Go">
+            </form>
+          </section>
+        </nav>
+          
+      <section>
+              <header>Upcoming Events</header>
+            <div class="sidebar-section-content prettify">
+        <p>
+	<a href="http://www.embo.io/"><strong>emBo++</strong></a></p>
+<p>
+	Feb 18, Bochum, Germany</p>
+<p>
+	&nbsp;</p>
+<p>
+	<strong><a href="https://isocpp.org/files/papers/n4573.txt">Spring ISO C++ standards meeting</a></strong>&nbsp;(<a href="https://isocpp.org/files/papers/N4632.pdf">agenda</a>)</p>
+<p>
+	Feb 27 - Mar 4, Kona, HI, USA</p>
+<p>
+	&nbsp;</p>
+<p>
+	<strong><a href="https://conference.accu.org/site/index.html">ACCU 2017</a></strong></p>
+<p>
+	Apr 26-29, Bristol, UK</p>
+      </div>
+    </section>
+  
+      <section>
+            <div class="sidebar-section-content prettify">
+        <div class="twitter-container">
+	<a class="twitter-timeline twitter-timeline-error" data-dnt="true" data-widget-id="344512921423998976" href="https://twitter.com/isocpp" data-twitter-extracted-i1482701963348409056="true">Tweets by @isocpp</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+      </div>
+    </section>
+  
+      </div>
+
+      <div id="mainbar">
+        <header>
+          <div class="breadcrumbs">
+
+            <a href="https://isocpp.org/wiki/faq">Wiki Home</a>
+            <span class="breadcrumbspacer">&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>Inheritance — Abstract Base Classes (ABCs)</div>
+          
+          <div class="wiki-page-actions">
+                    <a href="https://isocpp.org/wiki/faq/abcs">View</a>
+                              </div>
+          
+          <h2 class="section-title has-hover-pop-out">Inheritance — Abstract Base Classes (ABCs)&nbsp;<a class="hover-pop-out" href="https://isocpp.org/wiki/faq/abcs" title="Permalink to this Section"><span>¶</span></a>&nbsp;<a class="hover-pop-out js-inline-popup" href="https://isocpp.org/wiki/faq/abcs#" title="Recommend an improvement to this Section" data-tooltip="#popup-suggest" data-hasqtip="0"><span>Δ</span></a></h2>
+
+          <div class="save-to-reader wiki">
+            <div class="title">Save to:</div>
+            <a href="http://www.instapaper.com/hello2?url=https%3A%2F%2Fisocpp.org%2Fwiki%2Ffaq%2Fabcs&amp;title=abcs" class="icon instapaper">Instapaper</a>
+            <a href="http://getpocket.com/create?url=https%3A%2F%2Fisocpp.org%2Fwiki%2Ffaq%2Fabcs&amp;action=save&amp;k=3aNp2F20Aao4bvW884g224eUfud1nfI0" class="icon pocket">Pocket</a>
+            <a href="https://isocpp.org/wiki/faq/abcs#" class="icon readability">Readability</a>
+            <div class="rdbWrapper" data-show-read="1" data-show-send-to-kindle="1" data-show-print="1" data-show-email="1" data-orientation="0" data-version="1" data-bg-color="#ffffff"></div><script type="text/javascript">(function() {var s = document.getElementsByTagName("script")[0],rdb = document.createElement("script"); rdb.type = "text/javascript"; rdb.async = true; rdb.src = document.location.protocol + "//www.readability.com/embed.js"; s.parentNode.insertBefore(rdb, s); })();</script>
+          </div>
+          
+        </header>
+
+        <article>
+
+          <!-- Begin Main Content of Page -->
+
+          
+          
+
+          <div id="wiki-content">
+
+          
+
+          
+            <div class="prettify"><div id="msgbox-fail" class="fail-icon fail-banner" style="position: fixed; top: 40%; left: 40%; width: 30%; height: 130px; overflow-y: auto; display: none;"></div><div id="msgbox-warn" class="warn-icon warn-banner" style="position: fixed; top: 40%; left: 40%; width: 30%; height: 130px; overflow-y: auto; display: none;"></div><div id="msgbox-info" class="info-icon info-banner" style="position: fixed; top: 40%; left: 40%; width: 30%; height: 130px; overflow-y: auto; display: none;"></div><div id="msgbox-good" class="good-icon good-banner" style="position: fixed; top: 40%; left: 40%; width: 30%; height: 130px; overflow-y: auto; display: none;"></div>
+
+
+<h2 id="abcs">Inheritance — Abstract Base Classes (ABCs)</h2><div id="section-toc"><h4>Contents of this section:</h4><ul><li><a href="https://isocpp.org/wiki/faq/abcs#overview-interface-vs-implem" title="What’s the big deal of separating interface from implementation?">What’s the big deal of separating interface from implementation?</a></li><li><a href="https://isocpp.org/wiki/faq/abcs#interface-vs-implem-abcs" title="How do I separate interface from implementation in C++ (like Modula-2)?">How do I separate interface from implementation in C++ (like Modula-2)?</a></li><li><a href="https://isocpp.org/wiki/faq/abcs#abc-defn" title="What is an ABC?">What is an ABC?</a></li><li><a href="https://isocpp.org/wiki/faq/abcs#pure-virtual-fns" title="What is a “pure virtual” member function?">What is a “pure virtual” member function?</a></li><li><a href="https://isocpp.org/wiki/faq/abcs#copy-of-abc-via-clone" title="How do you define a copy constructor or assignment operator for a class that contains a pointer to a (abstract) base class?">How do you define a copy constructor or assignment <code>operator</code> for a class that contains a pointer to a (abstract) base class?</a></li></ul></div>
+
+<h3 id="overview-interface-vs-implem" class="faq-title has-hover-pop-out">What’s the big deal of separating interface from implementation?&nbsp;<a class="hover-pop-out" href="https://isocpp.org/wiki/faq/abcs#overview-interface-vs-implem" title="Permalink to this FAQ"><span>¶</span></a>&nbsp;<a class="hover-pop-out js-inline-popup" href="https://isocpp.org/wiki/faq/abcs#" title="Recommend an improvement to this FAQ" data-tooltip="#popup-suggest" data-hasqtip="1"><span>Δ</span></a></h3>
+
+<p>Interfaces are a company’s most valuable resources. Designing an interface takes longer than whipping together a
+concrete class which fulfills that interface. Furthermore interfaces require the time of more expensive people.</p>
+
+<p>Since interfaces are so valuable, they should be protected from being tarnished by data structures and other
+implementation artifacts. Thus you should separate interface from implementation.</p>
+
+<h3 id="interface-vs-implem-abcs" class="faq-title has-hover-pop-out">How do I separate interface from implementation in C++ (like Modula-2)?&nbsp;<a class="hover-pop-out" href="https://isocpp.org/wiki/faq/abcs#interface-vs-implem-abcs" title="Permalink to this FAQ"><span>¶</span></a>&nbsp;<a class="hover-pop-out js-inline-popup" href="https://isocpp.org/wiki/faq/abcs#" title="Recommend an improvement to this FAQ" data-tooltip="#popup-suggest" data-hasqtip="2"><span>Δ</span></a></h3>
+
+<p>Use an <a href="https://isocpp.org/wiki/faq/abcs#abc-defn" title="FAQ: What is an ABC?">ABC</a>.</p>
+
+<h3 id="abc-defn" class="faq-title has-hover-pop-out">What is an ABC?&nbsp;<a class="hover-pop-out" href="https://isocpp.org/wiki/faq/abcs#abc-defn" title="Permalink to this FAQ"><span>¶</span></a>&nbsp;<a class="hover-pop-out js-inline-popup" href="https://isocpp.org/wiki/faq/abcs#" title="Recommend an improvement to this FAQ" data-tooltip="#popup-suggest" data-hasqtip="3"><span>Δ</span></a></h3>
+
+<p>An abstract base class.</p>
+
+<p>At the design level, an abstract base class (ABC) corresponds to an abstract concept. If you asked a mechanic if he
+repaired vehicles, he’d probably wonder what <em>kind-of</em> vehicle you had in mind. Chances are he doesn’t repair space
+shuttles, ocean liners, bicycles, or nuclear submarines. The problem is that the term “vehicle” is an abstract concept
+(e.g., you can’t build a “vehicle” unless you know what kind of vehicle to build). In C++, <code>class</code> <code>Vehicle</code> would be
+an ABC, with <code>Bicycle</code>, <code>SpaceShuttle</code>, etc, being derived classes (an <code>OceanLiner</code> is-a-kind-of-a <code>Vehicle</code>). In
+real-world OO, ABCs show up all over the place.</p>
+
+<p>At the programming language level, an ABC is a <code>class</code> that has one or more <a href="https://isocpp.org/wiki/faq/abcs#pure-virtual-fns" title="FAQ: What is a &#39;pure virtual&#39; member function?">pure virtual</a> member
+functions. You cannot make an object (instance) of an ABC.</p>
+
+<h3 id="pure-virtual-fns" class="faq-title has-hover-pop-out">What is a “pure virtual” member function?&nbsp;<a class="hover-pop-out" href="https://isocpp.org/wiki/faq/abcs#pure-virtual-fns" title="Permalink to this FAQ"><span>¶</span></a>&nbsp;<a class="hover-pop-out js-inline-popup" href="https://isocpp.org/wiki/faq/abcs#" title="Recommend an improvement to this FAQ" data-tooltip="#popup-suggest" data-hasqtip="4"><span>Δ</span></a></h3>
+
+<p>A member function declaration that turns a normal class into an abstract class (i.e., an ABC). You normally only
+implement it in a derived class.</p>
+
+<p>Some member functions exist in concept; they don’t have any reasonable definition. E.g., suppose I asked you to draw a
+<code>Shape</code> at location <code>(x,y)</code> that has size 7. You’d ask me “what kind of shape should I draw?” (circles, squares,
+hexagons, etc, are drawn differently). In C++, we must indicate the existence of the <code>draw()</code> member function (so
+users can call it when they have a <code>Shape*</code> or a <code>Shape&amp;</code>), but we recognize it can (logically) be defined only in
+derived classes:</p>
+
+<pre class="prettyprint linenums lang-cpp prettyprinted"><ol class="linenums"><li class="L0"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">Shape</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L1"><code><span class="kwd">public</span><span class="pun">:</span></code></li><li class="L2"><code><span class="pln">  </span><span class="kwd">virtual</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> draw</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">  </span><span class="com">// = 0 means it is "pure virtual"</span></code></li><li class="L3"><code><span class="pln">  </span><span class="com">// ...</span></code></li><li class="L4"><code><span class="pun">};</span></code></li></ol></pre>
+
+<p>This pure virtual function makes <code>Shape</code> an ABC. If you want, you can think of the “<code>= 0;</code>” syntax as if the code were
+at the <code>NULL</code> pointer. Thus <code>Shape</code> promises a service to its users, yet Shape isn’t able to provide any code to fulfill
+that promise. This <em>forces</em> any actual object created from a [concrete] class derived from Shape to have the indicated
+member function, even though the base class doesn’t have enough information to actually <em>define</em> it yet.</p>
+
+<p>Note that it is possible to provide a definition for a pure virtual function, but this usually confuses novices and is
+best avoided until later.</p>
+
+<h3 id="copy-of-abc-via-clone" class="faq-title has-hover-pop-out">How do you define a copy constructor or assignment <code>operator</code> for a class that contains a pointer to a (abstract) base class?&nbsp;<a class="hover-pop-out" href="https://isocpp.org/wiki/faq/abcs#copy-of-abc-via-clone" title="Permalink to this FAQ"><span>¶</span></a>&nbsp;<a class="hover-pop-out js-inline-popup" href="https://isocpp.org/wiki/faq/abcs#" title="Recommend an improvement to this FAQ" data-tooltip="#popup-suggest" data-hasqtip="5"><span>Δ</span></a></h3>
+
+<p>If the class “owns” the object pointed to by the (abstract) base class pointer, use the <a href="https://isocpp.org/wiki/faq/virtual-functions#virtual-ctors" title="FAQ: What is a &#39;virtual constructor&#39;?">Virtual Constructor
+Idiom</a> in the (abstract) base class. As usual with this idiom, we declare a <a href="https://isocpp.org/wiki/faq/abcs#pure-virtual-fns" title="FAQ: What is a &#39;pure virtual&#39; member function?">pure
+<code>virtual</code></a> <code>clone()</code> method in the base class:</p>
+
+<pre class="prettyprint linenums lang-cpp prettyprinted"><ol class="linenums"><li class="L0"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">Shape</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L1"><code><span class="kwd">public</span><span class="pun">:</span></code></li><li class="L2"><code><span class="pln">  </span><span class="com">// ...</span></code></li><li class="L3"><code><span class="pln">  </span><span class="kwd">virtual</span><span class="pln"> </span><span class="typ">Shape</span><span class="pun">*</span><span class="pln"> clone</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">   </span><span class="com">// The Virtual (Copy) Constructor</span></code></li><li class="L4"><code><span class="pln">  </span><span class="com">// ...</span></code></li><li class="L5"><code><span class="pun">};</span></code></li></ol></pre>
+
+<p>Then we implement this <code>clone()</code> method in each derived class. Here is the code for derived class <code>Circle</code>:</p>
+
+<pre class="prettyprint linenums lang-cpp prettyprinted"><ol class="linenums"><li class="L0"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">Circle</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">Shape</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L1"><code><span class="kwd">public</span><span class="pun">:</span></code></li><li class="L2"><code><span class="pln">  </span><span class="com">// ...</span></code></li><li class="L3"><code><span class="pln">  </span><span class="kwd">virtual</span><span class="pln"> </span><span class="typ">Circle</span><span class="pun">*</span><span class="pln"> clone</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">const</span><span class="pun">;</span></code></li><li class="L4"><code><span class="pln">  </span><span class="com">// ...</span></code></li><li class="L5"><code><span class="pun">};</span></code></li><li class="L6"><code></code></li><li class="L7"><code><span class="typ">Circle</span><span class="pun">*</span><span class="pln"> </span><span class="typ">Circle</span><span class="pun">::</span><span class="pln">clone</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">const</span></code></li><li class="L8"><code><span class="pun">{</span></code></li><li class="L9"><code><span class="pln">  </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Circle</span><span class="pun">(*</span><span class="kwd">this</span><span class="pun">);</span></code></li><li class="L0"><code><span class="pun">}</span></code></li></ol></pre>
+
+<p>(Note: the return type in the derived class is <a href="https://isocpp.org/wiki/faq/virtual-functions#virtual-ctors" title="FAQ: What is a &#39;virtual constructor&#39;?">intentionally different</a> from the one in the base
+class.)</p>
+
+<p>Here is the code for derived class <code>Square</code>:</p>
+
+<pre class="prettyprint linenums lang-cpp prettyprinted"><ol class="linenums"><li class="L0"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">Square</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">Shape</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L1"><code><span class="kwd">public</span><span class="pun">:</span></code></li><li class="L2"><code><span class="pln">  </span><span class="com">// ...</span></code></li><li class="L3"><code><span class="pln">  </span><span class="kwd">virtual</span><span class="pln"> </span><span class="typ">Square</span><span class="pun">*</span><span class="pln"> clone</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">const</span><span class="pun">;</span></code></li><li class="L4"><code><span class="pln">  </span><span class="com">// ...</span></code></li><li class="L5"><code><span class="pun">};</span></code></li><li class="L6"><code></code></li><li class="L7"><code><span class="typ">Square</span><span class="pun">*</span><span class="pln"> </span><span class="typ">Square</span><span class="pun">::</span><span class="pln">clone</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">const</span></code></li><li class="L8"><code><span class="pun">{</span></code></li><li class="L9"><code><span class="pln">  </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Square</span><span class="pun">(*</span><span class="kwd">this</span><span class="pun">);</span></code></li><li class="L0"><code><span class="pun">}</span></code></li></ol></pre>
+
+<p>Now suppose that each <code>Fred</code> object “has-a” <code>Shape</code> object. Naturally the <code>Fred</code> object doesn’t know whether the
+<code>Shape</code> is <code>Circle</code> or a <code>Square</code> or … <code>Fred</code>’s copy constructor and assignment <code>operator</code> will invoke <code>Shape</code>’s
+<code>clone()</code> method to copy the object:</p>
+
+<pre class="prettyprint linenums lang-cpp prettyprinted"><ol class="linenums"><li class="L0"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">Fred</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L1"><code><span class="kwd">public</span><span class="pun">:</span></code></li><li class="L2"><code><span class="pln">  </span><span class="com">// p must be a pointer returned by new; it must not be NULL</span></code></li><li class="L3"><code><span class="pln">  </span><span class="typ">Fred</span><span class="pun">(</span><span class="typ">Shape</span><span class="pun">*</span><span class="pln"> p</span><span class="pun">)</span></code></li><li class="L4"><code><span class="pln">    </span><span class="pun">:</span><span class="pln"> p_</span><span class="pun">(</span><span class="pln">p</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> assert</span><span class="pun">(</span><span class="pln">p </span><span class="pun">!=</span><span class="pln"> NULL</span><span class="pun">);</span><span class="pln"> </span><span class="pun">}</span></code></li><li class="L5"><code><span class="pln"> </span><span class="pun">~</span><span class="typ">Fred</span><span class="pun">()</span></code></li><li class="L6"><code><span class="pln">    </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">delete</span><span class="pln"> p_</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span></code></li><li class="L7"><code><span class="pln">  </span><span class="typ">Fred</span><span class="pun">(</span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Fred</span><span class="pun">&amp;</span><span class="pln"> f</span><span class="pun">)</span></code></li><li class="L8"><code><span class="pln">    </span><span class="pun">:</span><span class="pln"> p_</span><span class="pun">(</span><span class="pln">f</span><span class="pun">.</span><span class="pln">p_</span><span class="pun">-&gt;</span><span class="pln">clone</span><span class="pun">())</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="pun">}</span></code></li><li class="L9"><code><span class="pln">  </span><span class="typ">Fred</span><span class="pun">&amp;</span><span class="pln"> </span><span class="kwd">operator</span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Fred</span><span class="pun">&amp;</span><span class="pln"> f</span><span class="pun">)</span></code></li><li class="L0"><code><span class="pln">    </span><span class="pun">{</span></code></li><li class="L1"><code><span class="pln">      </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">this</span><span class="pln"> </span><span class="pun">!=</span><span class="pln"> </span><span class="pun">&amp;</span><span class="pln">f</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">              </span><span class="com">// Check for self-assignment</span></code></li><li class="L2"><code><span class="pln">        </span><span class="typ">Shape</span><span class="pun">*</span><span class="pln"> p2 </span><span class="pun">=</span><span class="pln"> f</span><span class="pun">.</span><span class="pln">p_</span><span class="pun">-&gt;</span><span class="pln">clone</span><span class="pun">();</span><span class="pln">   </span><span class="com">// Create the new one FIRST...</span></code></li><li class="L3"><code><span class="pln">        </span><span class="kwd">delete</span><span class="pln"> p_</span><span class="pun">;</span><span class="pln">                   </span><span class="com">// ...THEN delete the old one</span></code></li><li class="L4"><code><span class="pln">        p_ </span><span class="pun">=</span><span class="pln"> p2</span><span class="pun">;</span></code></li><li class="L5"><code><span class="pln">      </span><span class="pun">}</span></code></li><li class="L6"><code><span class="pln">      </span><span class="kwd">return</span><span class="pln"> </span><span class="pun">*</span><span class="kwd">this</span><span class="pun">;</span></code></li><li class="L7"><code><span class="pln">    </span><span class="pun">}</span></code></li><li class="L8"><code><span class="pln">  </span><span class="com">// ...</span></code></li><li class="L9"><code><span class="kwd">private</span><span class="pun">:</span></code></li><li class="L0"><code><span class="pln">  </span><span class="typ">Shape</span><span class="pun">*</span><span class="pln"> p_</span><span class="pun">;</span></code></li><li class="L1"><code><span class="pun">};</span></code></li></ol></pre>
+
+<!--
+File: id-defns
+
+Defines IDs for each FAQ and section.
+
+Rule:
+  FAQ editors should always use these IDs for every internal cross-reference within the FAQ.
+  Always use indirect links ('[description][id-of-target]')  when linking to the FAQ from within the FAQ.
+  Never  use  direct  links ('[description](url-of-target)') when linking to the FAQ from within the FAQ.
+
+Reason:
+  The FAQ is a living document -- we will split/join sections and move FAQs between sections.
+  Those changes result in changes to the URL of the moved FAQs, which breaks all direct links -- many changes.
+  However using indirect links means we need only change one thing in one place: this id-defns file.
+
+Caveat:
+  This rule applies only to internal cross-reference links, not to links to resources outside the FAQ.
+  E.g., if you are making a link from FAQ 'x' to FAQ 'y', then you should always use FAQ 'y's link-ID.
+  However if you are making a link from FAQ 'x' to some resource outside the FAQ, you have two choices:
+  You can use a direct link to the external resource's URL ('[description](url-of-external-resource)'),
+  or you can add the external resource to this file then link indirectly ('[description][id-of-external-resource]').
+  Typically you would do the latter only when the FAQ contains more than one link to that external resource.
+-->
+
+<p><!-- special resources -->
+<!-- /wiki/faq/index = 'C++ FAQ' -->
+<!-- /wiki/faq/big-picture = 'Big Picture Issues' -->
+<!-- /wiki/faq/classes-and-objects = 'Classes and Objects' -->
+<!-- /wiki/faq/references = 'References' -->
+<!-- /wiki/faq/inline-functions = 'Inline Functions' -->
+<!-- /wiki/faq/ctors = 'Constructors' -->
+<!-- /wiki/faq/dtors = 'Destructors' -->
+<!-- /wiki/faq/assignment-operators = 'Assignment Operators' -->
+<!-- /wiki/faq/operator-overloading = 'Operator Overloading' -->
+<!-- /wiki/faq/friends = 'Friends' -->
+<!-- /wiki/faq/input-output = 'Input/output via <iostream> and <cstdio>' -->
+<!-- /wiki/faq/freestore-mgmt = 'Memory Management' -->
+<!-- /wiki/faq/exceptions = 'Exceptions and Error Handling' -->
+<!-- /wiki/faq/const-correctness = 'Const Correctness' -->
+<!-- /wiki/faq/big3 = 'The Big Three' -->
+<!-- /wiki/faq/basics-of-inheritance = 'Inheritance — Basics' -->
+<!-- /wiki/faq/virtual-functions = 'Inheritance — virtual functions' -->
+<!-- /wiki/faq/proper-inheritance = 'Inheritance — Proper Inheritance and Substitutability' -->
+<!-- /wiki/faq/abcs = 'Inheritance — Abstract Base Classes (ABCs)' -->
+<!-- /wiki/faq/strange-inheritance = 'Inheritance — What your mother never told you' -->
+<!-- /wiki/faq/private-inheritance = 'Inheritance — private and protected inheritance' -->
+<!-- /wiki/faq/multiple-inheritance = 'Inheritance — Multiple and Virtual Inheritance' -->
+<!-- /wiki/faq/intrinsic-types = 'Built-in / Intrinsic / Primitive Data Types' -->
+<!-- /wiki/faq/coding-standards = 'Coding Standards' -->
+<!-- /wiki/faq/how-to-learn-cpp = 'Learning C++' -->
+<!-- /wiki/faq/newbie = 'Newbie Questions & Answers' -->
+<!-- /wiki/faq/objective-c = 'Learning C++ if you already know Objective-C' -->
+<!-- /wiki/faq/c = 'Learning C++ if you already know C' -->
+<!-- /wiki/faq/csharp-java = 'Learning C++ if you already know C# or Java' -->
+<!-- /wiki/faq/myths = 'Myths and Urban Legends About C++' -->
+<!-- /wiki/faq/value-vs-ref-semantics = 'Reference and Value Semantics' -->
+<!-- /wiki/faq/mixing-c-and-cpp = 'How to mix C and C++' -->
+<!-- /wiki/faq/pointers-to-members = 'Pointers to Member Functions' -->
+<!-- /wiki/faq/containers = 'Container Classes' -->
+<!-- /wiki/faq/templates = 'Templates' -->
+<!-- /wiki/faq/serialization = 'Serialization and Unserialization' -->
+<!-- /wiki/faq/class-libraries = 'Class Libraries' -->
+<!-- /wiki/faq/compiler-dependencies = 'Compiler Dependencies' -->
+<!-- /wiki/faq/misc-technical-issues = 'Miscellaneous Technical Issues' -->
+<!-- /wiki/faq/misc-environmental-issues = 'Miscellaneous Environmental Issues' -->
+<!-- /wiki/faq/style-and-techniques = 'Miscellaneous Style Issues' -->
+<!-- /wiki/faq/user-groups-worldwide = 'User Groups Worldwide' -->
+<!-- /wiki/faq/cpp11 = 'C++11 Overview' -->
+<!-- /wiki/faq/cpp11-language = 'C++11 Language Extensions --- General Features' -->
+<!-- /wiki/faq/cpp11-language-classes = 'C++11 Language Extensions -- Classes' -->
+<!-- /wiki/faq/cpp11-language-concurrency = 'C++11 Language Extensions --- Concurrency' -->
+<!-- /wiki/faq/cpp11-language-misc = 'C++11 Language Extensions --- Miscellaneous Language Features' -->
+<!-- /wiki/faq/cpp11-language-templates = 'C++11 Language Extensions -- Templates' -->
+<!-- /wiki/faq/cpp11-language-types = 'C++11 Language Extensions --- Other Types' -->
+<!-- /wiki/faq/cpp11-library = 'C++11 Library Extensions --- General Libraries' -->
+<!-- /wiki/faq/cpp11-library-concurrency = 'C++11 Standard Library Extensions --- Concurrency' -->
+<!-- /wiki/faq/cpp11-library-stl = 'C++11 Standard Library Extensions --- Containers and Algorithms' -->
+<!-- /wiki/faq/cpp0x-concepts-history = 'C++0x Concepts --- Historical FAQs' -->
+<!-- /wiki/faq/cpp14 = 'C++14 Overview' -->
+<!-- /wiki/faq/cpp14-language = 'C++14 Language Extensions' -->
+<!-- /wiki/faq/cpp14-library = 'C++14 Library Extensions' -->
+<!-- /wiki/faq/wg21 = 'WG21 Members' -->
+<!-- /wiki/faq/subject-index = 'Subject Index' --></p>
+
+<!-- BEGIN 'Category' Namespace Stuff -->
+
+
+<!-- END 'Category' Namespace Stuff -->
+
+
+<!-- BEGIN Categories for Page -->
+
+
+<!-- END Categories for Page -->
+
+
+</div>
+          
+
+
+          </div>
+
+        </article>
+
+      </div>
+      
+<div id="popup-suggest" class="wiki-popup">
+  <p>Please <a href="https://isocpp.org/member/login">Login</a> to submit a recommendation.</p>
+  <p>If you don’t have an account, you can <a href="https://isocpp.org/member/register">register for free.</a></p>
+</div>
+
+        </div>
+        
+        <div id="root-footer"></div>
+      </div>
+    </div>
+
+    <footer id="bottom" role="contentinfo">
+      <div class="container">
+        © <a href="https://isocpp.org/home/terms-of-use">Copyright</a> 2016 Standard C++ Foundation. 
+        All rights reserved. 
+        <ul id="nav-sub">
+<li class="first"><a href="https://isocpp.org/home/terms-of-use">Terms of Use</a></li>
+<li class="last"><a href="https://isocpp.org/home/privacy-policy">Privacy Policy</a></li>
+</ul>
+      </div>
+    </footer>
+
+    <script src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="https://isocpp.org/javascript/jquery.min"><\/script>')</script>
+    <script src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/jquery-ui.min.js"></script>
+    <script>window.jQuery.ui || document.write('<script src="https://isocpp.org/javascript/jquery-ui.min"><\/script>')</script>
+    
+    <script type="text/javascript" charset="utf-8" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/saved_resource(4)"></script>
+    <script type="text/javascript">
+	        					$(document).ready(function() {
+									$("*[id^=likee_]").click(function(){
+										var ids = $(this).attr("id").split("_");
+										if (ids[1]=="c"){
+											id=ids[2];
+											c="c_";
+											isCom="true";
+										} else {
+											id=ids[1];
+											c="";
+											isCom="false";
+										}
+										
+										$.ajax({
+	   										type: "POST",
+	   										url: "/wiki/faq/abcs",
+	   										data: "likee=true&entry_id="+id+"&isCom="+isCom,
+	   										success: function(msg){
+	     										//alert( "Data Saved: " + msg );
+	   										}
+	 									});
+	 									
+	 									$(this).replaceWith("<strong>"+$(this).html()+"</strong>");
+	 									$("#dislikee_"+c+id).replaceWith("<span>"+$("#dislikee_"+c+id).html()+"</span>");
+	 									$("#scoreeCount_"+c+id).html(parseInt($("#scoreeCount_"+c+id).html())+1);
+	 									$("#likeeCount_"+c+id).html(parseInt($("#likeeCount_"+c+id).html())+1);
+	 									$("#likeeReplace_"+c+id).replaceWith("");
+	 									$("#likeeShow_"+c+id).replaceWith($("#likeeShow_"+c+id).html());
+									});
+									
+									$("*[id^=dislikee_]").click(function(){
+										var ids = $(this).attr("id").split("_");
+										if (ids[1]=="c"){
+											id=ids[2];
+											c="c_";
+											isCom="true";
+										} else {
+											id=ids[1];
+											c="";
+											isCom="false";
+										}
+										$.ajax({
+	   										type: "POST",
+	   										url: "/wiki/faq/abcs",
+	   										data: "dislikee=true&entry_id="+id+"&isCom="+isCom,
+	   										success: function(msg){
+	     										//alert( "Data Saved: " + msg );
+	   										}
+	 									});
+	 									
+	 									$(this).replaceWith("<strong>"+$(this).html()+"</strong>");
+	 									$("#likee_"+c+id).replaceWith("<span>"+$("#likee_"+c+id).html()+"</span>");
+	 									$("#scoreeCount_"+c+id).html(parseInt($("#scoreeCount_"+c+id).html())-1);
+	 									$("#dislikeeCount_"+c+id).html(parseInt($("#dislikeeCount_"+c+id).html())+1);
+	 									$("#likeeReplace_"+c+id).replaceWith("");
+	 									$("#likeeShow_"+c+id).replaceWith($("#likeeShow_"+c+id).html());
+									});
+								
+								});	
+	        			  </script>
+    
+    <script type="text/javascript" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/isocpp.lib.min.js"></script>
+    <script type="text/javascript" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/global.js"></script>
+    
+    <script type="text/javascript" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/magnific.min.js"></script>
+    <script type="text/javascript" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/qtip.min.js"></script>
+    <script type="text/javascript" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/wiki.js"></script>
+    
+    <script type="text/javascript">
+      $("#top nav a").each(function() {
+        var aSeg1 = $(this).attr("href").replace("http://", "").replace("https://", "").split("/")[1];
+        if (aSeg1 == "wiki") {$(this).parent().addClass("here");}
+      });
+    </script>
+
+  
+<iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Inheritance — Abstract Base Classes (ABCs), C++ FAQ_files/saved_resource.html"></iframe></body></html>

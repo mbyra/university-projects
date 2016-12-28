@@ -1,0 +1,453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!-- saved from url=(0043)http://okmij.org/ftp/Computation/Subtyping/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>Subtyping, Subclassing, and Trouble with OOP</title>
+<meta name="description" content="Example of how an implementation inheritance prevents	separation of interface and implementation">
+<meta name="AuthorAddress" content="oleg-at-okmij.org">
+<meta name="keywords" content="subtyping, subclassing, C++, implementation inheritance">
+<meta name="Date-Revision-yyyymmdd" content="20010704">
+<meta name="Date-Creation-yyyymmdd" content="20000716">
+<link rel="Contents" href="http://okmij.org/ftp/Computation/Subtyping/Trouble.html">
+<link rel="prev" href="http://okmij.org/ftp/Computation/Computation.html">
+<link rel="next" href="http://okmij.org/ftp/Computation/Subtyping/Preventing-Trouble.html">
+</head>
+<body bgcolor="#FFFFFF">
+
+<div align="center" class="navbar">
+<a href="http://okmij.org/ftp/Computation/Computation.html">previous</a> &nbsp; <a href="http://okmij.org/ftp/Computation/Subtyping/Preventing-Trouble.html">next</a> &nbsp; <a href="http://okmij.org/ftp/Computation/Subtyping/Trouble.html">contents</a> &nbsp; <a href="http://okmij.org/ftp/Computation/Computation.html">top</a>
+<hr>
+</div>
+
+<h1 align="CENTER">Subtyping, Subclassing, and Trouble with OOP</h1>
+
+<p>An extensive discussion of subtyping, insidious problems with
+subclassing, and practical rules to avoid them.
+
+</p><dl>
+<dt><a href="http://okmij.org/ftp/Computation/Subtyping/#Problem">Does OOP really separate interface from
+implementation?</a> 
+</dt><dd>The manifestation of a problem: an example of how an
+implementation inheritance prevents separation of interface and
+implementation
+
+</dd><dt><a href="http://okmij.org/ftp/Computation/Subtyping/#Problem-cause">Subtyping vs. Subclassing</a>
+</dt><dd>Explanation why the problem above happened
+
+</dd><dt><a href="http://okmij.org/ftp/Computation/Subtyping/Preventing-Trouble.html">Subclassing errors, OOP style
+and practically checkable to prevent them</a>
+</dt><dd>Demonstration how statically checkable rules can prevent the
+problem from occurring <font size="-1">[a separate document]</font>
+</dd></dl>
+
+<p>
+A more formal and general presentation of this topic is given in a paper and a
+talk at a Monterey 2001 workshop (June 19-21, 2001, Monterey, CA):&nbsp;
+<a href="http://okmij.org/ftp/papers/Subtyping-OOP.ps.gz">Subtyping-OOP.ps.gz</a>
+[35K]&nbsp; &nbsp;and&nbsp; &nbsp;
+<a href="http://okmij.org/ftp/papers/MTR2001-Subtyping-talk.ps.gz">MTR2001-Subtyping-talk.ps.gz</a> [67K]
+<br>&nbsp;
+
+<a name="Problem">&nbsp;</a>
+</p><h2 align="CENTER">Does OOP really separate interface from implementation?</h2>
+
+<p>Decoupling of abstraction from implementation is one of the holy
+grails of good design. Object-oriented programming in general and
+encapsulation in particular are claimed to be conducive to such
+separation, and therefore to more reliable code. In the end,
+productivity and quality are the only true merits a programming
+methodology is to be judged upon. This article is to show a very
+simple example that questions if OOP indeed helps separate interface
+from implementation. The example is a very familiar one, illustrating
+the difference between subclassing and subtyping. The article carries
+this example of Bags and Sets one step further, to a rather unsettling
+result. The article set out to follow good software engineering; this
+makes the resulting failure even more ominous.
+</p><p>
+The article aims to give a more-or-less "real" example, which one can
+run and see the result for himself. By necessity the example had to be
+implemented in some language. The present article uses C++. It appears
+however that similar code (with similar conclusions) can be carried on
+in many other OO languages (e.g., Java, Python, etc).
+</p><p>
+Suppose I was given a task to implement a Bag -- an unordered
+collection of possibly duplicate items (integers in this example). I
+chose the following interface:
+
+</p><p>
+<table width="95%" align="right" cellpadding="0" cellspacing="0" border="0">
+<tbody><tr><td bgcolor="#E0E0E0">
+<pre>typedef int const * CollIterator;	// Primitive but will do
+class CBag {
+ public:
+  int size(void) const;			// The number of elements in the bag
+  virtual void put(const int elem);	// Put an element into the bag
+  int count(const int elem) const;	// Count the number of occurrences
+				        // of a particular element in the bag
+  virtual bool del(const int elem);     // Remove an element from the bag
+					// Return false if the element
+					// didn't exist
+  CollIterator begin(void) const;	// Standard enumerator interface
+  CollIterator end(void) const;
+
+  CBag(void);
+  virtual CBag * clone(void) const;	// Make a copy of the bag
+ private:
+			// implementation details elided
+};</pre>
+</td></tr></tbody></table>
+<br clear="all">
+
+Other useful operations of the CBag package are implemented without
+the knowledge of CBag's internals. The functions below use only
+the public interface of the CBag class:
+</p><p>
+<table width="95%" align="right" cellpadding="0" cellspacing="0" border="0">
+<tbody><tr><td bgcolor="#E0E0E0">
+<pre>// Standard "print-on" operator
+ostream&amp; operator &lt;&lt; (ostream&amp; os, const CBag&amp; bag);
+
+// Union (merge) of the two bags
+// The return type is void to avoid complications with subclassing
+// (which incidental to the current example)
+void operator += (CBag&amp; to, const CBag&amp; from);
+
+// Determine if CBag a is subbag of CBag b
+bool operator &lt;= (const CBag&amp; a, const CBag&amp; b);
+
+inline bool operator &gt;= (const CBag&amp; a, const CBag&amp; b)
+{ return b &lt;= a; }
+
+// Structural equivalence of the bags
+// Two bags are equal if they contain the same number of the same elements
+inline bool operator == (const CBag&amp; a, const CBag&amp; b)
+{ return a &lt;= b &amp;&amp; a &gt;= b; }</pre></td></tr></tbody></table>
+<br clear="all">&nbsp;
+</p><p>
+It has to be stressed that the package was designed to minimize the
+number of functions that need to know details of CBag's
+implementation. Following good practice, I wrote validation code (file
+vCBag.cc <a target="Refs" href="http://okmij.org/ftp/Computation/Subtyping/References.html#Code">[Code]</a>) that
+tests all the functions and methods of the CBag package and verifies
+common invariants.
+
+</p><p>
+Suppose you are tasked with implementing a Set package. Your boss
+defined a set as an unordered collection where each element has a
+single occurrence. In fact, your boss even said that a set <i>is a</i> bag
+with no duplicates. You have found my CBag package and realized that it
+can be used with few additional changes. The definition of a Set as
+a Bag, with some constraints, made the decision to reuse the CBag code
+even easier.
+</p><p>
+<table width="95%" align="right" cellpadding="0" cellspacing="0" border="0">
+<tbody><tr><td bgcolor="#E0E0E0">
+<pre>class CSet : public CBag {
+ public:
+  bool memberof(const int elem) const { return count(elem) &gt; 0; }
+
+  // Overriding of CBag::put
+  void put(const int elem)
+  { if(!memberof(elem)) CBag::put(elem); }
+
+  CSet * clone(void) const
+  { CSet * new_set = new CSet(); *new_set += *this; return new_set; }
+  CSet(void) {}
+};</pre></td></tr></tbody></table>
+<br clear="all">
+</p><p>
+The definition of a CSet makes it possible to mix CSets and CBags,
+as in <code>set += bag;</code> or <code>bag += set;</code> These
+operations are well-defined, keeping in mind that a set is a bag that
+happens to have the count of all members exactly one. For example,
+<code>set += bag;</code> adds all elements from a bag to a set, unless
+they are already present. <code>bag += set;</code> is no different
+than merging a bag with any other bag.
+</p><p>
+You too wrote a validation suite to test all CSet methods (newly
+defined and inherited from a bag) and to verify common expected
+properties, e.g., <code>a+=a is a</code>.
+</p><p>
+In my package, I have defined and implemented a function:
+<table width="95%" align="right" cellpadding="0" cellspacing="0" border="0">
+<tbody><tr><td bgcolor="#E0E0E0">
+<pre>// A sample function. Given three bags a, b, and c, it decides
+// if a+b is a subbag of c
+bool foo(const CBag&amp; a, const CBag&amp; b, const CBag&amp; c)
+{
+  CBag &amp; ab = *(a.clone());	// Clone a to avoid clobbering it
+  ab += b;			// ab is now the union of a and b
+  bool result = ab &lt;= c;
+  delete &amp;ab;
+  return result;
+}</pre></td></tr></tbody></table>
+<br clear="all">
+It was verified in the regression test suite. You have tried this
+function on sets, and found it satisfactory.
+</p><p>
+Later on, I revisited my code and found my implementation of foo()
+inefficient. Memory for the <code>ab</code> object is unnecessarily
+allocated on heap. I rewrote the function as
+<br>
+<table width="95%" align="right" cellpadding="0" cellspacing="0" border="0">
+<tbody><tr><td bgcolor="#E0E0E0">
+<pre>bool foo(const CBag&amp; a, const CBag&amp; b, const CBag&amp; c)
+{
+  CBag ab;
+  ab += a;			// Clone a to avoid clobbering it
+  ab += b;			// ab is now the union of a and b
+  bool result = ab &lt;= c;
+  return result;
+}</pre></td></tr></tbody></table>
+<br clear="all">
+It has exactly the same interface as the original foo(). The code
+hardly changed. The behavior of the new implementation is also the
+same -- as far as I and the package CBag are concerned. Remember, I
+have no idea that you're re-using my package. I re-ran the regression
+test suite with the new foo(): everything tested fine.
+</p><p>
+
+However, when you run your code with the new implementation of foo(),
+you notice that something <i>has</i> changed! You can see this for
+yourself: download the complete code from <a target="Refs" href="http://okmij.org/ftp/Computation/Subtyping/References.html#Code">[Code]</a>. <code>make vCBag1</code> and
+<code>make vCBag2</code> run validation tests with the first and the
+second implementations of foo(). Both tests complete successfully, with
+the identical results. <code>make vCSet1</code> and <code>make
+vCSet2</code> test the CSet package. The tests -- other than those of
+foo() -- all succeed.  Function foo() however yields markedly different
+results. It is debatable which implementation of foo() gives truer
+results for CSets. In any case, changing internal algorithms of a
+<i>pure</i> function foo() while keeping the same interfaces is not
+supposed to break your code. What happened?
+
+</p><p>
+What makes this problem more unsettling is that both you and I tried
+to do everything by the book. We wrote a safe, typechecked code. We
+eschewed casts. g++ (2.95.2) compiler with flags -W and -Wall issued
+not a single warning. Normally these flags cause g++ to become very
+annoying. You didn't try to override methods of CBag to deliberately
+break the CBag package. You attempted to preserve CBag's invariants
+(weakening a few as needed). Real-life classes  usually have far
+more obscure algebraic properties. We both wrote regression tests for
+our implementations of a CBag and a CSet, and they passed. And yet,
+despite all my efforts to separate interface and implementation, I
+failed. Should a programming language or the methodology take at least
+a part of the blame? <a target="Refs" href="http://okmij.org/ftp/Computation/Subtyping/References.html#OOP-problems">[OOP-problems]</a>
+
+</p><p>&nbsp;<br>
+<a name="Problem-cause">&nbsp;</a>
+</p><h2 align="CENTER">Subtyping vs. Subclassing</h2>
+
+<p>The problem with CSet is caused by CSet design's breaking of the
+Liskov Substitution Principle (LSP) <a target="Refs" href="http://okmij.org/ftp/Computation/Subtyping/References.html#LSP">[LSP]</a>. CSet has been declared as a
+<i>subclass</i> of CBag. Therefore, C++ compiler's typechecker permits
+passing a CSet object or a CSet reference to a function that expects a
+CBag object or reference.  However, it is well known <a target="Refs" href="http://okmij.org/ftp/Computation/Subtyping/References.html#Subtyping-Subclassing">[Subtyping-Subclassing]</a>
+that a CSet is not a <em>subtype</em> of a CBag. The next few
+paragraphs give a simple proof of this fact, for the sake of
+reference.
+
+</p><p>One approach is to consider Bags and Sets as pure <i>values</i>,
+without any state or intrinsic behavior -- just like integers
+are. This approach is taken in the next article, <a href="http://okmij.org/ftp/Computation/Subtyping/Preventing-Trouble.html">Preventing-Trouble.html</a>. The other
+point of view -- the one used in this article -- is Object-Oriented
+Programming, of objects that encapsulate state and behavior. Behavior
+means an object can accept a message, send a reply and possibly change
+its state. Let us consider a Bag and a Set separately, without regard
+to their possible relationship. Throughout this section we use a
+different, concise notation to emphasize the general nature of the
+argument.
+ 
+</p><p>We will define a Bag as an object that accepts two messages:
+</p><dl>
+<dt><code>(send a-Bag 'put x)</code>
+</dt><dd>puts an element x into the Bag, and
+</dd><dt><code>(send a-Bag 'count x)</code>
+</dt><dd>gives the count of occurrences of x in the Bag (without changing
+a-Bag's state).
+</dd></dl>
+Likewise, a Set is defined as an object that accepts two messages:
+<dl>
+<dt><code>(send a-Set 'put x)</code>
+</dt><dd>puts an element x into a-Set unless it was already there,
+</dd><dt><code>(send a-Set 'count x)</code>
+</dt><dd>gives the count of occurrences of x in a-Set (which is always either 0
+or 1).
+</dd></dl>
+Let's consider a function
+<table width="95%" align="right" cellpadding="0" cellspacing="0" border="0">
+<tbody><tr><td bgcolor="#E0E0E0">
+<pre>(define (fnb bag)
+   (send bag 'put 5)
+   (send bag 'put 5)
+   (send bag 'count 5))</pre></td></tr></tbody></table>
+<br clear="all">
+The behavior of this function can be summed as follows: given a Bag,
+the function adds two elements into it and returns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>(+ 2 (send orig-bag 'count 5))</code>
+
+<p>Technically you can pass to <code>fnb</code> a Set object as
+well. Just as a Bag, a Set object accepts messages <code>put</code>
+and <code>count</code>. However applying <code>fnb</code> to a Set
+object will break the function's post-condition, which stated above. Therefore,
+passing a set object where a bag was expected changes behavior of some
+program. According to the Liskov Substitution Principle (LSP), a Set
+is not substitutable for a Bag -- a Set cannot be a <i>subtype</i> of
+a Bag.
+</p><p>
+Let's consider a function
+<table width="95%" align="right" cellpadding="0" cellspacing="0" border="0">
+<tbody><tr><td bgcolor="#E0E0E0">
+<pre>(define (fns set)
+   (send set 'put 5)
+   (send set 'count 5))</pre></td></tr></tbody></table>
+<br clear="all">
+The behavior of this function is: given a Set, the function adds an
+element into it and returns 1. If you pass to this function a bag 
+(which -- just as a set -- replies to messages <code>put</code> and
+<code>count</code>), the function <code>fns</code> may return a
+number greater than 1. This will break <code>fns</code>'s contract,
+which promised always to return 1.
+</p><p>
+Therefore, from the OO point of view, neither a Bag nor a Set
+are a subtype of the other. This is the crux of the problem. Bag and
+Set only <i>appear</i> similar. The interface or an implementation of
+a Bag and a Set appear to invite <i>subclassing</i>of a Set from a
+Bag (or vice versa).  Doing so however will violate the LSP -- and you
+have to brace for very subtle errors. The previous section
+intentionally broke the LSP to demonstrate how insidious the errors
+are and how difficult it may be to find them. Sets and Bags are very
+simple types, far simpler than the ones you deal with in a production
+code. Alas, LSP when considered from an OOP point of view is
+undecidable. You <i>cannot</i> count on a compiler for help in
+pointing out an error. You cannot rely on regression tests
+either. It's manual work -- you have to <i>see</i> the problem <a target="Refs" href="http://okmij.org/ftp/Computation/Subtyping/References.html#OOP-problems">[OOP-problems]</a>.
+</p><p>
+<a name="Immutability">&nbsp;</a>
+</p><h3>Subtyping and Immutability</h3>
+
+One may claim that "A Set *is not a* Bag, but an ImmutableSet *is an*
+ImmutableBag." That is not correct. An immutability per se does not
+confer subtyping to "derived" classes of data. As an example, consider
+a variation of the previous argument. We will use a C++ syntax for a
+change. The examples will hold if re-written in Java, Haskell, Self or
+any other language with a native or emulated OO system.
+<p>
+<table width="95%" align="right" cellpadding="0" cellspacing="0" border="0">
+<tbody><tr><td bgcolor="#E0E0E0">
+<pre>class BagV {
+  virtual BagV put(const int) const;
+  int count(const int) const;
+  ... // other similar const members
+};
+ 
+class SetV {
+  virtual SetV put(const int) const;
+  int count(const int) const;
+  ... // other similar const members
+};</pre></td></tr></tbody></table>
+<br clear="all">&nbsp;
+</p><p>Instances of BagV and SetV classes are immutable, yet the classes are
+not subtypes of each other. To see that, let us consider a polymorphic function
+ 
+<table width="95%" align="right" cellpadding="0" cellspacing="0" border="0">
+<tbody><tr><td bgcolor="#E0E0E0">
+<pre>template &lt;typename T&gt; int f(const T&amp; t)
+{ return t.put(1).count(1); }</pre></td></tr></tbody></table>
+<br clear="all">
+ 
+Over a set of BagV instances, the behavior of this function can be
+represented by an invariant<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>f(bag) == 1 + bag.count(1)</code>
+
+</p><p>If we take an object <code>asetv = SetV().put(1)</code> and pass it
+to <code>f()</code>, the invariant above will be broken. Therefore, by
+LSP, a SetV is not substitutable for BagV: a SetV <i>is not a</i>
+BagV.
+
+</p><p>In other words, if one defines
+<table width="95%" align="right" cellpadding="0" cellspacing="0" border="0">
+<tbody><tr><td bgcolor="#E0E0E0">
+<pre>int fb(const BagV&amp; bag) { return bag.put(1).count(1); }</pre></td></tr></tbody></table>
+<br clear="all">
+he can potentially pass a SetV instance to it: e.g., either by making
+SetV a subclass of BagV, or by <code>reinterpret_cast&lt;const
+BagV&amp;&gt;(aSetV)</code>. Doing so will generate no overt error;
+yet this will break fb()'s invariant and alter program's behavior in
+unpredictable ways.  A similar argument will show that BagV is not a
+subtype of SetV.
+</p><p>
+C++ objects are record-based. Subclassing is a way of extending
+records, with possibly altering some slots in the parent record. Those
+slots must be designated as modifiable by a keyword virtual. In this
+context, prohibiting mutation and overriding makes subclassing imply
+subtyping. This was the reasoning behind BRules [<a href="http://okmij.org/ftp/Computation/Subtyping/Preventing-Trouble.html">Preventing-Trouble.html</a>].
+</p><p>
+However merely declaring the state of an object immutable is not
+enough to guarantee that derivation leads to subtyping: An object can
+override parent's behavior without altering the parent. This is easy
+to do when an object is implemented as a functional closure, when a
+handler for an incoming message is located with the help of some kind
+of reflexive facilities, or in prototype-based OO systems. Incidently, if we do permit a derived object to alter its base
+object, we implicitly allow behavior overriding. For example, an
+object <code>A</code> can react to a message <code>M</code> by
+forwarding the message to an object <code>B</code> stored in
+<code>A</code>'s slot. If an object <code>C</code> derived from
+<code>A</code> alters that slot it hence overrides <code>A</code>'s
+behavior with respect to <code>M</code>.
+</p><p>
+For example, <a href="http://okmij.org/ftp/Scheme/index.html#pure-oo">http://okmij.org/ftp/Scheme/index.html#pure-oo</a>
+implements a purely functional OO system. It supports objects with an
+identity, state and behavior, inheritance and
+polymorphism. <i>Everything</i> in that system is immutable. And yet
+it is possible to define something like a BagV, and derive SetV from
+it by overriding a <code>put</code> message handler. Acting this way
+is bad and invites trouble as this breaks the LSP as shown earlier. Yet it
+is possible. This example shows that immutability per se does not turn
+object derivation into subtyping.
+
+</p><p>&nbsp;<br>
+
+</p><p>The present page is a compilation and extension of two articles
+posted on comp.object, comp.lang.functional, comp.lang.c++.moderated newsgroups on Jun 18 and Jul 14, 2000.
+<br>Discussion thread:
+<a href="http://www.deja.com/viewthread.xp?AN=644379349.1&amp;search=thread&amp;recnum=%3c8katsh$fmf$1@nnrp1.deja.com%3e%231/5&amp;group=comp.object&amp;frpage=viewthread.xp">http://www.deja.com/viewthread.xp?AN=644379349.1&amp;search=thread&amp;recnum=%3c8katsh$fmf$1@nnrp1.deja.com%3e%231/5&amp;group=comp.object&amp;frpage=viewthread.xp</a>
+
+&nbsp;<br>  
+<a name="Acknowledgment">&nbsp;</a>
+</p><h3>Acknowledgment</h3>
+
+Andy Gaynor has asked the right questions. This article is merely an answer.
+
+<br>&nbsp;
+<hr>
+<a name="headers">&nbsp;</a>
+<h4>Articles' Posting Headers</h4>
+
+<font size="-1"><pre>From: oleg
+Message-ID: &lt;8ijfn7$f6q$1@nnrp1.deja.com&gt;
+Subject: Does OOP really separate interface from implementation?
+Date: Sun, 18 Jun 2000 21:42:00 GMT
+Newsgroups: comp.object, comp.lang.c++.moderated
+X-Article-Creation-Date: Sun Jun 18 21:42:00 2000 GMT
+
+From: oleg
+Subject: Re: Subclassing errors, OOP style and mechanical rules to prevent them
+Date: 14 Jul 2000 00:00:00 GMT
+Message-ID: &lt;8ko1a8$1u0$1@nnrp1.deja.com&gt;
+References: &lt;8katsh$fmf$1@nnrp1.deja.com&gt; &lt;8keh1t$1hs$1@nnrp1.deja.com&gt;
+X-Article-Creation-Date: Fri Jul 14 21:39:23 2000 GMT
+Newsgroups: comp.object,comp.lang.functional
+</pre></font>
+
+
+<p>
+</p><hr>
+<h3>Last updated July 4, 2001</h3>
+This site's top page is  
+<a href="http://okmij.org/ftp/"><strong>http://okmij.org/ftp/</strong></a>
+<p>
+</p><address>oleg-at-okmij.org<br>
+Your comments, problem reports, questions are very welcome!</address>
+ 
+
+
+</body></html>
