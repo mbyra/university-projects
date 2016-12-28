@@ -1,0 +1,13 @@
+Jest 6 testów:
+1. test z treści zadania
+2. pusty plik wejściowy, lista znaczków bez zapytania, samo zapytanie, powinny
+przejść wszystkie trzy testy (wersja 2a, 2b i 2c)
+3. sprawdzenie parsowania wejścia, odstępy, rozpoznawanie niepoprawnych
+wierszy
+4. test sortowania i wyszukiwania
+5. duży plik wejściowy, limit czasu 25 s
+6. brak znaku \n na końcu ostatniego wiersza, powinien przejść dokładnie
+jeden test (wersja 6a, 6b lub 6c)
+
+Plik *.in zawiera dane wysyłane na stdin, pliki *.out i *.err zawierają
+oczekiwaną odpowiedź programu wypisywaną odpowiednio na stdout i stderr.

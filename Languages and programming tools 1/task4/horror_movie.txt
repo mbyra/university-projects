@@ -1,0 +1,114 @@
+Jesteś scenarzystą horroru. Musisz stworzyć program, który symuluje potencjalną
+fabułę i dostarczy Ci pomysłów do Twojego arcydzieła. Akcja dzieje się w małym
+miasteczku w stanie Maine. Miasteczko zostaje nawiedzone przez tajemniczą bestię.
+Ponieważ nie masz koncepcji na konkretnych bohaterów i potwora będącego głównym
+zagrożeniem, musisz przygotować rozwiązanie ogólne.
+
+Stwórz następujące typy szablonowe.
+
+= Plik citizen.h =
+
+Klasy Adult<typename T>, Teenager<typename T>, Sheriff<typename T>, gdzie T
+jest typem pól przechowujących punkty życia, wiek, a w przypadku szeryfa siłę
+ataku.
+
+Klasy Adult, Teenager przyjmują w konstruktorze T health oraz T age, a Sheriff
+dodatkowo T attackPower. Klasy Adult i Sheriff mogą przyjmować age w zakresie
+od 18 do 100, a Teenager<T> w zakresie od 11 do 17.
+
+Klasy Adult, Teenager, Sheriff zawierają metody publiczne:
+T getHealth() – zwraca liczbę punktów życia mieszkańca,
+T getAge() – zwraca wiek mieszkańca,
+void takeDamage(T damage) – zmniejsza liczbę punktów życia mieszkańca o damage,
+ale nie więcej niż mieszkaniec ma aktualnie.
+
+Klasa Sheriff ma dodatkowo metodę publiczną:
+T getAttackPower() – zwraca siłę ataku szeryfa.
+
+Szablony klas Adult, Teenager, Sheriff powinny być specjalizacją ogólniejszego
+szablonu Citizen<typename T, ...>.
+
+= Plik monster.h =
+
+Klasy Zombie<typename T>, Vampire<typename T>, Mummy<typename T>, gdzie T jest
+typem pól przechowujących punkty życia i siłę ataku.
+
+Klasy Zombie, Vampire i Mummy przyjmują w konstruktorze T health oraz
+T attackPower.
+
+Klasy Vampire, Zombie i Mummy mają metody publiczne:
+T getHealth() – zwraca liczbę punktów życia potwora,
+T getAttackPower() – zwraca siłę ataku potwora,
+void takeDamage(T damage) – zmniejsza liczbę punktów życia potwora o damage,
+ale nie więcej niż potwór ma aktualnie.
+
+Klasy Vampire, Zombie i Mummy mają publiczną składową valueType reprezentującą
+typ T, którym zostały sparametryzowane.
+
+Dodatkowo trzeba stworzyć funkcję, która umożliwi potworowi zaatakowanie
+wybranego mieszkańca:
+void attack<M, U>(M monster, U victim) – wykonuje atak na ofiarę, zabierając
+jej punkty życia.  Należy też uwzględnić specjalny przypadek, gdy U = Sheriff<T>
+– wtedy atak następuje w dwie strony – punkty życia traci zarówno szeryf, jak
+i potwór.
+
+Szablony klas Zombie, Vampire i Mummy powinny być specjalizacją ogólniejszego
+szablonu Monster<typename T, ...>.
+
+= Plik smalltown.h =
+
+Klasa SmallTown<typename M, typename U, U t0, U t1, typename... C>, gdzie:
+M – typ potwora nawiedzającego miasto,
+U – typ przechowujący czas,
+t0 – czas startowy,
+t1 – czas końcowy, po którego przekroczeniu następuje wyzerowanie licznika,
+C... – typy mieszkańców.
+Należy sprawdzać poprawność parametrów t0 i t1 w czasie kompilacji.
+
+Klasa SmallTown przyjmuje w konstruktorze obiekt reprezentujący bestię oraz
+kolejno obiekty mieszkańców.
+
+Klasa SmallTown ma metody publiczne:
+tuple<string, T, size_t> getStatus() – zwraca nazwę typu potwora, liczbę jego
+punktów życia (typu T) oraz liczbę pozostałych przy życiu mieszkańców;
+void tick(U timeStep) – na początku sprawdza aktualny czas; jeśli jest to
+czas ataku, to następuje atak na wszystkich mieszkańców; na koniec czas
+w miasteczku przesuwa się o timeStep.
+
+SmallTown operuje zgodnie z wewnętrznym zegarem. Czas liczony jest w godzinach,
+od godziny 0 do godziny t1 i potem znów od godziny 0, i tak cyklicznie. Pierwsze
+odliczanie zaczyna się od godziny t0. Potwór atakuje tylko o godzinach równych
+kolejnym liczbom z ciągu Fibonacciego. Obliczenie wszystkich potrzebnych liczb
+z tego ciągu i ich zapamiętanie w jakiejś kolekcji musi odbyć się w czasie
+kompilacji.
+
+Śmierć mieszkańca bądź potwora następuje w momencie, gdy jego liczba punktów
+życia osiągnie zero. Wywołanie tick() na miasteczku z martwym potworem i co
+najmniej jednym żywym mieszkańcem powoduje wypisanie na standardowe wyjście
+komunikatu "CITIZENS WON". Wywołanie tick() na miasteczku z martwymi
+mieszkańcami i żywym potworem powoduje wypisanie na standardowym wyjściu napisu
+"MONSTER WON". Jeśli zarówno mieszańcy, jak i potwór są martwi, to tick()
+wypisuje na standardowe wyjście "DRAW".
+
+W tym zadaniu wymagane jest użycie kompilatora Clang, który wypisuje bardzo
+szczegółowe komunikaty o błędach w przypadku korzystania z szablonów
+i metaprogramowania. Rozwiązanie będzie kompilowane za pomocą polecenia
+
+clang -Wall -std=c++14 -O2 -lstdc++
+
+Przykład użycia znajduje się w pliku horror_example.cc.
+
+Rozwiązanie powinno zawierać pliki citizen.h, monster.h, smalltown.h.
+Pliki te należy umieścić w repozytorium w katalogu
+
+grupaN/zadanie4/ab123456+cd123456
+
+lub
+
+grupaN/zadanie4/ab123456+cd123456+ef123456
+
+gdzie N jest numerem grupy, a ab123456, cd123456, ef123456 są identyfikatorami
+członków zespołu umieszczającego to rozwiązanie.
+Katalog z rozwiązaniem nie powinien zawierać innych plików, ale może zawierać
+podkatalog private, gdzie można umieszczać różne pliki, np. swoje testy. Pliki
+umieszczone w tym podkatalogu nie będą oceniane.
