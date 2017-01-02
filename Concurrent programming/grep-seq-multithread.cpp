@@ -53,6 +53,7 @@ void thread_grep(std::vector<std::string> filenames, std::wstring word, int a, i
         count += grep(filenames[i], word);
     }
     count_promise.set_value(count);
+
     std::cout << "Thread (a = " << a << ", b = " << b << ") completed" << std::endl;
 
 }
@@ -100,13 +101,10 @@ int main() {
 
     std::vector<std::thread> threads;
     for (auto i = 0; i < number_of_threads; ++i) {
-
         threads.push_back(std::thread {[=, &count_promise] { thread_grep(filenames, word, a, b, count_promise[i]); }});
-
         number_of_threads_used++;
-        if (b >= filenames.size()) {
-            break; // don't start next threads if all filenames are assigned
-        }
+
+        if (b >= filenames.size()) break; // don't start next threads if all filenames are assigned
         a = b;
         // last set of filenames may be shorter:
         b = a + files_for_one_thread < filenames.size() ? a + files_for_one_thread : filenames.size(); 
@@ -120,7 +118,6 @@ int main() {
 
     for (auto i = 0; i < number_of_threads_used; ++i) {
         threads[i].join();
-
     }
 
     std::cout << std::endl << count_sum << std::endl;
