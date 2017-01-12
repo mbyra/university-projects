@@ -1,11 +1,3 @@
-//
-//  horror_example.cc
-//  horror-movie-2
-//
-//  Created by Patrycja Wegrzynowicz on 12/10/16.
-//  Copyright (c) 2016 Patrycja Wegrzynowicz. All rights reserved.
-//
-
 #include <iostream>
 #include <cassert>
 #include "citizen.h"
