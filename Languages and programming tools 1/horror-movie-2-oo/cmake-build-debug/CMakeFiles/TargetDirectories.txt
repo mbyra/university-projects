@@ -1,0 +1,3 @@
+/home/marcin/ClionProjects/horror-movie-2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/marcin/ClionProjects/horror-movie-2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/marcin/ClionProjects/horror-movie-2/cmake-build-debug/CMakeFiles/horror_movie_2.dir

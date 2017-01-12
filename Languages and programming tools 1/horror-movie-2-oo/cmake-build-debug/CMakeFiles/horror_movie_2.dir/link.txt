@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/horror_movie_2.dir/helper.cc.o CMakeFiles/horror_movie_2.dir/monster.cc.o CMakeFiles/horror_movie_2.dir/citizen.cc.o CMakeFiles/horror_movie_2.dir/smalltown.cc.o CMakeFiles/horror_movie_2.dir/horror_example.cc.o  -o horror_movie_2 
