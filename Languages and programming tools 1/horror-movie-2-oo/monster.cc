@@ -1,3 +1,4 @@
+#include <iostream>
 #include "monster.h"
 
 Monster::Monster(const HealthPoints &hp, const AttackPower &power) : CreatureHavingHealth(hp),
@@ -52,8 +53,15 @@ AttackPower GroupOfMonsters::getPower() const {
 }
 
 void GroupOfMonsters::takeDamage(const AttackPower& power) {
-    for (auto &m : monsters) {
-        m->takeDamage(power);
+    auto it = monsters.begin();
+    while (it != monsters.end()) {
+        (*it)->takeDamage(power);
+        if ((*it)->getHealth() == HealthPoints()) {
+            monsters.erase(it);
+        }
+        else {
+            it++;
+        }
     }
 }
 

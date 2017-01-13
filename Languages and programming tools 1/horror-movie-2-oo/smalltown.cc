@@ -42,9 +42,9 @@ void SmallTown::fight() {
             cPtr->takeDamage(monster->getPower());
             // According to specification I have to counterattack before checking if citizen's alive:
             cPtr->hitBack(monster); // Only Sheriff's hitBack() really does something
-            if (cPtr->isAlive()) {
-                ++alive;
-            }
+        }
+        if (cPtr->isAlive()) {
+            ++alive;
         }
     }
 }
