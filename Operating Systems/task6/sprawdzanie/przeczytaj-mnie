@@ -1,0 +1,25 @@
+Wzorcowy obraz dla sprawdzania rozwiązania został utworzony w następujący sposób.
+
+Tworzymy master copy-on-wirte:
+
+qemu-img create -f qcow2 -o backing_file=/home/students/inf/PUBLIC/SO/scenariusze/4/minix.img minix-master-zadanie6.img
+
+Uruchamiamy obrazu:
+
+qemu-system-x86_64 -curses -drive file=minix-master-zadanie6.img -localtime -net user,hostfwd=tcp::20022-:22 -net nic,model=virtio -m 1024M -enable-kvm
+
+Kopiujemy klucz ssh, aby nie trzeba było podawać hasła przy logowaniu:
+
+ssh-copy-id root@localhost -p 20022
+
+Logujemy się do MINIX-a:
+
+ssh -p 20022 root@localhost
+
+Kopiujemy w pliku /etc/system.conf wpis dla service hello na wpis dla service helloN.
+
+Tworzymy urządzenie:
+
+mknod /dev/helloN c 70 0
+
+Kopiujemy pliki test* do katalogu /root i uruchamiamy skrypt test_helloN.sh.

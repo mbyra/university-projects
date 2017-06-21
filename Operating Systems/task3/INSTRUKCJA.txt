@@ -1,0 +1,8 @@
+CO ROBIC PO KOLEI:
+1. ./1_create_image.sh
+2. ./3_mount_sshfc.sh
+3. ./szybkiskrypcik.sh
+(na minixie:)
+4. ./comamzrobicnaminixie.sh
+(reboot, logowanie)
+5. ./pozniejnaminixie.sh

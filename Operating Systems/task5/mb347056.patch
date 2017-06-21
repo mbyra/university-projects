@@ -1,0 +1,286 @@
+diff -rupN ./minix/servers/sched/schedproc.h ./minix-changed/servers/sched/schedproc.h
+--- ./minix/servers/sched/schedproc.h	2017-05-19 18:56:19.618538958 +0200
++++ ./minix-changed/servers/sched/schedproc.h	2017-05-16 23:13:19.236142000 +0200
+@@ -20,6 +20,13 @@
+  * process owner, process group or cpumask.
+  */
+ 
++/************************* SO-TASK-5 ***********************************/
++/* defines for tokens_sign variable */
++
++#define NEGATIVE -1
++#define POSITIVE 1
++/***********************************************************************/
++
+ EXTERN struct schedproc {
+ 	endpoint_t endpoint;	/* process endpoint id */
+ 	endpoint_t parent;	/* parent endpoint id */
+@@ -33,6 +40,15 @@ EXTERN struct schedproc {
+ 	bitchunk_t cpu_mask[BITMAP_CHUNKS(CONFIG_MAX_CPUS)]; /* what CPUs is the
+ 								process allowed
+ 								to run on */
++
++	/************************* SO-TASK-5 ***********************************/
++	clock_t old_systime;
++	clock_t tokens;
++	int tokens_sign; /* implementation of clock_t in Minix as unsigned int
++ 	involves special way of adding/subtracting tokens pool in decrease_tokens()
++ 	and distribute_tokens() */
++	/***********************************************************************/
++	
+ } schedproc[NR_PROCS];
+ 
+ /* Flag values */
+diff -rupN ./minix/servers/sched/schedule.c ./minix-changed/servers/sched/schedule.c
+--- ./minix/servers/sched/schedule.c	2017-05-19 18:56:19.622538965 +0200
++++ ./minix-changed/servers/sched/schedule.c	2017-05-25 17:52:28.192492000 +0200
+@@ -14,11 +14,44 @@
+ #include <machine/archtypes.h>
+ #include "kernel/proc.h" /* for queue constants */
+ 
++/************************** SO-TASK-5 ***************************************/
++#include <stdio.h>
++#include <unistd.h>
++/****************************************************************************/
++
+ static minix_timer_t sched_timer;
+ static unsigned balance_timeout;
+ 
+ #define BALANCE_TIMEOUT	5 /* how often to balance queues in seconds */
+ 
++
++/************************** SO-TASK-5 ***************************************/
++
++#define MAX_TOKENS 8
++#define SCHED_FACTOR 0.6
++
++static clock_t last_refill_time; /* previous time of adding new tokens;
++                        used to check how many new tokens should be introduced */
++static int last_process; /* last process that got new tokens from tokens_count
++                    during the call to distribute_tokens (variable used to keep
++                    a loop order of allocating new tokens*/
++
++static void refill_tokens(); /* refill global tokens_count; used in
++ *                                                              balance_queues */
++static void distribute_tokens(clock_t new_tokens); /* from global_tokens to
++				processes' pools; used in do_noquantum() and balance_queues() */
++static void decrease_tokens(const int proc_nr); /* decrease number of process' 
++				  tokens by the amount of time it used; used in do_noquantum() */
++static clock_t process_systime_difference(const int proc_nr); /* returns time
++				used by the process since last checking, updates the old_systime
++				field in schedproc struct by current systime used by process */
++static clock_t global_systime_difference(); /* returns time difference from the 
++				last checking of global variable last_refill_time; updates 
++				last_refill time with the current uptime */
++
++/****************************************************************************/
++
++
+ static int schedule_process(struct schedproc * rmp, unsigned flags);
+ static void balance_queues(minix_timer_t *tp);
+ 
+@@ -48,6 +81,8 @@ static void balance_queues(minix_timer_t
+ 
+ static unsigned cpu_proc[CONFIG_MAX_CPUS];
+ 
++
++
+ static void pick_cpu(struct schedproc * proc)
+ {
+ #ifdef CONFIG_SMP
+@@ -83,6 +118,98 @@ static void pick_cpu(struct schedproc *
+ #endif
+ }
+ 
++/*********************************** SO-TASK-5 *******************************/
++
++/* Pass new_tokens to processes from schedproc, starting from last_process + 1 (mod NR_PROC)*/
++void distribute_tokens(clock_t new_tokens)
++{
++	register struct schedproc *rmp;
++	int proc_nr;
++
++	for (proc_nr=(last_process + 1) % NR_PROCS, rmp=&schedproc[proc_nr];
++		 new_tokens > 0 && proc_nr != last_process;
++		 proc_nr = (proc_nr + 1) % NR_PROCS, rmp = &schedproc[proc_nr]) {
++
++        if (!(rmp->flags & IN_USE)) continue;
++
++        int previous_tokens_sign = rmp->tokens_sign;
++
++        if(rmp->tokens_sign > 0) {
++            rmp->tokens += new_tokens; /* add all tokens to rmp */
++        }
++        else { /* negative number of tokens */
++            if (new_tokens > rmp->tokens) { /* sign will change */
++                rmp->tokens = new_tokens - rmp->tokens; /* add only what's left in
++                        new_tokens after neutralizing negative number of rmp->tokens */
++                rmp->tokens_sign = POSITIVE;
++            }
++            else { /* sign won't change */
++                rmp->tokens -= new_tokens; /* just reduce negativity */
++            }
++        }
++        if(rmp->tokens > MAX_TOKENS) {
++			new_tokens = rmp->tokens - MAX_TOKENS;
++            rmp->tokens = MAX_TOKENS;
++        }
++
++		schedule_process_local(rmp);
++
++    }
++    /* undo increasing last_process at the end of for loop */
++    last_process = proc_nr == 0 ? NR_PROCS - 1 : proc_nr - 1;
++}
++
++/* Take tokens from process' tokens pool on the basis of the time it used */
++void decrease_tokens(const int proc_nr)
++{
++	register struct schedproc *rmp;
++	rmp = &schedproc[proc_nr];
++	clock_t difference = process_systime_difference(proc_nr);
++    if (rmp->tokens_sign > 0) {
++        if (rmp->tokens > difference) {
++            rmp->tokens -= difference;
++        }
++        else { /* difference > rmp->tokens */
++            rmp->tokens = difference - rmp->tokens;
++            rmp->tokens_sign = NEGATIVE;
++        }
++    } else { /* negative number of tokens */
++        rmp->tokens += difference;
++    }
++}
++
++/* Returns the system time used by the process since the last check. Updates
++the old_systime field in process' index of schedproc table by the current systime */
++clock_t process_systime_difference(const int proc_nr)
++{
++	register struct schedproc *rmp;
++	rmp = &schedproc[proc_nr];
++
++	clock_t sys_time;
++	sys_times(rmp->endpoint, NULL, &sys_time, NULL, NULL);
++
++	clock_t difference = sys_time - rmp->old_systime;
++	rmp->old_systime = sys_time;
++
++	return difference;
++
++}
++
++/* Returns system time difference since the last check of global variable 
++last_refill_time. Updates last_refill_time with the current system time. */
++clock_t global_systime_difference()
++{
++	clock_t up_time;
++	sys_times(NONE, NULL, NULL, &up_time, NULL);
++
++	clock_t previous = last_refill_time;
++	last_refill_time = up_time;
++
++	return up_time - previous;
++}
++/*****************************************************************************/
++
++
+ /*===========================================================================*
+  *				do_noquantum				     *
+  *===========================================================================*/
+@@ -99,6 +226,11 @@ int do_noquantum(message *m_ptr)
+ 	}
+ 
+ 	rmp = &schedproc[proc_nr_n];
++
++	/****************************** SO-TASK-5 *******************************/
++	decrease_tokens(proc_nr_n); /* taking tokens away from process */
++	/************************************************************************/
++
+ 	if (rmp->priority < MIN_USER_Q) {
+ 		rmp->priority += 1; /* lower priority */
+ 	}
+@@ -106,6 +238,11 @@ int do_noquantum(message *m_ptr)
+ 	if ((rv = schedule_process_local(rmp)) != OK) {
+ 		return rv;
+ 	}
++
++	/****************************** SO-TASK-5 *******************************/
++	distribute_tokens((global_systime_difference() * SCHED_FACTOR));
++	/************************************************************************/
++
+ 	return OK;
+ }
+ 
+@@ -160,10 +297,23 @@ int do_start_scheduling(message *m_ptr)
+ 	}
+ 	rmp = &schedproc[proc_nr_n];
+ 
++	/****************************** SO-TASK-5 ******************************/
++	rmp->tokens = MAX_TOKENS;
++    rmp->tokens_sign = POSITIVE;
++
++    clock_t user_time, sys_time, up_time;
++    time_t boot_time;
++    sys_times(rmp->endpoint, &user_time, &sys_time, &up_time, &boot_time);
++
++    rmp->old_systime = up_time;
++
++	/***********************************************************************/
++
+ 	/* Populate process slot */
+ 	rmp->endpoint     = m_ptr->m_lsys_sched_scheduling_start.endpoint;
+ 	rmp->parent       = m_ptr->m_lsys_sched_scheduling_start.parent;
+ 	rmp->max_priority = m_ptr->m_lsys_sched_scheduling_start.maxprio;
++	rmp->tokens = MAX_TOKENS; 						/* SO-TASK-5 */
+ 	if (rmp->max_priority >= NR_SCHED_QUEUES) {
+ 		return EINVAL;
+ 	}
+@@ -319,10 +469,13 @@ static int schedule_process(struct sched
+ 	else
+ 		new_cpu = -1;
+ 
+-	if ((err = sys_schedule(rmp->endpoint, new_prio,
+-		new_quantum, new_cpu)) != OK) {
+-		printf("PM: An error occurred when trying to schedule %d: %d\n",
+-		rmp->endpoint, err);
++	if (rmp->tokens_sign == POSITIVE) {
++		/* call sys_schedule only if process has positive amount of tokens */
++		if ((err = sys_schedule(rmp->endpoint, new_prio,
++								new_quantum, new_cpu)) != OK) {
++			printf("PM: An error occurred when trying to schedule %d: %d\n",
++				   rmp->endpoint, err);
++		}
+ 	}
+ 
+ 	return err;
+@@ -338,6 +491,11 @@ void init_scheduling(void)
+ 	balance_timeout = BALANCE_TIMEOUT * sys_hz();
+ 	init_timer(&sched_timer);
+ 	set_timer(&sched_timer, balance_timeout, balance_queues, 0);
++
++    /*********************** SO-TASK-5 **************************************/
++    sys_times(NONE, NULL, NULL, &last_refill_time, NULL);
++	/************************************************************************/
++
+ }
+ 
+ /*===========================================================================*
+@@ -354,12 +512,18 @@ static void balance_queues(minix_timer_t
+ 	struct schedproc *rmp;
+ 	int proc_nr;
+ 
++	/*********************** SO-TASK-5 **************************************/
++	distribute_tokens((global_systime_difference() * SCHED_FACTOR));
++	/************************************************************************/
++
+ 	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
+ 		if (rmp->flags & IN_USE) {
+ 			if (rmp->priority > rmp->max_priority) {
+ 				rmp->priority -= 1; /* increase priority */
++
+ 				schedule_process_local(rmp);
+ 			}
++			/****************************************************************/
+ 		}
+ 	}
+ 
