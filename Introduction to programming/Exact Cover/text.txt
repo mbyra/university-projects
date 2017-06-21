@@ -1,0 +1,150 @@
+Wprowadzenie
+
+Rozwiązaniem problemu dokładnego pokrycia (ang. exact cover) dla rodziny P podzbiorów zbioru S jest podzbiór Q zbioru P taki, że każdy element S należy do dokładnie jednego elementu Q.
+
+Problem dokładnego pokrycia jest NP-zupełny. Nie jest znany żaden deterministyczny algorytm, który rozwiązuje go w czasie wielomianowym. Algorytm o koszcie wykładniczym, oparty na metodzie prób i błędów, jest przez Donalda Knutha nazywany Algorytmem X.
+
+Polecenie
+
+Napisz program x, który wczyta ciąg wierszy W1 … Wn reprezentujący instancję problemu dokładnego pokrycia i wypisze, w dowolnej kolejności, reprezentacje wszystkich rozwiązań tego problemu.
+
+Rozwiązaniem problemu jest podzbiór Q zbioru numerów wierszy {1 … n}. Reprezentacją rozwiązania jest wiersz R spełniający wszystkie poniższe warunki:
+
+długość R jest równa maksimum z długości W1 … Wn,
+w R nie występuje żadna spacja,
+dla każdego znaku Ri kolumny i-tej wiersza R istnieje element j zbioru Q taki, że (Wj)i = Ri i dla każdego k w zbiorze Q różnego od j, (Wk)i = ' '.
+Program powinien wybierać znaki wierszy wynikowych metodą prób i błędów, w kolejności od początku wiersza, uwzględniając podjęte wcześniej decyzje.
+
+Najpierw więc, na wszystkie możliwe sposoby, wybieramy znak, który znajdzie się w pierwszej kolumnie wiersza wynikowego. Następnie, również na wszystkie możliwe sposoby, wybieramy do kolumny drugiej znak nie kolidujący z wyborem dokonanym w kolumnie pierwszej itd. dla wszystkich pozostałych kolumn.
+
+Przykłady
+
+Dla danych:
+
+a  b
+ c
+d e
+    f
+  g
+ h i
+j   k
+
+wynik programu, po posortowaniu, powinien mieć postać:
+
+acgbf
+dheif
+jhgik
+
+Dla danych:
+
+a  b
+ c d  e
+f
+  gh
+    ij k
+l     m
+ n   o
+  p
+      q
+     r s
+t
+ uv
+    w
+ x   yz
+
+wynik programu, po posortowaniu, powinien mieć postać:
+
+auvbijqk
+auvbwrqs
+fcpdijek
+fcpdwres
+tcpdijek
+tcpdwres
+
+Dla danych:
+
+  a   b
+c d
+    ef
+ g
+  hi
+j     k
+ l
+     m
+    n o
+  p
+q  r
+   s
+
+wynik programu, po posortowaniu, powinien mieć postać:
+
+cgdsnmo
+cldsnmo
+jghiefk
+jgpsefk
+jlhiefk
+jlpsefk
+qgarefb
+qgprnmo
+qlarefb
+qlprnmo
+
+Uwagi i wskazówki
+
+Wolno założyć, że w każdym wierszu danych wejściowych jest co najmniej jeden znak różny od spacji.
+
+Wolno założyć, że długość wiersza danych wejściowych nie przekroczy zakresu typu int.
+
+Do treści zadania dołączone są pliki .x, zawierające dane z powyższych przykładów oraz pliki z rozszerzeniem .xx z wynikami wzorcowymi, posortowane programem sort.
+
+Projektując strukturę danych należy uwzględnić zastosowania, w których dane wejściowe będą "rzadkie", czyli zbudowane w zdecydowanej większości ze spacji.
+
+Program nie powinien nakładać żadnych ograniczeń na liczbę wierszy danych, ich maksymalną długość lub liczbę znaków różnych od spacji. Wolno tylko założyć, że dane zmieszczą się w pamięci.
+
+Nie wymagamy, choć też oczywiście nie zabraniamy, użycia list. Dynamiczną strukturę danych, której maksymalny rozmiar nie będzie zależał od zdefiniowanych w programie stałych, można zbudować z tablic tworzonych za pomocą funkcji malloc i realloc. Przykład jest w programie mniej_niz_dwa.c dołączonym do treści zadania.
+
+Należy pamiętać o zwolnieniu, za pomocą funkcji free, pamięci zarezerwowanej przez malloc/realloc.
+
+Przypominamy, że program do testów będzie kompilowany poleceniem:
+
+gcc -ansi -pedantic -Wall -Wextra -Werror nazwa.c -o nazwa
+
+Wszystkie wymienione opcje kompilatora są obowiązkowe i nie wolno dodawać do nich żadnych innych.
+
+Zastosowania programu x
+
+Wiele problemów w naturalny sposób sprowadza się do problemu dokładnego pokrycia. Można je rozwiązać za pomocą programu x, przygotowując dla niego odpowiednio spreparowany plik .x z danymi.
+
+Choć algorytm programu x ma koszt wykładniczy, w wielu przypadkach jego czas działania może być dla użytkownika akceptowalny. Co więcej, użytkownik ma w pewnym stopniu wpływ na efektywność obliczeń programu x. Rozmiar drzewa decyzyjnego, które program przechodzi szukając rozwiązania, zależy od kolejności podejmowania decyzji. Program x decyduje o znakach wyniku w kolejności rosnących numerów kolumn. W niektórych przypadkach można go więc przyspieszyć, odpowiednio permutując kolumny pliku .x. Będziemy to nazywali optymalizacją pliku .x. Po otrzymaniu wyniku od programu x, stosujemy do niego permutację odwrotną do permutacji, której poddaliśmy plik .x. Dostajemy w rezultacie wynik taki sam, jak bez optymalizacji, ale być może znacznie szybciej.
+
+W pakiecie dołączonym do treści zadania jest pięć przykładów zastosowania programu x. Trzy z nich korzystają z optymalizacji pliku .x. Sposób użycia programów jest opisany w komentarzach nagłówkowych w plikach źródłowych. Oprócz programów, pakiet zawiera też ich wyniki.
+
+1. Podzbiory
+
+Program podzbiory.c generuje plik .x umożliwiający znalezienie wszystkich podzbiorów zbioru znaków zadanego napisu.
+
+2. Permutacje
+
+Program permutacje.c generuje plik .x pozwalający na skonstruowanie wszystkich permutacji zadanego napisu.
+
+3. Sudoku
+
+Program sudoku.c generuje plik .x, dla którego wynik działania programu x będzie rozwiązaniem zadanej łamigłówki Sudoku. Przykładową łamigłówkę:
+
+640000020000070009090800700020504000003000400000302070008003060500060000030000098
+
+"wzorcowy" program x rozwiązuje na students w 1 minutę i 40 sekund.
+
+Poszukiwanie rozwiązania Sudoku można usprawnić, optymalizując plik .x. Program mniej_niz_dwa.c generuje permutację numerów kolumn tekstu wejściowego, w wyniku której na początku znajdą się te kolumny, które mają mniej niż dwa znaki różne od spacji. Permutację stosujemy do pliku .x programem permutuj.c. Dla przekształconych za jego pomocą danych, program x na students znajduje rozwiązanie łamigłówki praktycznie natychmiast.
+
+4. Hetmany
+
+Program hetmany.c generuje plik .x umożliwiający znalezienie wszystkich ustawień N hetmanów na szachownicy N na N tak, by żadne dwa się nie atakowały. Dla N = 10 program wzorcowy na students rozwiązuje ten problem w 16 sekund.
+
+Program od_srodka.c generuje permutację optymalizującą plik .x dla tego problemu. W wyniku jej zastosowania decyzja, gdzie w zadanym wierszu umieścić hetmana będzie podejmowana w kolejności według rosnącej odległości wiersza od wiersza środkowego. Podobnie jak w przypadku Sudoku, po optymalizacji problem 10 hetmanów jest rozwiązywany przez wzorcowy program x na students praktycznie natychmiast.
+
+5. Pentomino
+
+Program mino.c generuje plik .x, dla którego program x znajdzie wszystkie sposoby pokrycia planszy zadanymi figurami. Można go użyć, by wygenerować plik .x dla problemu pokrycia planszy 6 na 10 figurami pentomino. Czas rozwiązania tego problemu na students waha się od 7 do 8 minut.
+
+Plik .x generowany przez program mino.c podejmuje decyzje o wyborze figury pokrywającej zadane pole w kolejności pól wyznaczonej przez rosnące numery wiersza a w ramach wiersza, przez rosnące numery kolumn. Program przekatne.c generuje permutację zmieniająca ten porządek. Po jej zastosowaniu pola rozważane są w kolejności po przekątnych wyznaczonych przez sumę numeru wiersza i kolumny. Dla tak zoptymalizowanego pliku .x program x na students znajduje rozwiązanie w około 1 minutę i 15 sekund.

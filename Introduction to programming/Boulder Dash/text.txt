@@ -1,0 +1,229 @@
+Boulder Dash (https://en.wikipedia.org/wiki/Boulder_Dash) to komputerowa gra logiczno-zręcznościowa. Tematem naszego zadania jest jej wariant, pozbawiony elementów zręcznościowych. Nazwiemy go "Klątwą Boulder Dasha".
+
+Rozgrywka "Klątwy Boulder Dasha" toczy się na prostokątnej planszy, której pola są zorganizowane w wiersze i kolumny. Gracz steruje postacią Rockforda. Jego zadaniem jest zebranie wszystkich diamentów, które znajdują się na planszy i opuszczenie jej przez wyjście. Oprócz Rockforda, diamentów i wyjścia, na polach planszy są również: ziemia, skała lub kamień. Na każdym polu może być co najwyżej jeden z wymienionych obiektów.
+
+Rockford porusza się po planszy, przechodząc na jedno z czterech pól sąsiadujących w wierszu lub kolumnie z polem, na którym się znajduje. Może wejść na pole docelowe, jeżeli spełniony jest jeden z warunków:
+
+jest ono puste,
+jest na nim ziemia,
+jest na nim diament,
+jest na nim kamień, sąsiaduje ono z polem Rockforda w wierszu a kolejne pole w tym wierszu, licząc od strony Rockforda, jest puste,
+na polu docelowym jest wyjście a Rockford zebrał już z planszy wszystkie diamenty.
+Nie można więc wejść na pole ze skałą, a na pole z wyjściem wchodzimy tylko, jeśli wcześniej zebraliśmy wszystkie diamenty.
+
+W każdym przypadku pole opuszczone przez Rockforda staje się puste. Rockford, wchodząc na pole z diamentem, zabiera go a wchodząc na pole z ziemią "przekopuje" ją i ziemia znika.
+
+Jeśli na polu docelowym jest wyjście, Rockford znika z planszy i gra kończy się. Wejście Rockforda na pole, na którym jest kamień, powoduje przesunięcie kamienia na kolejne, puste pole.
+
+Jeżeli bezpośrednio poniżej pola, na którym jest kamień lub diament, czyli w kolejnym wierszu tej samej kolumny, jest pole puste, to ten kamień lub diament "spada" - jest przenoszony na puste pole poniżej niego. Stan planszy nazywamy stabilnym, jeśli poniżej żadnego kamienia i poniżej żadnego diamentu nie ma pustego pola. Przed i po każdym ruchu Rockforda wszystkie kamienie i diamenty, które mogą to zrobić "spadają", sprowadzając planszę do stanu stabilnego.
+
+Inaczej niż w grze "Boulder Dash", Rockford nie ginie, gdy spadnie na niego kamień lub diament.
+
+Polecenie
+
+Napisz program, który wczyta z wejścia opis początkowego stanu planszy "Klątwy Boulder Dasha" oraz ciąg poleceń użytkownika. Program powinien wykonać polecenia aż do końca ich ciągu lub do końca gry.
+
+Postać danych
+
+Na wejściu programu jest, zakończony pustym wierszem, opis stanu początkowego planszy, nie koniecznie stabilnego, oraz ciąg poleceń użytkownika.
+
+Opis planszy składa się z ciągu niepustych wierszy, z których wszystkie są tej samej długości. Wiersze uporządkowane są w kolejności od góry planszy a zawartość wiersza w kolejności od lewej do prawej.
+
+Stan pola jest opisany jednym znakiem:
+
+'&' - Rockford,
+' ' - pole puste,
+'.' - ziemia,
+'#' - skała,
+'O' - kamień,
+'$' - diament,
+'X' - wyjście.
+Na każdym polu w pierwszym i w ostatnim wierszu planszy oraz w jej pierwszej i ostatniej kolumnie jest skała. Na planszy jest dokładnie jeden Rockford.
+
+Polecenia przesunięcia Rockforda są reprezentowane przez znaki:
+
+'w' - w górę,
+'a' - w lewo,
+'s' - w dół,
+'d' - w prawo.
+Inne znaki w ciagu poleceń, w szczególności reprezentację końca wiersza, ignorujemy.
+
+Postać wyniku
+
+Wynikiem programu jest końcowy, stabilny stan planszy. Wypisujemy go w takim samym formacie, jaki miał stan początkowy na wejściu, ale bez pustego wiersza na końcu.
+
+Przykłady
+
+Dla danych:
+
+###########
+# O#O#O#O##
+# $$$$$$$$#
+#.#O#O#O#O#
+#..... ...#
+#&......X.#
+###########
+
+dddddwaaaadddaaaawwddddaaadddssasadwddsawwwddadddaaaaaassddddds
+
+wynikiem programu powinno być:
+
+###########
+#  # # # ##
+#         #
+# # # # #O#
+#      O .#
+#OOOOOO.X.#
+###########
+
+Dla danych:
+
+########################################
+#.............O........................#
+#.............O........................#
+#.............O.................X......#
+#.............O........................#
+#....X...................$.............#
+#........................$.............#
+#........................$.............#
+#......................................#
+#..................  O&OO      ........#
+#...X..................................#
+#......................................#
+#......................................#
+#......................                #
+########################################
+
+dassddddwwwwaaaaaassaaaaawwwwwd
+ala ma kota
+aaaaaad
+
+wynikiem programu powinno być:
+
+########################################
+#............. ........................#
+#............. ........................#
+#............. .................X......#
+#............. ........................#
+#....X &        ......... .............#
+#.............O.......... .............#
+#.............O....       .............#
+#.............O.... ..... .............#
+#.............O     O  OO      ........#
+#...X................ ...$.............#
+#....................    $.............#
+#......................................#
+#......................                #
+########################################
+
+Dla danych:
+
+#######
+#OOO..#
+#   ..#
+#  ...#
+#  ...#
+# &X..#
+#  ...#
+#  ...#
+#  ...#
+#  ...#
+#.....#
+#.....#
+#.....#
+#.....#
+#.....#
+#.....#
+#.....#
+#.....#
+#.....#
+#.....#
+#######
+
+aawddwss
+to sie nie wykona
+
+wynikiem programu powinno być:
+
+#######
+#   ..#
+#   ..#
+#   ..#
+#  O..#
+#  X..#
+#  ...#
+#  ...#
+#  ...#
+#OO...#
+#.....#
+#.....#
+#.....#
+#.....#
+#.....#
+#.....#
+#.....#
+#.....#
+#.....#
+#.....#
+#######
+
+Tekstowy interfejs użytkownika (TUI)
+
+By ułatwić sobie testowanie rozwiązania i jednocześnie uczynić program bardziej atrakcyjnym dla potencjalnych użytkowników, można wyposażyć go w tzw. "tekstowy interfejs użytkownika" (TUI), zrealizowany za pomocą biblioteki nCurses. Bibliotekę dołączamy do programu, kompilując go z dodatkową opcją -lncurses i włączając do kodu plik nagłówkowy ncurses.h. Do treści zadania dołączony jest przykładowy program demonstrujący użycie nCurses.
+
+Ponieważ testy poprawności będą prowadzone w trybie wsadowym, nie interakcyjnie, użycie TUI musi być opcjonalne. Decyzję, w jakim trybie ma pracować program, będziemy podejmowali podczas kompilacji. Zdefiniowanie stałej symbolicznej TUI za pomocą opcji -DTUI wskaże, że chcemy programu korzystającego z nCurses. Jeśli tej opcji nie będzie, program ma działać wsadowo.
+
+Do automatycznych testów poprawności w trybie wsadowym program będziemy więc kompilowali poleceniem:
+
+gcc -ansi -pedantic -Wall -Wextra -Werror nazwa.c -o nazwa
+
+gdzie nazwa.c to nazwa pliku z kodem źródłowym, a do pracy w trybie TUI skompilujemy go przez:
+
+gcc -ansi -pedantic -Wall -Wextra -Werror -DTUI -lncurses nazwa.c -o nazwa
+
+W kodzie źródłowym programu fragmenty odpowiedzialne za realizację TUI należy wybierać za pomocą mechanizmu kompilacji warunkowej, dyrektywami preprocesora:
+
+#ifdef TUI
+    ...
+#endif
+
+oraz:
+
+#ifdef TUI
+    ...
+#else
+    ...
+#endif
+
+Tekstowy interfejs użytkownika należy w tym zadaniu traktować jako nieobowiązkowy. Jego realizacja zostanie nagrodzona 1 (słownie: JEDNYM) punktem z puli 10 pkt, które można dostać za styl rozwiązania. Maksymalną oceną rozwiązania bez TUI będzie więc 19 na 20 pkt.
+
+Uwagi
+
+Wolno założyć, że dane są poprawne.
+
+Wolno założyć, że plansza ma maksymalnie 100 wierszy i maksymalnie 200 kolumn.
+
+Może się przydać standardowa bezparametrowa funkcja getchar(), z wynikiem typu int. Daje ona jako wynik znak wczytany z wejścia lub EOF, jeśli dane się skończyły.
+
+Do treści zadania dołączone są pliki z rozszerzeniem .in zawierające przykładowe dane i odpowiadające im pliki z rozszerzeniem .out z wynikami wzorcowymi.
+
+Poprawność obsługiwanego formatu danych i formatu wyniku można sprawdzić, przekierowując na wejście programu zawartość pliku .in i porównując wynik, za pomocą programu diff, z zawartością pliku .out, np.:
+
+./rozwiazanie <przyklad.in >moj.out
+diff moj.out przyklad.out
+
+W przygotowaniu danych do testów może być przydatne polecenie tee. Przepisuje ono dane z wejścia na wyjście, zapisując ich kopię w pliku, którego nazwę dostało jako argument. Może też pomóc polecenie cat, które pozwala łączyć zawartość pliku z danymi wprowadzanymi z wejścia. Np.:
+
+cat plansza.txt - | tee dane.in | ./rozwiazanie
+
+uruchomi program, przekazując mu na wejście zawartość pliku plansza.txt a po niej to, co wpisze użytkownik. Jednocześnie wszystkie dane, trafiające na wejście programu, zostaną też zapisane w pliku dane.in. Jeśli kopia danych nie jest nam potrzebna, upraszcza się to do:
+
+cat plansza.txt - | ./rozwiazanie
+
+W ten sposób można też będzie uruchamiać program na gotowej planszy w trybie TUI.
+
+Podkreślamy, że program do testów będzie kompilowany poleceniem:
+
+gcc -ansi -pedantic -Wall -Wextra -Werror nazwa.c -o nazwa
+
+Wszystkie wymienione opcje kompilatora są obowiązkowe i nie wolno dodawać do nich żadnych innych.
