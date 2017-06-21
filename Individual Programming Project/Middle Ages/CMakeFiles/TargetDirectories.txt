@@ -1,0 +1,2 @@
+/home/smutnyjoe/Zaliczeniowe2AI/IPP-mb347056/CMakeFiles/doc.dir
+/home/smutnyjoe/Zaliczeniowe2AI/IPP-mb347056/CMakeFiles/middle_ages.dir

@@ -1,0 +1,173 @@
+\hypertarget{ai_8c}{\section{Dokumentacja pliku ai.\-c}
+\label{ai_8c}\index{ai.\-c@{ai.\-c}}
+}
+
+
+Source file of A\-I.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$assert.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}ai.\-h\char`\"{}}\\*
+Wykres zależności załączania dla ai.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{ai_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Struktury danych}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structVector}{Vector}
+\item 
+struct \hyperlink{structNodeListDef}{Node\-List\-Def}
+\end{DoxyCompactItemize}
+\subsection*{Definicje}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{ai_8c_a4fadfc1cc2d9a1723ae3ec08f3f0203d}{\#define {\bfseries N\-O\-R\-T\-H\-W\-E\-S\-T}~21}\label{ai_8c_a4fadfc1cc2d9a1723ae3ec08f3f0203d}
+
+\item 
+\hypertarget{ai_8c_a1711232abf72723b5216c206e6bbb175}{\#define {\bfseries N\-O\-R\-T\-H}~22}\label{ai_8c_a1711232abf72723b5216c206e6bbb175}
+
+\item 
+\hypertarget{ai_8c_a102c97a6b56626a25efbee52bc0ccff0}{\#define {\bfseries N\-O\-R\-T\-H\-E\-A\-S\-T}~23}\label{ai_8c_a102c97a6b56626a25efbee52bc0ccff0}
+
+\item 
+\hypertarget{ai_8c_a072a1ef1143314441742097b799be322}{\#define {\bfseries E\-A\-S\-T}~24}\label{ai_8c_a072a1ef1143314441742097b799be322}
+
+\item 
+\hypertarget{ai_8c_a0bdd815c79bee3fd7243675de570e3c4}{\#define {\bfseries S\-O\-U\-T\-H\-E\-A\-S\-T}~25}\label{ai_8c_a0bdd815c79bee3fd7243675de570e3c4}
+
+\item 
+\hypertarget{ai_8c_af3830320fe6287f717dca9669f417950}{\#define {\bfseries S\-O\-U\-T\-H}~26}\label{ai_8c_af3830320fe6287f717dca9669f417950}
+
+\item 
+\hypertarget{ai_8c_affb1a0defb8cb94cc31897c465e20a75}{\#define {\bfseries S\-O\-U\-T\-H\-W\-E\-S\-T}~27}\label{ai_8c_affb1a0defb8cb94cc31897c465e20a75}
+
+\item 
+\hypertarget{ai_8c_a755da365a2f771fdb9e15af22fee7d74}{\#define {\bfseries W\-E\-S\-T}~28}\label{ai_8c_a755da365a2f771fdb9e15af22fee7d74}
+
+\end{DoxyCompactItemize}
+\subsection*{Definicje typów}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{ai_8c_ab0412993a9e3f218f85f70474c80414c}{typedef struct \hyperlink{structNodeListDef}{Node\-List\-Def} {\bfseries Node\-List}}\label{ai_8c_ab0412993a9e3f218f85f70474c80414c}
+
+\end{DoxyCompactItemize}
+\subsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{ai_8c_a7100b301f75832992efcb62fc2701091}{\hyperlink{structTreeNode}{Tree\-Node} $\ast$ {\bfseries find\-My\-Next\-Peasant} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, int my\-Number, int turns)}\label{ai_8c_a7100b301f75832992efcb62fc2701091}
+
+\item 
+\hypertarget{ai_8c_a6caa90f21778b1facba361b2a25d9bcb}{\hyperlink{structTreeNode}{Tree\-Node} $\ast$ {\bfseries find\-My\-Next\-Not\-Moved\-Knight} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, int my\-Number)}\label{ai_8c_a6caa90f21778b1facba361b2a25d9bcb}
+
+\item 
+\hypertarget{ai_8c_a5a037a4154eba49d8bae23ebe2f6042a}{\hyperlink{structTreeNode}{Tree\-Node} $\ast$ {\bfseries find\-King} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, int my\-Number, bool my)}\label{ai_8c_a5a037a4154eba49d8bae23ebe2f6042a}
+
+\item 
+\hypertarget{ai_8c_a851a8857e834cfa1b29170300f440c5c}{void {\bfseries print\-All\-Pieces} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$tree)}\label{ai_8c_a851a8857e834cfa1b29170300f440c5c}
+
+\item 
+\hypertarget{ai_8c_a5e0864d4fc7fa66f80a1f38a8b3d63ea}{bool {\bfseries this\-Piece\-Is\-Mine} (int my\-Number, char symbol)}\label{ai_8c_a5e0864d4fc7fa66f80a1f38a8b3d63ea}
+
+\item 
+\hypertarget{ai_8c_a3c7051b0b17c3545851226bc503d2fce}{bool {\bfseries its\-Closer\-Than\-Closest} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$tree, \hyperlink{structTreeNode}{Tree\-Node} $\ast$closest, \hyperlink{structPiece}{Piece} my\-Piece, int my\-Number)}\label{ai_8c_a3c7051b0b17c3545851226bc503d2fce}
+
+\item 
+\hypertarget{ai_8c_a2140c1962bb7214d9b3629323377b893}{\hyperlink{structTreeNode}{Tree\-Node} $\ast$ {\bfseries closest\-Enemy} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$tree, \hyperlink{structPiece}{Piece} my\-Piece, \hyperlink{structTreeNode}{Tree\-Node} $\ast$closest, int my\-Number)}\label{ai_8c_a2140c1962bb7214d9b3629323377b893}
+
+\item 
+\hypertarget{ai_8c_ab3cdee659431e48af1f96436ed1c17cf}{\hyperlink{structNodeListDef}{Node\-List} $\ast$ {\bfseries create\-My\-Units\-List} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, char symbol, int my\-Number, int turns)}\label{ai_8c_ab3cdee659431e48af1f96436ed1c17cf}
+
+\item 
+\hypertarget{ai_8c_a6e3efb45a22a8fc130b186ce964f5421}{int {\bfseries list\-Size} (\hyperlink{structNodeListDef}{Node\-List} $\ast$list)}\label{ai_8c_a6e3efb45a22a8fc130b186ce964f5421}
+
+\item 
+\hypertarget{ai_8c_a12f4164db8c3b372c9dfa38ef5cd6eb8}{int {\bfseries define\-Direction} (\hyperlink{structPiece}{Piece} from, \hyperlink{structPiece}{Piece} to)}\label{ai_8c_a12f4164db8c3b372c9dfa38ef5cd6eb8}
+
+\item 
+\hypertarget{ai_8c_a65795ed21e57259c50fbc763f17e4417}{int {\bfseries find\-Best\-Direction} (int previous\-Direction, int $\ast$i)}\label{ai_8c_a65795ed21e57259c50fbc763f17e4417}
+
+\item 
+\hypertarget{ai_8c_a74e5e4f306a83f1b79bf6a4da428d413}{bool {\bfseries is\-On\-Pieces\-List} (int new\-X, int new\-Y, \hyperlink{structNodeListDef}{Node\-List} $\ast$my\-Pieces\-List)}\label{ai_8c_a74e5e4f306a83f1b79bf6a4da428d413}
+
+\item 
+\hypertarget{ai_8c_aac557f0cb03d289b4f1cadb3d77740c6}{void {\bfseries give\-New\-Coordinates} (int $\ast$new\-X, int $\ast$new\-Y, \hyperlink{structPiece}{Piece} piece, int direction, int n)}\label{ai_8c_aac557f0cb03d289b4f1cadb3d77740c6}
+
+\item 
+\hypertarget{ai_8c_a4f5900299ad4acc854780b066e5f8ada}{\hyperlink{structPiece}{Piece} {\bfseries try\-To\-Create\-New\-Piece} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, \hyperlink{structNodeListDef}{Node\-List} $\ast$$\ast$my\-Peasants\-List, bool create\-Peasant, int direction, int n, int turns, int my\-Number)}\label{ai_8c_a4f5900299ad4acc854780b066e5f8ada}
+
+\item 
+\hypertarget{ai_8c_a9b83cf31cf9f44c124f5f6759deafb5d}{\hyperlink{structTreeNode}{Tree\-Node} $\ast$ {\bfseries produce\-Piece\-In\-Best\-Possible\-Square} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, \hyperlink{structNodeListDef}{Node\-List} $\ast$$\ast$my\-Peasants\-List, bool \hyperlink{engine_8h_a610df406fe7f88d89ded2c1854c7d3aa}{produce\-Peasant}, int direction, int n, int turns, int my\-Number)}\label{ai_8c_a9b83cf31cf9f44c124f5f6759deafb5d}
+
+\item 
+\hypertarget{ai_8c_a72be22810c2f1e35df9934ea7bab1b08}{\hyperlink{structTreeNode}{Tree\-Node} $\ast$ {\bfseries produce\-New\-Pieces} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, \hyperlink{structNodeListDef}{Node\-List} $\ast$$\ast$my\-Peasants\-List, bool \hyperlink{engine_8h_a610df406fe7f88d89ded2c1854c7d3aa}{produce\-Peasant}, int n, int turns, int my\-Num)}\label{ai_8c_a72be22810c2f1e35df9934ea7bab1b08}
+
+\item 
+\hypertarget{ai_8c_a552be12b88c3dca3cc46d2992e81ee28}{\hyperlink{structTreeNode}{Tree\-Node} $\ast$ {\bfseries try\-To\-Move\-Knight} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, \hyperlink{structNodeListDef}{Node\-List} $\ast$$\ast$my\-Not\-Moved\-Knights\-List, int direction, int n, int my\-Number, bool $\ast$win)}\label{ai_8c_a552be12b88c3dca3cc46d2992e81ee28}
+
+\item 
+\hypertarget{ai_8c_ae8b974874f1ecf63fdd73691271ad9f5}{void {\bfseries delete\-List} (\hyperlink{structNodeListDef}{Node\-List} $\ast$$\ast$list)}\label{ai_8c_ae8b974874f1ecf63fdd73691271ad9f5}
+
+\item 
+\hypertarget{ai_8c_a2254d5c72fef018fbbbbfecc26e37c5c}{\hyperlink{structTreeNode}{Tree\-Node} $\ast$ {\bfseries move\-Knights} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, \hyperlink{structNodeListDef}{Node\-List} $\ast$$\ast$knights\-List, int n, int my\-Number, bool $\ast$win)}\label{ai_8c_a2254d5c72fef018fbbbbfecc26e37c5c}
+
+\item 
+int \hyperlink{ai_8c_a14376896e70f2124b64debad28702f3b}{generate\-Action} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, int $\ast$turns, bool $\ast$my\-Turn, int my\-Num, int n)
+\begin{DoxyCompactList}\small\item\em A\-I generating all actions during current turn. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Opis szczegółowy}
+Source file of A\-I. Contains all necessary functions to genrate all actions during a turn. Some of these funtions can be exported and used in engine (both modules are independent). 
+
+\subsection{Dokumentacja funkcji}
+\hypertarget{ai_8c_a14376896e70f2124b64debad28702f3b}{\index{ai.\-c@{ai.\-c}!generate\-Action@{generate\-Action}}
+\index{generate\-Action@{generate\-Action}!ai.c@{ai.\-c}}
+\subsubsection[{generate\-Action}]{\setlength{\rightskip}{0pt plus 5cm}int generate\-Action (
+\begin{DoxyParamCaption}
+\item[{{\bf Tree\-Node} $\ast$$\ast$}]{tree, }
+\item[{int $\ast$}]{turns, }
+\item[{bool $\ast$}]{my\-Turn, }
+\item[{int}]{my\-Num, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{ai_8c_a14376896e70f2124b64debad28702f3b}
+
+
+A\-I generating all actions during current turn. 
+
+The function is an A\-I. It produces a peasant if player has only one unit of this type, otherwise produces a knight. It produces new units towards closest enemy piece. It also moves every knight towards closest enemy piece. If it cannot move or produce in this direction, tries to do it into neighbouring squares (until possible squares are further to closest enemy unit than peasant). Finally, it ends turn, decreasing parameter $\ast$turns (if player's number is 2), negates $\ast$my\-Turn and returns result.
+
+
+\begin{DoxyParams}[1]{Parametry}
+\mbox{\tt in,out}  & {\em $\ast$$\ast$tree} & Tree containing nodes with all pieces on board. \\
+\hline
+\mbox{\tt in,out}  & {\em $\ast$turns} & Number of remaining turns. \\
+\hline
+\mbox{\tt in,out}  & {\em $\ast$my\-Turn} & Parameter used in \hyperlink{middle__ages_8c}{middle\-\_\-ages.\-c} to define which turn it is\-: ai's (to generate action) or other player's (to parse his actions). Here only to be negated. \\
+\hline
+\mbox{\tt in}  & {\em my\-Num} & Player's number (1 or 2). \\
+\hline
+\mbox{\tt in}  & {\em n} & Size (of a side) of a board.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Defined constant representing the result (W\-I\-N, D\-R\-A\-W, C\-O\-N\-T\-I\-N\-U\-E). 
+\end{DoxyReturn}
+
+
+Oto graf wywołań dla tej funkcji\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{ai_8c_a14376896e70f2124b64debad28702f3b_cgraph}
+\end{center}
+\end{figure}
+
+

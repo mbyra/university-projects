@@ -1,0 +1,2 @@
+/home/smutnyjoe/Zaliczeniowe2Git/IPP-mb347056/debug/CMakeFiles/doc.dir
+/home/smutnyjoe/Zaliczeniowe2Git/IPP-mb347056/debug/CMakeFiles/middle_ages.dir

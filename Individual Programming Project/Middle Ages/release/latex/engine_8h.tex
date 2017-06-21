@@ -1,0 +1,506 @@
+\hypertarget{engine_8h}{\section{Dokumentacja pliku engine.\-h}
+\label{engine_8h}\index{engine.\-h@{engine.\-h}}
+}
+
+
+Interface of game engine.  
+
+
+{\ttfamily \#include $<$stdbool.\-h$>$}\\*
+Wykres zależności załączania dla engine.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{engine_8h__incl}
+\end{center}
+\end{figure}
+Ten wykres pokazuje, które pliki bezpośrednio lub pośrednio załączają ten plik\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{engine_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Struktury danych}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structPiece}{Piece}
+\begin{DoxyCompactList}\small\item\em Struct of \hyperlink{structPiece}{Piece}. \end{DoxyCompactList}\item 
+struct \hyperlink{structTreeNode}{Tree\-Node}
+\begin{DoxyCompactList}\small\item\em Struct of a tree containing pieces. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Definicje}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{engine_8h_ab711666ad09d7f6c0b91576525ea158e}{\#define {\bfseries C\-O\-N\-T\-I\-N\-U\-E}~0}\label{engine_8h_ab711666ad09d7f6c0b91576525ea158e}
+
+\item 
+\hypertarget{engine_8h_a288116f92845fddefeb044f5b84bc889}{\#define {\bfseries I\-N\-P\-U\-T\-\_\-\-E\-R\-R\-O\-R}~42}\label{engine_8h_a288116f92845fddefeb044f5b84bc889}
+
+\item 
+\hypertarget{engine_8h_a7a7cd353a6274e8c0dbb698113e7e194}{\#define {\bfseries D\-R\-A\-W}~1}\label{engine_8h_a7a7cd353a6274e8c0dbb698113e7e194}
+
+\item 
+\hypertarget{engine_8h_a2199bc4c776dbd7a4248aeef9e5dd8a1}{\#define {\bfseries D\-R\-A\-W\-\_\-\-A\-F\-T\-E\-R\-\_\-\-E\-N\-D\-\_\-\-T\-U\-R\-N}~5}\label{engine_8h_a2199bc4c776dbd7a4248aeef9e5dd8a1}
+
+\item 
+\hypertarget{engine_8h_a6ee3d6fa4e432d9456967fd82533de48}{\#define {\bfseries E\-N\-D\-\_\-\-T\-U\-R\-N}~2}\label{engine_8h_a6ee3d6fa4e432d9456967fd82533de48}
+
+\item 
+\hypertarget{engine_8h_a4db4e218f5d127d392593464377e7dbe}{\#define {\bfseries P1\-\_\-\-W\-I\-N}~3}\label{engine_8h_a4db4e218f5d127d392593464377e7dbe}
+
+\item 
+\hypertarget{engine_8h_a4081f92247bfc37403cab4610a4681a0}{\#define {\bfseries P2\-\_\-\-W\-I\-N}~4}\label{engine_8h_a4081f92247bfc37403cab4610a4681a0}
+
+\end{DoxyCompactItemize}
+\subsection*{Definicje typów}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structPiece}{Piece} \hyperlink{engine_8h_ad1ff76ab9261121f9492d0e79b03d586}{Piece}
+\begin{DoxyCompactList}\small\item\em Struct of \hyperlink{structPiece}{Piece}. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{structTreeNode}{Tree\-Node} \hyperlink{engine_8h_a85a7513d1b1c40e8d6267a812ee61b9d}{Tree\-Node}
+\begin{DoxyCompactList}\small\item\em Struct of a tree containing pieces. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{engine_8h_a0776cd662f5c945bb00f5950ab384fcf}{start\-Game} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree)
+\begin{DoxyCompactList}\small\item\em Initializes a game. \end{DoxyCompactList}\item 
+void \hyperlink{engine_8h_ac959cf8cbd90d8dc203659e8a8871664}{end\-Game} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, int $\ast$result, char $\ast$$\ast$$\ast$board, int m)
+\begin{DoxyCompactList}\small\item\em Frees memory. \end{DoxyCompactList}\item 
+int \hyperlink{engine_8h_a4b24a63ab775b24fe4c652d06622f948}{init} (int n, int k, int p, int x1, int y1, int x2, int y2, \hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, int $\ast$n\-My, int $\ast$k\-My, bool $\ast$p1\-Initialized, bool $\ast$p2\-Initialized, char $\ast$$\ast$board, int $\ast$m)
+\begin{DoxyCompactList}\small\item\em Initializes a game with size of a board, number of rounds and positions of kings. \end{DoxyCompactList}\item 
+int \hyperlink{engine_8h_a823c9d0dc71ea5ea68cb1dafb42bce7a}{move} (int x1, int y1, int x2, int y2, int n, bool players1\-Turn, \hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, bool p1\-Initialized, bool p2\-Initialized, char $\ast$$\ast$board, int m, int turns)
+\begin{DoxyCompactList}\small\item\em Makes a move. \end{DoxyCompactList}\item 
+int \hyperlink{engine_8h_af5b7f337e6e7f58324ef24379f89d970}{produce\-Knight} (int x1, int y1, int x2, int y2, int n, bool players1\-Turn, \hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, bool p1\-Initialized, bool p2\-Initialized, char $\ast$$\ast$board, int m, int turns)
+\begin{DoxyCompactList}\small\item\em Produces a knight. \end{DoxyCompactList}\item 
+int \hyperlink{engine_8h_a82b7c406c0c1116d123ccccd06950a68}{produce\-Peasant} (int x1, int y1, int x2, int y2, int n, bool players1\-Turn, \hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, bool p1\-Initialized, bool p2\-Initialized, char $\ast$$\ast$board, int m, int turns)
+\begin{DoxyCompactList}\small\item\em Produces a peasant. \end{DoxyCompactList}\item 
+int \hyperlink{engine_8h_adff6ca550bc33a22dc1e6966c7a5d608}{end\-Turn} (int $\ast$turns, bool $\ast$players1\-Turn, \hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, bool p1\-Initialized, bool p2\-Initialized)
+\begin{DoxyCompactList}\small\item\em Ends a turn. \end{DoxyCompactList}\item 
+void \hyperlink{engine_8h_ab1554076e8bcda9021d6a6273c21af4c}{print\-Topleft} (char $\ast$$\ast$board, int m)
+\begin{DoxyCompactList}\small\item\em Prints (into stdout) top-\/left corner of the board of size m x m. \end{DoxyCompactList}\item 
+char $\ast$$\ast$ \hyperlink{engine_8h_a6e2f079a3de8efe3d5d507181cee3153}{allocate\-Memory} (int m)
+\begin{DoxyCompactList}\small\item\em Allocates space for m by m array and fills it with dot. \end{DoxyCompactList}\item 
+int \hyperlink{engine_8h_abd8bbcfabb3ddef2ccaafb9928a37b95}{min} (int a, int b)
+\begin{DoxyCompactList}\small\item\em Returns lesser value of two ints. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Opis szczegółowy}
+Interface of game engine. Contains all functions needed to start, play, read input (and check parameters), print output and end the game. 
+
+\subsection{Dokumentacja definicji typów}
+\hypertarget{engine_8h_ad1ff76ab9261121f9492d0e79b03d586}{\index{engine.\-h@{engine.\-h}!Piece@{Piece}}
+\index{Piece@{Piece}!engine.h@{engine.\-h}}
+\subsubsection[{Piece}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Piece}  {\bf Piece}}}\label{engine_8h_ad1ff76ab9261121f9492d0e79b03d586}
+
+
+Struct of \hyperlink{structPiece}{Piece}. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em x} & Number of column of a piece. \\
+\hline
+{\em y} & Number of row of a piece. \\
+\hline
+{\em ch} & Char representing a piece('K', 'C', 'R', 'k', 'c' or 'r') \\
+\hline
+{\em turn\-Moved} & Last turn this piece was moved. \\
+\hline
+{\em moved} & True if the piece was moved last turn. \\
+\hline
+\end{DoxyParams}
+\hypertarget{engine_8h_a85a7513d1b1c40e8d6267a812ee61b9d}{\index{engine.\-h@{engine.\-h}!Tree\-Node@{Tree\-Node}}
+\index{Tree\-Node@{Tree\-Node}!engine.h@{engine.\-h}}
+\subsubsection[{Tree\-Node}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Tree\-Node}  {\bf Tree\-Node}}}\label{engine_8h_a85a7513d1b1c40e8d6267a812ee61b9d}
+
+
+Struct of a tree containing pieces. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em \hyperlink{structPiece}{Piece}} & Struct containing parameters of a \hyperlink{structPiece}{Piece} \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{Zobacz również}
+\hyperlink{structPiece}{Piece} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parametry}
+{\em left} & Pointer to left son of the node. \\
+\hline
+{\em right} & Pointer to right son of the node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Dokumentacja funkcji}
+\hypertarget{engine_8h_a6e2f079a3de8efe3d5d507181cee3153}{\index{engine.\-h@{engine.\-h}!allocate\-Memory@{allocate\-Memory}}
+\index{allocate\-Memory@{allocate\-Memory}!engine.h@{engine.\-h}}
+\subsubsection[{allocate\-Memory}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ allocate\-Memory (
+\begin{DoxyParamCaption}
+\item[{int}]{m}
+\end{DoxyParamCaption}
+)}}\label{engine_8h_a6e2f079a3de8efe3d5d507181cee3153}
+
+
+Allocates space for m by m array and fills it with dot. 
+
+
+\begin{DoxyParams}[1]{Parametry}
+\mbox{\tt in}  & {\em m} & Size of the array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+allocated array 
+\end{DoxyReturn}
+\hypertarget{engine_8h_ac959cf8cbd90d8dc203659e8a8871664}{\index{engine.\-h@{engine.\-h}!end\-Game@{end\-Game}}
+\index{end\-Game@{end\-Game}!engine.h@{engine.\-h}}
+\subsubsection[{end\-Game}]{\setlength{\rightskip}{0pt plus 5cm}void end\-Game (
+\begin{DoxyParamCaption}
+\item[{{\bf Tree\-Node} $\ast$$\ast$}]{tree, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$$\ast$$\ast$}]{board, }
+\item[{int}]{m}
+\end{DoxyParamCaption}
+)}}\label{engine_8h_ac959cf8cbd90d8dc203659e8a8871664}
+
+
+Frees memory. 
+
+Needed after finishing game. 
+\begin{DoxyParams}[1]{Parametry}
+\mbox{\tt in,out}  & {\em tree} & Tree containing nodes with all existing pieces. \\
+\hline
+\mbox{\tt out}  & {\em result} & Variable keeping result of the game so that proper output can be printed. Also changed to 0 or 42 and returned in main function. \\
+\hline
+\mbox{\tt in,out}  & {\em board} & Array representing top left part of a board. \\
+\hline
+\mbox{\tt in}  & {\em m} & Size of board. \\
+\hline
+\end{DoxyParams}
+\hypertarget{engine_8h_adff6ca550bc33a22dc1e6966c7a5d608}{\index{engine.\-h@{engine.\-h}!end\-Turn@{end\-Turn}}
+\index{end\-Turn@{end\-Turn}!engine.h@{engine.\-h}}
+\subsubsection[{end\-Turn}]{\setlength{\rightskip}{0pt plus 5cm}int end\-Turn (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{turns, }
+\item[{bool $\ast$}]{players1\-Turn, }
+\item[{{\bf Tree\-Node} $\ast$$\ast$}]{tree, }
+\item[{bool}]{p1\-Initialized, }
+\item[{bool}]{p2\-Initialized}
+\end{DoxyParamCaption}
+)}}\label{engine_8h_adff6ca550bc33a22dc1e6966c7a5d608}
+
+
+Ends a turn. 
+
+Changes current player. Checks if both players ended their turns, then \char`\"{}refreshes\char`\"{} all pieces before next turn and changes and decreases remaining number of turns. 
+\begin{DoxyParams}[1]{Parametry}
+\mbox{\tt in,out}  & {\em turns} & Number of remaining turns. \\
+\hline
+\mbox{\tt in,out}  & {\em players1\-Turn} & Informs if turn being ended was player 1's. \\
+\hline
+\mbox{\tt in,out}  & {\em tree} & Tree containing nodes with all existing pieces. \\
+\hline
+\mbox{\tt in}  & {\em p1\-Initialized} & Information if I\-N\-I\-T of the first player has already been called. \\
+\hline
+\mbox{\tt in}  & {\em p2\-Initialized} & Information if I\-N\-I\-T of the second player has already been called. \\
+\hline
+\end{DoxyParams}
+\hypertarget{engine_8h_a4b24a63ab775b24fe4c652d06622f948}{\index{engine.\-h@{engine.\-h}!init@{init}}
+\index{init@{init}!engine.h@{engine.\-h}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}int init (
+\begin{DoxyParamCaption}
+\item[{int}]{n, }
+\item[{int}]{k, }
+\item[{int}]{p, }
+\item[{int}]{x1, }
+\item[{int}]{y1, }
+\item[{int}]{x2, }
+\item[{int}]{y2, }
+\item[{{\bf Tree\-Node} $\ast$$\ast$}]{tree, }
+\item[{int $\ast$}]{n\-My, }
+\item[{int $\ast$}]{k\-My, }
+\item[{bool $\ast$}]{p1\-Initialized, }
+\item[{bool $\ast$}]{p2\-Initialized, }
+\item[{char $\ast$$\ast$}]{board, }
+\item[{int $\ast$}]{m}
+\end{DoxyParamCaption}
+)}}\label{engine_8h_a4b24a63ab775b24fe4c652d06622f948}
+
+
+Initializes a game with size of a board, number of rounds and positions of kings. 
+
+One I\-N\-I\-T for each player is needed before any other \hyperlink{structCommand}{Command}. 
+\begin{DoxyParams}[1]{Parametry}
+\mbox{\tt in}  & {\em n} & Size of a board. \\
+\hline
+\mbox{\tt in}  & {\em k} & Number of turns of each player. \\
+\hline
+\mbox{\tt in}  & {\em p} & Number of player for whom initialization is called. \\
+\hline
+\mbox{\tt in}  & {\em x1} & Column number of first player's king. \\
+\hline
+\mbox{\tt in}  & {\em y1} & Row number of first player's king. \\
+\hline
+\mbox{\tt in}  & {\em x2} & Column number of second player's king. \\
+\hline
+\mbox{\tt in}  & {\em y2} & Row number of second player's king. \\
+\hline
+\mbox{\tt in,out}  & {\em tree} & Tree containing nodes with all existing pieces. \\
+\hline
+\mbox{\tt out}  & {\em n\-My} & Variable keeping the size of board. \\
+\hline
+\mbox{\tt out}  & {\em k\-My} & Variable keeping number of turns. \\
+\hline
+\mbox{\tt in}  & {\em p1\-Initialized} & Information if I\-N\-I\-T of the first player has already been called. \\
+\hline
+\mbox{\tt in}  & {\em p2\-Initialized} & Information if I\-N\-I\-T of the second player has already been called. \\
+\hline
+\mbox{\tt in,out}  & {\em board} & Array representing top left part of a board. \\
+\hline
+\mbox{\tt in}  & {\em m} & Size of board. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+C\-O\-N\-T\-I\-N\-U\-E if all arguments were correct. 
+
+I\-N\-P\-U\-T\-\_\-\-E\-R\-R\-O\-R if there was an input error. 
+\end{DoxyReturn}
+
+
+Oto graf wywołań dla tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{engine_8h_a4b24a63ab775b24fe4c652d06622f948_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{engine_8h_abd8bbcfabb3ddef2ccaafb9928a37b95}{\index{engine.\-h@{engine.\-h}!min@{min}}
+\index{min@{min}!engine.h@{engine.\-h}}
+\subsubsection[{min}]{\setlength{\rightskip}{0pt plus 5cm}int min (
+\begin{DoxyParamCaption}
+\item[{int}]{a, }
+\item[{int}]{b}
+\end{DoxyParamCaption}
+)}}\label{engine_8h_abd8bbcfabb3ddef2ccaafb9928a37b95}
+
+
+Returns lesser value of two ints. 
+
+
+\begin{DoxyParams}[1]{Parametry}
+\mbox{\tt in}  & {\em a} & First value. \\
+\hline
+\mbox{\tt in}  & {\em b} & Second value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+lesser value. 
+\end{DoxyReturn}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{engine_8h_abd8bbcfabb3ddef2ccaafb9928a37b95_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{engine_8h_a823c9d0dc71ea5ea68cb1dafb42bce7a}{\index{engine.\-h@{engine.\-h}!move@{move}}
+\index{move@{move}!engine.h@{engine.\-h}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}int move (
+\begin{DoxyParamCaption}
+\item[{int}]{x1, }
+\item[{int}]{y1, }
+\item[{int}]{x2, }
+\item[{int}]{y2, }
+\item[{int}]{n, }
+\item[{bool}]{players1\-Turn, }
+\item[{{\bf Tree\-Node} $\ast$$\ast$}]{tree, }
+\item[{bool}]{p1\-Initialized, }
+\item[{bool}]{p2\-Initialized, }
+\item[{char $\ast$$\ast$}]{board, }
+\item[{int}]{m, }
+\item[{int}]{turns}
+\end{DoxyParamCaption}
+)}}\label{engine_8h_a823c9d0dc71ea5ea68cb1dafb42bce7a}
+
+
+Makes a move. 
+
+
+\begin{DoxyParams}[1]{Parametry}
+\mbox{\tt in}  & {\em x1} & Column number before a move. \\
+\hline
+\mbox{\tt in}  & {\em y1} & Row number before a move. \\
+\hline
+\mbox{\tt in}  & {\em x2} & Column number after a move. \\
+\hline
+\mbox{\tt in}  & {\em y2} & Row number before a move. \\
+\hline
+\mbox{\tt in}  & {\em n} & Size of a board. \\
+\hline
+\mbox{\tt in}  & {\em players1\-Turn} & Information if it is first player who moves a \hyperlink{structPiece}{Piece}. \\
+\hline
+\mbox{\tt in,out}  & {\em tree} & Tree containing nodes with all existing pieces. \\
+\hline
+\mbox{\tt in}  & {\em p1\-Initialized} & Information if I\-N\-I\-T of the first player has already been called. \\
+\hline
+\mbox{\tt in}  & {\em p2\-Initialized} & Information if I\-N\-I\-T of the second player has already been called. \\
+\hline
+\mbox{\tt in,out}  & {\em board} & Array representing top left part of a board. \\
+\hline
+\mbox{\tt in}  & {\em m} & Size of board. \\
+\hline
+\mbox{\tt in}  & {\em turns} & Number of remaining turns. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+C\-O\-N\-T\-I\-N\-U\-E if all arguments were correct. 
+
+P1\-\_\-\-W\-I\-N if second player's king is beaten. 
+
+P2\-\_\-\-W\-I\-N if first player's king is beaten. 
+
+D\-R\-A\-W if both kings are beaten. 
+
+I\-N\-P\-U\-T\-\_\-\-E\-R\-R\-O\-R if there was an input error. 
+\end{DoxyReturn}
+\hypertarget{engine_8h_ab1554076e8bcda9021d6a6273c21af4c}{\index{engine.\-h@{engine.\-h}!print\-Topleft@{print\-Topleft}}
+\index{print\-Topleft@{print\-Topleft}!engine.h@{engine.\-h}}
+\subsubsection[{print\-Topleft}]{\setlength{\rightskip}{0pt plus 5cm}void print\-Topleft (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{board, }
+\item[{int}]{m}
+\end{DoxyParamCaption}
+)}}\label{engine_8h_ab1554076e8bcda9021d6a6273c21af4c}
+
+
+Prints (into stdout) top-\/left corner of the board of size m x m. 
+
+
+\begin{DoxyParams}[1]{Parametry}
+\mbox{\tt in}  & {\em board} & Array representing top left part of a board. \\
+\hline
+\mbox{\tt in}  & {\em m} & Size of board. \\
+\hline
+\end{DoxyParams}
+\hypertarget{engine_8h_af5b7f337e6e7f58324ef24379f89d970}{\index{engine.\-h@{engine.\-h}!produce\-Knight@{produce\-Knight}}
+\index{produce\-Knight@{produce\-Knight}!engine.h@{engine.\-h}}
+\subsubsection[{produce\-Knight}]{\setlength{\rightskip}{0pt plus 5cm}int produce\-Knight (
+\begin{DoxyParamCaption}
+\item[{int}]{x1, }
+\item[{int}]{y1, }
+\item[{int}]{x2, }
+\item[{int}]{y2, }
+\item[{int}]{n, }
+\item[{bool}]{players1\-Turn, }
+\item[{{\bf Tree\-Node} $\ast$$\ast$}]{tree, }
+\item[{bool}]{p1\-Initialized, }
+\item[{bool}]{p2\-Initialized, }
+\item[{char $\ast$$\ast$}]{board, }
+\item[{int}]{m, }
+\item[{int}]{turns}
+\end{DoxyParamCaption}
+)}}\label{engine_8h_af5b7f337e6e7f58324ef24379f89d970}
+
+
+Produces a knight. 
+
+Knight can be produced only by a peasant who wasn't moved for 2 turns. Target field cannot be occupied. 
+\begin{DoxyParams}[1]{Parametry}
+\mbox{\tt in}  & {\em x1} & Column number of a peasant. \\
+\hline
+\mbox{\tt in}  & {\em y1} & Row number of a peasant. \\
+\hline
+\mbox{\tt in}  & {\em x2} & Column number of a free field where peasant is to produce knight to. \\
+\hline
+\mbox{\tt in}  & {\em y2} & Row number of a free field where peasant is to produce knight to. \\
+\hline
+\mbox{\tt in,out}  & {\em tree} & Tree containing nodes with all existing pieces. \\
+\hline
+\mbox{\tt in}  & {\em p1\-Initialized} & Information if I\-N\-I\-T of the first player has already been called. \\
+\hline
+\mbox{\tt in}  & {\em p2\-Initialized} & Information if I\-N\-I\-T of the second player has already been called. \\
+\hline
+\mbox{\tt in,out}  & {\em board} & Array representing top left part of a board. \\
+\hline
+\mbox{\tt in}  & {\em m} & Size of board. \\
+\hline
+\mbox{\tt in}  & {\em turns} & Number of remaining turns. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+C\-O\-N\-T\-I\-N\-U\-E if all arguments were correct. 
+
+I\-N\-P\-U\-T\-\_\-\-E\-R\-R\-O\-R if there was an input error. 
+\end{DoxyReturn}
+\hypertarget{engine_8h_a82b7c406c0c1116d123ccccd06950a68}{\index{engine.\-h@{engine.\-h}!produce\-Peasant@{produce\-Peasant}}
+\index{produce\-Peasant@{produce\-Peasant}!engine.h@{engine.\-h}}
+\subsubsection[{produce\-Peasant}]{\setlength{\rightskip}{0pt plus 5cm}int produce\-Peasant (
+\begin{DoxyParamCaption}
+\item[{int}]{x1, }
+\item[{int}]{y1, }
+\item[{int}]{x2, }
+\item[{int}]{y2, }
+\item[{int}]{n, }
+\item[{bool}]{players1\-Turn, }
+\item[{{\bf Tree\-Node} $\ast$$\ast$}]{tree, }
+\item[{bool}]{p1\-Initialized, }
+\item[{bool}]{p2\-Initialized, }
+\item[{char $\ast$$\ast$}]{board, }
+\item[{int}]{m, }
+\item[{int}]{turns}
+\end{DoxyParamCaption}
+)}}\label{engine_8h_a82b7c406c0c1116d123ccccd06950a68}
+
+
+Produces a peasant. 
+
+Peasant can be produced only by a peasant who wasn't moved for 2 turns. Target field cannot be occupied. 
+\begin{DoxyParams}[1]{Parametry}
+\mbox{\tt in}  & {\em x1} & Column number of an existing peasant. \\
+\hline
+\mbox{\tt in}  & {\em y1} & Row number of an existing peasant. \\
+\hline
+\mbox{\tt in}  & {\em x2} & Column number of a free field where peasant is to produce a new peasant to. \\
+\hline
+\mbox{\tt in}  & {\em y2} & Row number of a free field where peasant is to produce a new peasant to. \\
+\hline
+\mbox{\tt in,out}  & {\em tree} & Tree containing nodes with all existing pieces. \\
+\hline
+\mbox{\tt in}  & {\em p1\-Initialized} & Information if I\-N\-I\-T of the first player has already been called. \\
+\hline
+\mbox{\tt in}  & {\em p2\-Initialized} & Information if I\-N\-I\-T of the second player has already been called. \\
+\hline
+\mbox{\tt in,out}  & {\em board} & Array representing top left part of a board. \\
+\hline
+\mbox{\tt in}  & {\em m} & Size of board. \\
+\hline
+\mbox{\tt in}  & {\em turns} & Number of remaining turns. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+C\-O\-N\-T\-I\-N\-U\-E if all arguments were correct. 
+
+I\-N\-P\-U\-T\-\_\-\-E\-R\-R\-O\-R if there was an input error. 
+\end{DoxyReturn}
+\hypertarget{engine_8h_a0776cd662f5c945bb00f5950ab384fcf}{\index{engine.\-h@{engine.\-h}!start\-Game@{start\-Game}}
+\index{start\-Game@{start\-Game}!engine.h@{engine.\-h}}
+\subsubsection[{start\-Game}]{\setlength{\rightskip}{0pt plus 5cm}void start\-Game (
+\begin{DoxyParamCaption}
+\item[{{\bf Tree\-Node} $\ast$$\ast$}]{tree}
+\end{DoxyParamCaption}
+)}}\label{engine_8h_a0776cd662f5c945bb00f5950ab384fcf}
+
+
+Initializes a game. 
+
+Needed before first I\-N\-I\-T. 
+\begin{DoxyParams}[1]{Parametry}
+\mbox{\tt in,out}  & {\em tree} & Tree containing nodes with all existing pieces. \\
+\hline
+\end{DoxyParams}

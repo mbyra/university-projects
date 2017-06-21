@@ -1,0 +1,957 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Średniowiecze: Dokumentacja pliku engine.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Średniowiecze
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Strona&#160;główna</span></a></li>
+      <li><a href="annotated.html"><span>Struktury&#160;Danych</span></a></li>
+      <li class="current"><a href="files.html"><span>Pliki</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;plików</span></a></li>
+      <li><a href="globals.html"><span>Globalne</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Struktury Danych</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pliki</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funkcje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Definicje typów</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Strony</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Struktury danych</a> &#124;
+<a href="#define-members">Definicje</a> &#124;
+<a href="#typedef-members">Definicje typów</a> &#124;
+<a href="#func-members">Funkcje</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja pliku engine.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Interface of game engine.  
+<a href="#details">Więcej...</a></p>
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Wykres zależności załączania dla engine.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="engine_8h__incl.png" border="0" usemap="#engine_8h" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ten wykres pokazuje, które pliki bezpośrednio lub pośrednio załączają ten plik:</div>
+<div class="dyncontent">
+<div class="center"><img src="engine_8h__dep__incl.png" border="0" usemap="#engine_8hdep" alt=""/></div>
+<map name="engine_8hdep" id="engine_8hdep">
+<area shape="rect" id="node2" href="middle__ages_8c.html" title="Main funtion of a game. " alt="" coords="5,80,120,107"/></map>
+</div>
+</div>
+<p><a href="engine_8h_source.html">Idź do kodu źródłowego tego pliku.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Struktury danych</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPiece.html">Piece</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct of <a class="el" href="structPiece.html" title="Struct of Piece. ">Piece</a>.  <a href="structPiece.html#details">Więcej...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTreeNode.html">TreeNode</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct of a tree containing pieces.  <a href="structTreeNode.html#details">Więcej...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definicje</h2></td></tr>
+<tr class="memitem:ab711666ad09d7f6c0b91576525ea158e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab711666ad09d7f6c0b91576525ea158e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONTINUE</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ab711666ad09d7f6c0b91576525ea158e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a288116f92845fddefeb044f5b84bc889"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a288116f92845fddefeb044f5b84bc889"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INPUT_ERROR</b>&#160;&#160;&#160;42</td></tr>
+<tr class="separator:a288116f92845fddefeb044f5b84bc889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a7cd353a6274e8c0dbb698113e7e194"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a7cd353a6274e8c0dbb698113e7e194"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DRAW</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a7a7cd353a6274e8c0dbb698113e7e194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2199bc4c776dbd7a4248aeef9e5dd8a1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2199bc4c776dbd7a4248aeef9e5dd8a1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DRAW_AFTER_END_TURN</b>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a2199bc4c776dbd7a4248aeef9e5dd8a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ee3d6fa4e432d9456967fd82533de48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ee3d6fa4e432d9456967fd82533de48"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>END_TURN</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a6ee3d6fa4e432d9456967fd82533de48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4db4e218f5d127d392593464377e7dbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4db4e218f5d127d392593464377e7dbe"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>P1_WIN</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a4db4e218f5d127d392593464377e7dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4081f92247bfc37403cab4610a4681a0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4081f92247bfc37403cab4610a4681a0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>P2_WIN</b>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a4081f92247bfc37403cab4610a4681a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Definicje typów</h2></td></tr>
+<tr class="memitem:ad1ff76ab9261121f9492d0e79b03d586"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ad1ff76ab9261121f9492d0e79b03d586">Piece</a></td></tr>
+<tr class="memdesc:ad1ff76ab9261121f9492d0e79b03d586"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct of <a class="el" href="structPiece.html" title="Struct of Piece. ">Piece</a>.  <a href="#ad1ff76ab9261121f9492d0e79b03d586">Więcej...</a><br/></td></tr>
+<tr class="separator:ad1ff76ab9261121f9492d0e79b03d586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85a7513d1b1c40e8d6267a812ee61b9d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structTreeNode.html">TreeNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a85a7513d1b1c40e8d6267a812ee61b9d">TreeNode</a></td></tr>
+<tr class="memdesc:a85a7513d1b1c40e8d6267a812ee61b9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct of a tree containing pieces.  <a href="#a85a7513d1b1c40e8d6267a812ee61b9d">Więcej...</a><br/></td></tr>
+<tr class="separator:a85a7513d1b1c40e8d6267a812ee61b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkcje</h2></td></tr>
+<tr class="memitem:a0776cd662f5c945bb00f5950ab384fcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a0776cd662f5c945bb00f5950ab384fcf">startGame</a> (<a class="el" href="structTreeNode.html">TreeNode</a> **tree)</td></tr>
+<tr class="memdesc:a0776cd662f5c945bb00f5950ab384fcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a game.  <a href="#a0776cd662f5c945bb00f5950ab384fcf">Więcej...</a><br/></td></tr>
+<tr class="separator:a0776cd662f5c945bb00f5950ab384fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac959cf8cbd90d8dc203659e8a8871664"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ac959cf8cbd90d8dc203659e8a8871664">endGame</a> (<a class="el" href="structTreeNode.html">TreeNode</a> **tree, int *result, char ***board, int m)</td></tr>
+<tr class="memdesc:ac959cf8cbd90d8dc203659e8a8871664"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees memory.  <a href="#ac959cf8cbd90d8dc203659e8a8871664">Więcej...</a><br/></td></tr>
+<tr class="separator:ac959cf8cbd90d8dc203659e8a8871664"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b24a63ab775b24fe4c652d06622f948"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a4b24a63ab775b24fe4c652d06622f948">init</a> (int n, int k, int p, int x1, int y1, int x2, int y2, <a class="el" href="structTreeNode.html">TreeNode</a> **tree, int *nMy, int *kMy, bool *p1Initialized, bool *p2Initialized, char **board, int *m)</td></tr>
+<tr class="memdesc:a4b24a63ab775b24fe4c652d06622f948"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a game with size of a board, number of rounds and positions of kings.  <a href="#a4b24a63ab775b24fe4c652d06622f948">Więcej...</a><br/></td></tr>
+<tr class="separator:a4b24a63ab775b24fe4c652d06622f948"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a823c9d0dc71ea5ea68cb1dafb42bce7a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a823c9d0dc71ea5ea68cb1dafb42bce7a">move</a> (int x1, int y1, int x2, int y2, int n, bool players1Turn, <a class="el" href="structTreeNode.html">TreeNode</a> **tree, bool p1Initialized, bool p2Initialized, char **board, int m, int turns)</td></tr>
+<tr class="memdesc:a823c9d0dc71ea5ea68cb1dafb42bce7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes a move.  <a href="#a823c9d0dc71ea5ea68cb1dafb42bce7a">Więcej...</a><br/></td></tr>
+<tr class="separator:a823c9d0dc71ea5ea68cb1dafb42bce7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5b7f337e6e7f58324ef24379f89d970"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#af5b7f337e6e7f58324ef24379f89d970">produceKnight</a> (int x1, int y1, int x2, int y2, int n, bool players1Turn, <a class="el" href="structTreeNode.html">TreeNode</a> **tree, bool p1Initialized, bool p2Initialized, char **board, int m, int turns)</td></tr>
+<tr class="memdesc:af5b7f337e6e7f58324ef24379f89d970"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces a knight.  <a href="#af5b7f337e6e7f58324ef24379f89d970">Więcej...</a><br/></td></tr>
+<tr class="separator:af5b7f337e6e7f58324ef24379f89d970"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82b7c406c0c1116d123ccccd06950a68"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a82b7c406c0c1116d123ccccd06950a68">producePeasant</a> (int x1, int y1, int x2, int y2, int n, bool players1Turn, <a class="el" href="structTreeNode.html">TreeNode</a> **tree, bool p1Initialized, bool p2Initialized, char **board, int m, int turns)</td></tr>
+<tr class="memdesc:a82b7c406c0c1116d123ccccd06950a68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces a peasant.  <a href="#a82b7c406c0c1116d123ccccd06950a68">Więcej...</a><br/></td></tr>
+<tr class="separator:a82b7c406c0c1116d123ccccd06950a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adff6ca550bc33a22dc1e6966c7a5d608"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#adff6ca550bc33a22dc1e6966c7a5d608">endTurn</a> (int *turns, bool *players1Turn, <a class="el" href="structTreeNode.html">TreeNode</a> **tree, bool p1Initialized, bool p2Initialized)</td></tr>
+<tr class="memdesc:adff6ca550bc33a22dc1e6966c7a5d608"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends a turn.  <a href="#adff6ca550bc33a22dc1e6966c7a5d608">Więcej...</a><br/></td></tr>
+<tr class="separator:adff6ca550bc33a22dc1e6966c7a5d608"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1554076e8bcda9021d6a6273c21af4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ab1554076e8bcda9021d6a6273c21af4c">printTopleft</a> (char **board, int m)</td></tr>
+<tr class="memdesc:ab1554076e8bcda9021d6a6273c21af4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints (into stdout) top-left corner of the board of size m x m.  <a href="#ab1554076e8bcda9021d6a6273c21af4c">Więcej...</a><br/></td></tr>
+<tr class="separator:ab1554076e8bcda9021d6a6273c21af4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e2f079a3de8efe3d5d507181cee3153"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a6e2f079a3de8efe3d5d507181cee3153">allocateMemory</a> (int m)</td></tr>
+<tr class="memdesc:a6e2f079a3de8efe3d5d507181cee3153"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates space for m by m array and fills it with dot.  <a href="#a6e2f079a3de8efe3d5d507181cee3153">Więcej...</a><br/></td></tr>
+<tr class="separator:a6e2f079a3de8efe3d5d507181cee3153"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd8bbcfabb3ddef2ccaafb9928a37b95"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#abd8bbcfabb3ddef2ccaafb9928a37b95">min</a> (int a, int b)</td></tr>
+<tr class="memdesc:abd8bbcfabb3ddef2ccaafb9928a37b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns lesser value of two ints.  <a href="#abd8bbcfabb3ddef2ccaafb9928a37b95">Więcej...</a><br/></td></tr>
+<tr class="separator:abd8bbcfabb3ddef2ccaafb9928a37b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Interface of game engine. </p>
+<p>Contains all functions needed to start, play, read input (and check parameters), print output and end the game. </p>
+</div><h2 class="groupheader">Dokumentacja definicji typów</h2>
+<a class="anchor" id="ad1ff76ab9261121f9492d0e79b03d586"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structPiece.html">Piece</a>  <a class="el" href="structPiece.html">Piece</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Struct of <a class="el" href="structPiece.html" title="Struct of Piece. ">Piece</a>. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Number of column of a piece. </td></tr>
+    <tr><td class="paramname">y</td><td>Number of row of a piece. </td></tr>
+    <tr><td class="paramname">ch</td><td>Char representing a piece('K', 'C', 'R', 'k', 'c' or 'r') </td></tr>
+    <tr><td class="paramname">turnMoved</td><td>Last turn this piece was moved. </td></tr>
+    <tr><td class="paramname">moved</td><td>True if the piece was moved last turn. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a85a7513d1b1c40e8d6267a812ee61b9d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structTreeNode.html">TreeNode</a>  <a class="el" href="structTreeNode.html">TreeNode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Struct of a tree containing pieces. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structPiece.html" title="Struct of Piece. ">Piece</a></td><td>Struct containing parameters of a <a class="el" href="structPiece.html" title="Struct of Piece. ">Piece</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="structPiece.html" title="Struct of Piece. ">Piece</a> </dd></dl>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">left</td><td>Pointer to left son of the node. </td></tr>
+    <tr><td class="paramname">right</td><td>Pointer to right son of the node. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji</h2>
+<a class="anchor" id="a6e2f079a3de8efe3d5d507181cee3153"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char** allocateMemory </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allocates space for m by m array and fills it with dot. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Size of the array. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>allocated array </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac959cf8cbd90d8dc203659e8a8871664"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void endGame </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTreeNode.html">TreeNode</a> **&#160;</td>
+          <td class="paramname"><em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char ***&#160;</td>
+          <td class="paramname"><em>board</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Frees memory. </p>
+<p>Needed after finishing game. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">tree</td><td>Tree containing nodes with all existing pieces. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">result</td><td>Variable keeping result of the game so that proper output can be printed. Also changed to 0 or 42 and returned in main function. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">board</td><td>Array representing top left part of a board. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Size of board. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="adff6ca550bc33a22dc1e6966c7a5d608"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int endTurn </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>turns</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>players1Turn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structTreeNode.html">TreeNode</a> **&#160;</td>
+          <td class="paramname"><em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>p1Initialized</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>p2Initialized</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ends a turn. </p>
+<p>Changes current player. Checks if both players ended their turns, then "refreshes" all pieces before next turn and changes and decreases remaining number of turns. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">turns</td><td>Number of remaining turns. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">players1Turn</td><td>Informs if turn being ended was player 1's. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">tree</td><td>Tree containing nodes with all existing pieces. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p1Initialized</td><td>Information if INIT of the first player has already been called. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p2Initialized</td><td>Information if INIT of the second player has already been called. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4b24a63ab775b24fe4c652d06622f948"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int init </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structTreeNode.html">TreeNode</a> **&#160;</td>
+          <td class="paramname"><em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>nMy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>kMy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>p1Initialized</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>p2Initialized</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>board</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a game with size of a board, number of rounds and positions of kings. </p>
+<p>One INIT for each player is needed before any other <a class="el" href="structCommand.html" title="Struct of a Command. ">Command</a>. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Size of a board. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">k</td><td>Number of turns of each player. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Number of player for whom initialization is called. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x1</td><td>Column number of first player's king. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y1</td><td>Row number of first player's king. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x2</td><td>Column number of second player's king. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y2</td><td>Row number of second player's king. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">tree</td><td>Tree containing nodes with all existing pieces. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">nMy</td><td>Variable keeping the size of board. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">kMy</td><td>Variable keeping number of turns. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p1Initialized</td><td>Information if INIT of the first player has already been called. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p2Initialized</td><td>Information if INIT of the second player has already been called. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">board</td><td>Array representing top left part of a board. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Size of board. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>CONTINUE if all arguments were correct. </dd>
+<dd>
+INPUT_ERROR if there was an input error. </dd></dl>
+
+<p><div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="engine_8h_a4b24a63ab775b24fe4c652d06622f948_cgraph.png" border="0" usemap="#engine_8h_a4b24a63ab775b24fe4c652d06622f948_cgraph" alt=""/></div>
+<map name="engine_8h_a4b24a63ab775b24fe4c652d06622f948_cgraph" id="engine_8h_a4b24a63ab775b24fe4c652d06622f948_cgraph">
+<area shape="rect" id="node2" href="engine_8h.html#abd8bbcfabb3ddef2ccaafb9928a37b95" title="Returns lesser value of two ints. " alt="" coords="97,5,143,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="abd8bbcfabb3ddef2ccaafb9928a37b95"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int min </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns lesser value of two ints. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>First value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Second value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>lesser value. </dd></dl>
+
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="engine_8h_abd8bbcfabb3ddef2ccaafb9928a37b95_icgraph.png" border="0" usemap="#engine_8h_abd8bbcfabb3ddef2ccaafb9928a37b95_icgraph" alt=""/></div>
+<map name="engine_8h_abd8bbcfabb3ddef2ccaafb9928a37b95_icgraph" id="engine_8h_abd8bbcfabb3ddef2ccaafb9928a37b95_icgraph">
+<area shape="rect" id="node2" href="engine_8h.html#a4b24a63ab775b24fe4c652d06622f948" title="Initializes a game with size of a board, number of rounds and positions of kings. ..." alt="" coords="102,5,143,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a823c9d0dc71ea5ea68cb1dafb42bce7a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int move </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>players1Turn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structTreeNode.html">TreeNode</a> **&#160;</td>
+          <td class="paramname"><em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>p1Initialized</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>p2Initialized</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>board</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>turns</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Makes a move. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x1</td><td>Column number before a move. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y1</td><td>Row number before a move. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x2</td><td>Column number after a move. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y2</td><td>Row number before a move. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Size of a board. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">players1Turn</td><td>Information if it is first player who moves a <a class="el" href="structPiece.html" title="Struct of Piece. ">Piece</a>. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">tree</td><td>Tree containing nodes with all existing pieces. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p1Initialized</td><td>Information if INIT of the first player has already been called. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p2Initialized</td><td>Information if INIT of the second player has already been called. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">board</td><td>Array representing top left part of a board. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Size of board. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">turns</td><td>Number of remaining turns. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>CONTINUE if all arguments were correct. </dd>
+<dd>
+P1_WIN if second player's king is beaten. </dd>
+<dd>
+P2_WIN if first player's king is beaten. </dd>
+<dd>
+DRAW if both kings are beaten. </dd>
+<dd>
+INPUT_ERROR if there was an input error. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab1554076e8bcda9021d6a6273c21af4c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printTopleft </td>
+          <td>(</td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>board</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints (into stdout) top-left corner of the board of size m x m. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">board</td><td>Array representing top left part of a board. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Size of board. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="af5b7f337e6e7f58324ef24379f89d970"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int produceKnight </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>players1Turn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structTreeNode.html">TreeNode</a> **&#160;</td>
+          <td class="paramname"><em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>p1Initialized</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>p2Initialized</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>board</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>turns</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Produces a knight. </p>
+<p>Knight can be produced only by a peasant who wasn't moved for 2 turns. Target field cannot be occupied. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x1</td><td>Column number of a peasant. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y1</td><td>Row number of a peasant. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x2</td><td>Column number of a free field where peasant is to produce knight to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y2</td><td>Row number of a free field where peasant is to produce knight to. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">tree</td><td>Tree containing nodes with all existing pieces. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p1Initialized</td><td>Information if INIT of the first player has already been called. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p2Initialized</td><td>Information if INIT of the second player has already been called. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">board</td><td>Array representing top left part of a board. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Size of board. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">turns</td><td>Number of remaining turns. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>CONTINUE if all arguments were correct. </dd>
+<dd>
+INPUT_ERROR if there was an input error. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a82b7c406c0c1116d123ccccd06950a68"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int producePeasant </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>players1Turn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structTreeNode.html">TreeNode</a> **&#160;</td>
+          <td class="paramname"><em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>p1Initialized</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>p2Initialized</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>board</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>turns</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Produces a peasant. </p>
+<p>Peasant can be produced only by a peasant who wasn't moved for 2 turns. Target field cannot be occupied. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x1</td><td>Column number of an existing peasant. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y1</td><td>Row number of an existing peasant. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x2</td><td>Column number of a free field where peasant is to produce a new peasant to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y2</td><td>Row number of a free field where peasant is to produce a new peasant to. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">tree</td><td>Tree containing nodes with all existing pieces. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p1Initialized</td><td>Information if INIT of the first player has already been called. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p2Initialized</td><td>Information if INIT of the second player has already been called. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">board</td><td>Array representing top left part of a board. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Size of board. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">turns</td><td>Number of remaining turns. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>CONTINUE if all arguments were correct. </dd>
+<dd>
+INPUT_ERROR if there was an input error. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0776cd662f5c945bb00f5950ab384fcf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void startGame </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTreeNode.html">TreeNode</a> **&#160;</td>
+          <td class="paramname"><em>tree</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a game. </p>
+<p>Needed before first INIT. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">tree</td><td>Tree containing nodes with all existing pieces. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano N, 15 maj 2016 23:46:29 dla Średniowiecze programem &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>

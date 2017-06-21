@@ -1,0 +1,66 @@
+\section*{Średniowiecze}
+
+Uwaga\-: aktualna treść zadania znajduje się w \href{https://moodle.mimuw.edu.pl/mod/assignment/view.php?id=18178}{\tt Moodle'u}.
+
+\subsubsection*{Opis projektu}
+
+Dużym, trzyczęściowym projektem zaliczeniowym w tym roku jest implementacja deterministycznej turowej gry strategicznej z pełną wiedzą wraz ze sztuczną inteligencją (A\-I). Pierwsza część polega na zaimplementowaniu i przetestowaniu struktur danych oraz protokołu wejścia w programie A\-I. W drugiej części należy stworzyć nic nie robiącą A\-I oraz skrypt bash łączący program interfejsu graficznego i programy A\-I w symulator rozgrywki A\-I vs A\-I, A\-I vs człowiek lub człowiek vs człowiek. W trzeciej i ostatniej części należy stworzyć A\-I potrafiące wygrać przeciwko prostym strategiom.
+
+\subsubsection*{Opis gry}
+
+Gra rozgrywa się na kwadratowej planszy {\ttfamily n$\ast$n} ({\ttfamily 8 $<$ n $<$ 2$^\wedge$31}) i jest przeznaczona dla dwóch graczy wykonujących na zmianę swoje tury (rozpoczynając od pierwszego gracza). Każdy z graczy kontroluje swoje jednostki należące do jednego z trzech typów\-: król, rycerz, chłop. Na początku gry każdy gracz ma 1 króla, 1 chłopa i 2 rycerzy, ustawionych jeden obok drugiego w poziomej linii na planszy w kolejności król, chłop, rycerz, rycerz. Początkowe ustawienie jednostek następuje poprzez wylosowanie pozycji królów spośród pierwszych {\ttfamily n-\/3} kolumn, tak aby królowie byli od siebie oddaleni o co najmniej 8 w metryce maksimum.
+
+Podczas każdej tury gracz może ruszyć raz każdą swoją jednostką. Ruch składa się z przesunięcia jej o 1 pole pionowo, poziomo, na skos lub wykonania akcji (tylko przez chłopa). Gdy jednostka ruszy się na pole zajmowane przez inną jednostkę, następuje walka. Gdy walczą ze sobą dwie jednostki tego samego typu, obie giną. W przeciwnym wypadku rycerz pokonuje króla lub chłopa, a król pokonuje chłopa. Nie można ruszyć swojej jednostki na pole zajmowane przez inną swoją jednostkę (aczkolwiek można najpierw przesunąć jedną jednostkę, a drugą później przesunąć na zwolnione miejsce w tej samej turze). Akcją możliwą do wykonania przez chłopa jest wyprodukowanie nowego rycerza albo chłopa na jednym z sąsiednich (pionowo, poziomo lub po skosie) wolnych pól, pod warunkiem że chłop stał w miejscu, nie wykonując akcji przez poprzednie 2 tury. Innymi słowy chłop, który ruszył się w turze {\ttfamily k}, a potem się już nie ruszał, może dopiero wyprodukować jednostkę w turze {\ttfamily k+3}, następnie {\ttfamily k+6} itd. Nowymi jednostkami można się ruszać od razu po wyprodukowaniu (tj. gdy zostały wyprodukowane w turze {\ttfamily k}, to traktowane są jakby ostatnio wykonały ruch w turze {\ttfamily k-\/1}). Chłop, który od początku gry (tura 1) się nie ruszał, może wyprodukować pierwszą jednostkę w turze 3, a każda jednostka na początku gry może się od razu ruszyć.
+
+Gra kończy się w momencie, gdy król jednego z graczy zginie lub po {\ttfamily k}-\/tej ({\ttfamily 1 $<$= k $<$ 2$^\wedge$31}) turze drugiego gracza. Wygrywa gracz mający jedynego żywego króla. W przeciwnym wypadku mamy remis.
+
+\subsection*{Część 1}
+
+Napisz program interpretujący protokół komunikacyjny gracza i obsługujący wiadomości dostawane na standardowym wejściu od obu graczy (w tym obie wiadomości {\ttfamily I\-N\-I\-T}, o czym za chwilę). Po każdym ruchu (dokładniej, po każdej wiadomości innej niż {\ttfamily E\-N\-D\-\_\-\-T\-U\-R\-N}) program powinien wypisać na standardowe wyjście tekstową reprezentację górnego lewego rogu planszy (górne {\ttfamily 10$\ast$10} pól, chyba że plansza jest mniejsza). Jednostki pierwszego gracza powinny być zaznaczone wielkimi literami {\ttfamily K}, {\ttfamily R}, {\ttfamily C} (odpowiednio król, rycerz, chłop), jednostki drugiego gracza małymi literami {\ttfamily k}, {\ttfamily r}, {\ttfamily c}, a puste pola kropką. Przykład planszy\-: \begin{DoxyVerb}..........
+.KRRC.....
+..........
+..........
+....r.r...
+.....k....
+.....c....
+..........
+..........
+..........
+\end{DoxyVerb}
+
+
+Na wyjściu nie powinno być żadnych dodatkowych znaków. Po każdej planszy powinna zostać wypisana pojedyncza pusta linia.
+
+\subsubsection*{Protokół komunikacyjny gracza}
+
+Program powinien obsługiwać następujące polecenia\-: {\ttfamily I\-N\-I\-T n k p x1 y1 x2 y2} – informacja o stanie początkowym gry, osobno dla każdego gracza\-: n – wielkość planszy, k – maksymalna liczba tur (na gracza), p – numer gracza (1 lub 2), (x1, y1) – początkowe współrzędne króla pierwszego gracza, (x2, y2) – początkowe współrzędne króla drugiego gracza; {\ttfamily M\-O\-V\-E x1 y1 x2 y2} – ruch jednostką z pozycji (x1, y1) na (x2, y2); {\ttfamily P\-R\-O\-D\-U\-C\-E\-\_\-\-K\-N\-I\-G\-H\-T x1 y1 x2 y2} – wyprodukowanie przez chłopa znajdującego się na polu (x1, y1) rycerza na sąsiednie pole (x2, y2); {\ttfamily P\-R\-O\-D\-U\-C\-E\-\_\-\-P\-E\-A\-S\-A\-N\-T x1 y1 x2 y2} – wyprodukowanie przez chłopa znajdującego się na polu (x1, y1) chłopa na sąsiednie pole (x2, y2); {\ttfamily E\-N\-D\-\_\-\-T\-U\-R\-N} – informacja o końcu tury obecnie poruszającego się gracza.
+
+Każda wiadomość musi być zakończona znakiem nowej linii ({\ttfamily \textbackslash{}n}), a poszczególne jej argumenty mogą być oddzielone wyłącznie pojedynczymi spacjami. Na końcu wiadomości nie ma spacji.
+
+Górny lewy róg planszy ma współrzędne (1, 1). Współrzędna {\ttfamily x} to numer kolumny, a współrzędna {\ttfamily y} to numer wiersza.
+
+\subsubsection*{Wyjście programu}
+
+Program powinien wykrywać, kiedy gra się zakończyła i wtedy po przeprowadzeniu ostatniego ruchu wypisać na standardowe wyjście diagnostyczne ({\ttfamily stderr}) jeden z komunikatów\-: {\ttfamily player 1 won}, {\ttfamily player 2 won} lub {\ttfamily draw} i zakończyć się z kodem 0.
+
+W przypadku otrzymania niepoprawnego wejścia program powinien wypisać na standardowe wyjście diagnostyczne {\ttfamily input error} i zakończyć się z kodem błędu 42. Żadne poprawne polecenie nie jest dłuższe niż 100 znaków, ale program powinien się poprawnie zakończyć nawet w przypadku dowolnie długiej linii (uwaga na {\ttfamily gets} albo {\ttfamily scanf(\char`\"{}\%s\char`\"{})}).
+
+\subsubsection*{Implementacja}
+
+W repozytorium X\-X\-X znajduje się wstępna implementacja rozwiązania tego zadania. Zadanie to należy oddawać właśnie przez to repozytorium. W repozytorium, które pobierzesz, będą znajdowały się następujące pliki\-: {\itshape \hyperlink{middle__ages_8c}{src/middle\-\_\-ages.\-c}} – główny plik programu, w którym wczytujemy dane wejściowe i uruchamiamy silnik gry; plik ten nie powinien znać szczegółów implementacji silnika gry; {\itshape src/engine.\-c} – plik biblioteki „silnika” gry zawierający wszystkie struktury i funkcje potrzebne do przeprowadzenia rozgrywki; {\itshape \hyperlink{engine_8h}{src/engine.\-h}} – plik nagłówkowy biblioteki silnika gry; {\itshape src/parse.\-c} – plik biblioteki wczytującej i parsującej polecenia; {\itshape \hyperlink{parse_8h}{src/parse.\-h}} – plik nagłówkowy biblioteki wczytującej i parsującej polecenia; {\itshape C\-Make\-Lists.\-txt} – plik konfiguracyjny C\-Make'a; {\itshape Doxyfile.\-in} – plik konfiguracyjny Doxygena; {\itshape Main\-Page.\-dox} – strona główna dokumentacji Doxygena.
+
+Projekt można zaimportować do C\-Liona i tam zbudować. Można też zbudować go (będąc w katalogu głównym) przy użyciu poleceń\-: \begin{DoxyVerb}mkdir build
+cd build
+cmake ..
+\end{DoxyVerb}
+
+
+Po wywołaniu {\ttfamily make} w katalogu {\itshape build} pojawi się wykonywalny plik {\itshape middle\-\_\-ages}. Twoim zadaniem jest rozbudowanie tego projektu tak, aby program {\itshape middle\-\_\-ages} reagował na polecenia ze standardowego wejścia zgodnie ze specyfikacją opisaną w sekcji Protokół komunikacyjny gracza$\ast$$\ast$. Projekt może zawierać inne pliki niż wyżej wymienione, a zaproponowane funkcjonalności poszczególnych plików można dalej dzielić na moduły (ale nie łączyć).
+
+\subsubsection*{Dokumentacja Doxygen}
+
+Polecenie {\ttfamily make doc} wywołane w katalogu {\itshape build} generuje dokumentację Doxygena całego projektu na podstawie komentarzy umieszczonych w poszczególnych plikach. Twoje rozwiązanie powinno zawierać komentarze Doxygena co najmniej do każdego pliku oraz do wszystkich funkcji eksportowanych na zewnątrz pliku, w którym się znajdują.
+
+\subsubsection*{Punktacja}
+
+Za w pełni poprawnie rozwiązane zadanie można uzyskać 20 pkt. Za złe działanie programu na planszach większych niż 1000 x 1000 można stracić co najwyżej 8 pkt. Za złe parsowanie niepoprawnych poleceń można stracić co najwyżej 3 pkt. Za wycieki pamięci można stracić co najwyżej 6 pkt. Za błędy związane z dokumentacją Doxygen można stracić co najwyżej 3 pkt. Za zły styl kodowania można stracić co najwyżej 3 pkt. 

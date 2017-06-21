@@ -1,0 +1,1 @@
+/usr/bin/cc  -std=gnu99 -Wall -Wextra  -O3    CMakeFiles/middle_ages.dir/src/engine.c.o CMakeFiles/middle_ages.dir/src/middle_ages.c.o CMakeFiles/middle_ages.dir/src/parse.c.o  -o middle_ages -rdynamic 

@@ -1,0 +1,403 @@
+---
+Running default test test01
+
+real	0m2.045s
+user	0m0.000s
+sys	0m0.008s
+Everything correct.
+OK
+---
+Running default test test02
+
+real	0m1.033s
+user	0m0.004s
+sys	0m0.004s
+Everything correct.
+OK
+---
+Running default test test03
+
+real	0m1.053s
+user	0m0.008s
+sys	0m0.012s
+Everything correct.
+OK
+---
+Running default test test04
+
+real	0m0.021s
+user	0m0.004s
+sys	0m0.000s
+Everything correct.
+OK
+---
+Running default test test05
+
+real	0m0.028s
+user	0m0.004s
+sys	0m0.000s
+Everything correct.
+OK
+---
+Running default test test06
+
+real	0m1.024s
+user	0m0.004s
+sys	0m0.000s
+Everything correct.
+OK
+---
+Running default test test07
+
+real	0m1.029s
+user	0m0.004s
+sys	0m0.000s
+Everything correct.
+OK
+---
+Running default test test08
+
+real	0m1.075s
+user	0m0.016s
+sys	0m0.000s
+Everything correct.
+OK
+---
+Running default test test09
+
+real	0m16.051s
+user	0m0.008s
+sys	0m0.004s
+Everything correct.
+OK
+---
+Running default test test10
+
+real	0m4.037s
+user	0m0.356s
+sys	0m0.616s
+Everything correct.
+OK
+---
+Running default test test11
+
+real	0m2.508s
+user	0m0.240s
+sys	0m0.244s
+Everything correct.
+OK
+---
+Running default test test12
+
+real	0m0.030s
+user	0m0.008s
+sys	0m0.004s
+Everything correct.
+OK
+---
+Running custom test test13
+Run 1 ---
+
+real	0m1.244s
+user	0m0.012s
+sys	0m0.020s
+Everything correct.
+Run 1 succeeded.
+Run 2 ---
+
+real	0m1.242s
+user	0m0.020s
+sys	0m0.024s
+Everything correct.
+Run 2 succeeded.
+Run 3 ---
+
+real	0m1.388s
+user	0m0.016s
+sys	0m0.040s
+Everything correct.
+Run 3 succeeded.
+Run 4 ---
+
+real	0m1.628s
+user	0m0.044s
+sys	0m0.052s
+Everything correct.
+Run 4 succeeded.
+Run 5 ---
+
+real	0m1.138s
+user	0m0.004s
+sys	0m0.024s
+Everything correct.
+Run 5 succeeded.
+Run 6 ---
+
+real	0m1.930s
+user	0m0.020s
+sys	0m0.108s
+Everything correct.
+Run 6 succeeded.
+Run 7 ---
+
+real	0m1.404s
+user	0m0.028s
+sys	0m0.040s
+Everything correct.
+Run 7 succeeded.
+Run 8 ---
+
+real	0m1.710s
+user	0m0.036s
+sys	0m0.068s
+Everything correct.
+Run 8 succeeded.
+Randomness is okay - got 12 unique INITs out of 16 possible in 8 games.
+OK
+---
+Running custom test test14
+Run 1 ---
+
+real	0m1.053s
+user	0m0.004s
+sys	0m0.012s
+Everything correct.
+Run 1 succeeded.
+Run 2 ---
+
+real	0m1.051s
+user	0m0.004s
+sys	0m0.012s
+Everything correct.
+Run 2 succeeded.
+Run 3 ---
+
+real	0m1.044s
+user	0m0.008s
+sys	0m0.000s
+Everything correct.
+Run 3 succeeded.
+Run 4 ---
+
+real	0m1.070s
+user	0m0.012s
+sys	0m0.004s
+Everything correct.
+Run 4 succeeded.
+Run 5 ---
+
+real	0m1.033s
+user	0m0.004s
+sys	0m0.000s
+Everything correct.
+Run 5 succeeded.
+Run 6 ---
+
+real	0m1.052s
+user	0m0.008s
+sys	0m0.004s
+Everything correct.
+Run 6 succeeded.
+Run 7 ---
+
+real	0m1.076s
+user	0m0.016s
+sys	0m0.004s
+Everything correct.
+Run 7 succeeded.
+Run 8 ---
+
+real	0m1.042s
+user	0m0.004s
+sys	0m0.004s
+Everything correct.
+Run 8 succeeded.
+Randomness is okay - got 16 unique INITs out of 16 possible in 8 games.
+OK
+---
+Running custom test test15
+Run 1 ---
+
+real	0m1.042s
+user	0m0.000s
+sys	0m0.008s
+Everything correct.
+Run 1 succeeded.
+Run 2 ---
+
+real	0m1.042s
+user	0m0.004s
+sys	0m0.004s
+Everything correct.
+Run 2 succeeded.
+Run 3 ---
+
+real	0m1.050s
+user	0m0.012s
+sys	0m0.000s
+Everything correct.
+Run 3 succeeded.
+Run 4 ---
+
+real	0m1.059s
+user	0m0.008s
+sys	0m0.012s
+Everything correct.
+Run 4 succeeded.
+Run 5 ---
+
+real	0m1.052s
+user	0m0.008s
+sys	0m0.008s
+Everything correct.
+Run 5 succeeded.
+Run 6 ---
+
+real	0m1.049s
+user	0m0.008s
+sys	0m0.008s
+Everything correct.
+Run 6 succeeded.
+Run 7 ---
+
+real	0m1.053s
+user	0m0.008s
+sys	0m0.008s
+Everything correct.
+Run 7 succeeded.
+Run 8 ---
+
+real	0m1.045s
+user	0m0.008s
+sys	0m0.000s
+Everything correct.
+Run 8 succeeded.
+Randomness is okay - got 16 unique INITs out of 16 possible in 8 games.
+OK
+---
+Running default test test16
+
+real	0m0.021s
+user	0m0.008s
+sys	0m0.000s
+Everything correct.
+OK
+---
+Running default test test17
+
+real	0m0.004s
+user	0m0.000s
+sys	0m0.000s
+Everything correct.
+OK
+---
+Running default test test18
+error: Not a number
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.000s
+Everything correct.
+OK
+---
+Running default test test19
+error: Not a number
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.000s
+Everything correct.
+OK
+---
+Running default test test20
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.000s
+Everything correct.
+OK
+---
+Running default test test21
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.000s
+Everything correct.
+OK
+---
+Running default test test22
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.000s
+Everything correct.
+OK
+---
+Running default test test23
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.000s
+Everything correct.
+OK
+---
+Running default test test24
+
+real	0m1.028s
+user	0m0.000s
+sys	0m0.004s
+Wrong code returned by the game (0) or timeout.
+FAIL
+---
+Running default test test25
+
+real	0m1.043s
+user	0m0.012s
+sys	0m0.000s
+Wrong code returned by the game (0) or timeout.
+FAIL
+---
+Running custom test test26
+Crashing AI...
+/home/smutnyjoe/Zaliczeniowe2AI/IPP-mb347056/game.sh: line 162: 27214 Unicestwiony            $ai2 0<&7 1>&8
+
+real	0m2.033s
+user	0m0.000s
+sys	0m0.008s
+Everything correct.
+OK
+---
+Running custom test test28
+
+real	0m1.036s
+user	0m0.004s
+sys	0m0.000s
+Wrong code returned by the game (0) or timeout.
+Run failed.
+FAIL
+---
+Running default test test29
+
+real	0m1.075s
+user	0m0.004s
+sys	0m0.020s
+Everything correct.
+OK
+---
+Running custom test test30
+OK
+---
+Running custom test test31
+OK
+---
+Running custom test test32
+OK
+---
+Running custom test test33
+OK
+---
+Running custom test test34
+OK
+---
+30/33 tests succeeded.
+THERE WERE 3 ERRORS - 17/20

@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Średniowiecze: Plik źródłowy engine.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Średniowiecze
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Strona&#160;główna</span></a></li>
+      <li><a href="annotated.html"><span>Struktury&#160;Danych</span></a></li>
+      <li class="current"><a href="files.html"><span>Pliki</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;plików</span></a></li>
+      <li><a href="globals.html"><span>Globalne</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Struktury Danych</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pliki</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funkcje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Definicje typów</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Strony</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">engine.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="engine_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef ENGINE_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define ENGINE_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define CONTINUE 0</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define INPUT_ERROR 42</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DRAW 1</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DRAW_AFTER_END_TURN 5</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define END_TURN 2</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define P1_WIN 3</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define P2_WIN 4</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structPiece.html">Piece</a> {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">int</span> x;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> y;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">char</span> ch;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">int</span> turnMoved;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">bool</span> moved;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;} <a class="code" href="engine_8h.html#ad1ff76ab9261121f9492d0e79b03d586">Piece</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structTreeNode.html">TreeNode</a> {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="structPiece.html">Piece</a> piece;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">struct </span><a class="code" href="structTreeNode.html">TreeNode</a> *left, *right;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;} <a class="code" href="engine_8h.html#a85a7513d1b1c40e8d6267a812ee61b9d">TreeNode</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> <a class="code" href="engine_8h.html#a0776cd662f5c945bb00f5950ab384fcf">startGame</a>(<a class="code" href="structTreeNode.html">TreeNode</a> **tree);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> <a class="code" href="engine_8h.html#ac959cf8cbd90d8dc203659e8a8871664">endGame</a>(<a class="code" href="structTreeNode.html">TreeNode</a> **tree, <span class="keywordtype">int</span> *result, <span class="keywordtype">char</span> ***board, <span class="keywordtype">int</span> m);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">int</span> <a class="code" href="engine_8h.html#a4b24a63ab775b24fe4c652d06622f948">init</a>(<span class="keywordtype">int</span> n, <span class="keywordtype">int</span> k, <span class="keywordtype">int</span> p, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y1, <span class="keywordtype">int</span> x2, <span class="keywordtype">int</span> y2, <a class="code" href="structTreeNode.html">TreeNode</a> **tree,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;         <span class="keywordtype">int</span> *nMy, <span class="keywordtype">int</span> *kMy, <span class="keywordtype">bool</span> *p1Initialized, <span class="keywordtype">bool</span> *p2Initialized,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;         <span class="keywordtype">char</span> **board, <span class="keywordtype">int</span> *m);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keywordtype">int</span> <a class="code" href="engine_8h.html#a823c9d0dc71ea5ea68cb1dafb42bce7a">move</a>(<span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y1, <span class="keywordtype">int</span> x2, <span class="keywordtype">int</span> y2, <span class="keywordtype">int</span> n, <span class="keywordtype">bool</span> players1Turn,</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;         <a class="code" href="structTreeNode.html">TreeNode</a> **tree, <span class="keywordtype">bool</span> p1Initialized, <span class="keywordtype">bool</span> p2Initialized,</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;         <span class="keywordtype">char</span> **board, <span class="keywordtype">int</span> m, <span class="keywordtype">int</span> turns);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keywordtype">int</span> <a class="code" href="engine_8h.html#af5b7f337e6e7f58324ef24379f89d970">produceKnight</a>(<span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y1, <span class="keywordtype">int</span> x2, <span class="keywordtype">int</span> y2, <span class="keywordtype">int</span> n, <span class="keywordtype">bool</span> players1Turn,</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                  <a class="code" href="structTreeNode.html">TreeNode</a> **tree, <span class="keywordtype">bool</span> p1Initialized, <span class="keywordtype">bool</span> p2Initialized,</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                  <span class="keywordtype">char</span> **board, <span class="keywordtype">int</span> m, <span class="keywordtype">int</span> turns);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keywordtype">int</span> <a class="code" href="engine_8h.html#a82b7c406c0c1116d123ccccd06950a68">producePeasant</a>(<span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y1, <span class="keywordtype">int</span> x2, <span class="keywordtype">int</span> y2, <span class="keywordtype">int</span> n, <span class="keywordtype">bool</span> players1Turn,</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                   <a class="code" href="structTreeNode.html">TreeNode</a> **tree, <span class="keywordtype">bool</span> p1Initialized, <span class="keywordtype">bool</span> p2Initialized,</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                   <span class="keywordtype">char</span> **board, <span class="keywordtype">int</span> m, <span class="keywordtype">int</span> turns);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keywordtype">int</span> <a class="code" href="engine_8h.html#adff6ca550bc33a22dc1e6966c7a5d608">endTurn</a>(<span class="keywordtype">int</span> *turns, <span class="keywordtype">bool</span> *players1Turn, <a class="code" href="structTreeNode.html">TreeNode</a> **tree,</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordtype">bool</span> p1Initialized, <span class="keywordtype">bool</span> p2Initialized);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="keywordtype">void</span> <a class="code" href="engine_8h.html#ab1554076e8bcda9021d6a6273c21af4c">printTopleft</a>(<span class="keywordtype">char</span> **board, <span class="keywordtype">int</span> m);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="keywordtype">char</span> **<a class="code" href="engine_8h.html#a6e2f079a3de8efe3d5d507181cee3153">allocateMemory</a>(<span class="keywordtype">int</span> m);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keywordtype">int</span> <a class="code" href="engine_8h.html#abd8bbcfabb3ddef2ccaafb9928a37b95">min</a>(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* ENGINE_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="engine_8h_html_a6e2f079a3de8efe3d5d507181cee3153"><div class="ttname"><a href="engine_8h.html#a6e2f079a3de8efe3d5d507181cee3153">allocateMemory</a></div><div class="ttdeci">char ** allocateMemory(int m)</div><div class="ttdoc">Allocates space for m by m array and fills it with dot. </div><div class="ttdef"><b>Definition:</b> engine.c:263</div></div>
+<div class="ttc" id="engine_8h_html_a4b24a63ab775b24fe4c652d06622f948"><div class="ttname"><a href="engine_8h.html#a4b24a63ab775b24fe4c652d06622f948">init</a></div><div class="ttdeci">int init(int n, int k, int p, int x1, int y1, int x2, int y2, TreeNode **tree, int *nMy, int *kMy, bool *p1Initialized, bool *p2Initialized, char **board, int *m)</div><div class="ttdoc">Initializes a game with size of a board, number of rounds and positions of kings. ...</div><div class="ttdef"><b>Definition:</b> engine.c:345</div></div>
+<div class="ttc" id="engine_8h_html_adff6ca550bc33a22dc1e6966c7a5d608"><div class="ttname"><a href="engine_8h.html#adff6ca550bc33a22dc1e6966c7a5d608">endTurn</a></div><div class="ttdeci">int endTurn(int *turns, bool *players1Turn, TreeNode **tree, bool p1Initialized, bool p2Initialized)</div><div class="ttdoc">Ends a turn. </div><div class="ttdef"><b>Definition:</b> engine.c:612</div></div>
+<div class="ttc" id="engine_8h_html_a0776cd662f5c945bb00f5950ab384fcf"><div class="ttname"><a href="engine_8h.html#a0776cd662f5c945bb00f5950ab384fcf">startGame</a></div><div class="ttdeci">void startGame(TreeNode **tree)</div><div class="ttdoc">Initializes a game. </div><div class="ttdef"><b>Definition:</b> engine.c:204</div></div>
+<div class="ttc" id="engine_8h_html_a82b7c406c0c1116d123ccccd06950a68"><div class="ttname"><a href="engine_8h.html#a82b7c406c0c1116d123ccccd06950a68">producePeasant</a></div><div class="ttdeci">int producePeasant(int x1, int y1, int x2, int y2, int n, bool players1Turn, TreeNode **tree, bool p1Initialized, bool p2Initialized, char **board, int m, int turns)</div><div class="ttdoc">Produces a peasant. </div><div class="ttdef"><b>Definition:</b> engine.c:604</div></div>
+<div class="ttc" id="engine_8h_html_abd8bbcfabb3ddef2ccaafb9928a37b95"><div class="ttname"><a href="engine_8h.html#abd8bbcfabb3ddef2ccaafb9928a37b95">min</a></div><div class="ttdeci">int min(int a, int b)</div><div class="ttdoc">Returns lesser value of two ints. </div><div class="ttdef"><b>Definition:</b> engine.c:240</div></div>
+<div class="ttc" id="engine_8h_html_a85a7513d1b1c40e8d6267a812ee61b9d"><div class="ttname"><a href="engine_8h.html#a85a7513d1b1c40e8d6267a812ee61b9d">TreeNode</a></div><div class="ttdeci">struct TreeNode TreeNode</div><div class="ttdoc">Struct of a tree containing pieces. </div></div>
+<div class="ttc" id="engine_8h_html_ad1ff76ab9261121f9492d0e79b03d586"><div class="ttname"><a href="engine_8h.html#ad1ff76ab9261121f9492d0e79b03d586">Piece</a></div><div class="ttdeci">struct Piece Piece</div><div class="ttdoc">Struct of Piece. </div></div>
+<div class="ttc" id="engine_8h_html_af5b7f337e6e7f58324ef24379f89d970"><div class="ttname"><a href="engine_8h.html#af5b7f337e6e7f58324ef24379f89d970">produceKnight</a></div><div class="ttdeci">int produceKnight(int x1, int y1, int x2, int y2, int n, bool players1Turn, TreeNode **tree, bool p1Initialized, bool p2Initialized, char **board, int m, int turns)</div><div class="ttdoc">Produces a knight. </div><div class="ttdef"><b>Definition:</b> engine.c:596</div></div>
+<div class="ttc" id="engine_8h_html_ac959cf8cbd90d8dc203659e8a8871664"><div class="ttname"><a href="engine_8h.html#ac959cf8cbd90d8dc203659e8a8871664">endGame</a></div><div class="ttdeci">void endGame(TreeNode **tree, int *result, char ***board, int m)</div><div class="ttdoc">Frees memory. </div><div class="ttdef"><b>Definition:</b> engine.c:234</div></div>
+<div class="ttc" id="structPiece_html"><div class="ttname"><a href="structPiece.html">Piece</a></div><div class="ttdoc">Struct of Piece. </div><div class="ttdef"><b>Definition:</b> engine.c:21</div></div>
+<div class="ttc" id="structTreeNode_html"><div class="ttname"><a href="structTreeNode.html">TreeNode</a></div><div class="ttdoc">Struct of a tree containing pieces. </div><div class="ttdef"><b>Definition:</b> engine.c:29</div></div>
+<div class="ttc" id="engine_8h_html_a823c9d0dc71ea5ea68cb1dafb42bce7a"><div class="ttname"><a href="engine_8h.html#a823c9d0dc71ea5ea68cb1dafb42bce7a">move</a></div><div class="ttdeci">int move(int x1, int y1, int x2, int y2, int n, bool players1Turn, TreeNode **tree, bool p1Initialized, bool p2Initialized, char **board, int m, int turns)</div><div class="ttdoc">Makes a move. </div><div class="ttdef"><b>Definition:</b> engine.c:538</div></div>
+<div class="ttc" id="engine_8h_html_ab1554076e8bcda9021d6a6273c21af4c"><div class="ttname"><a href="engine_8h.html#ab1554076e8bcda9021d6a6273c21af4c">printTopleft</a></div><div class="ttdeci">void printTopleft(char **board, int m)</div><div class="ttdoc">Prints (into stdout) top-left corner of the board of size m x m. </div><div class="ttdef"><b>Definition:</b> engine.c:301</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano N, 15 maj 2016 23:46:29 dla Średniowiecze programem &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>

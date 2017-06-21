@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Średniowiecze: Dokumentacja pliku ai.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Średniowiecze
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Strona&#160;główna</span></a></li>
+      <li><a href="annotated.html"><span>Struktury&#160;Danych</span></a></li>
+      <li class="current"><a href="files.html"><span>Pliki</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;plików</span></a></li>
+      <li><a href="globals.html"><span>Globalne</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Struktury Danych</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pliki</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funkcje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Definicje typów</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Strony</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_474b8a96af252fb7061ec8f380428484.html">IPP-mb347056</a></li><li class="navelem"><a class="el" href="dir_3b7692ec66c5f23706a27054ea484f7d.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Struktury danych</a> &#124;
+<a href="#define-members">Definicje</a> &#124;
+<a href="#typedef-members">Definicje typów</a> &#124;
+<a href="#func-members">Funkcje</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja pliku ai.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Source file of AI.  
+<a href="#details">Więcej...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;assert.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="ai_8h_source.html">ai.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Wykres zależności załączania dla ai.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="ai_8c__incl.png" border="0" usemap="#ai_8c" alt=""/></div>
+<map name="ai_8c" id="ai_8c">
+<area shape="rect" id="node5" href="ai_8h.html" title="Interface of AI. " alt="" coords="287,80,332,107"/><area shape="rect" id="node6" href="engine_8h.html" title="Interface of game engine. " alt="" coords="271,155,347,181"/></map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Struktury danych</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structVector.html">Vector</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNodeListDef.html">NodeListDef</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definicje</h2></td></tr>
+<tr class="memitem:a4fadfc1cc2d9a1723ae3ec08f3f0203d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4fadfc1cc2d9a1723ae3ec08f3f0203d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NORTHWEST</b>&#160;&#160;&#160;21</td></tr>
+<tr class="separator:a4fadfc1cc2d9a1723ae3ec08f3f0203d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1711232abf72723b5216c206e6bbb175"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1711232abf72723b5216c206e6bbb175"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NORTH</b>&#160;&#160;&#160;22</td></tr>
+<tr class="separator:a1711232abf72723b5216c206e6bbb175"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a102c97a6b56626a25efbee52bc0ccff0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a102c97a6b56626a25efbee52bc0ccff0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NORTHEAST</b>&#160;&#160;&#160;23</td></tr>
+<tr class="separator:a102c97a6b56626a25efbee52bc0ccff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a072a1ef1143314441742097b799be322"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a072a1ef1143314441742097b799be322"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EAST</b>&#160;&#160;&#160;24</td></tr>
+<tr class="separator:a072a1ef1143314441742097b799be322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bdd815c79bee3fd7243675de570e3c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0bdd815c79bee3fd7243675de570e3c4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SOUTHEAST</b>&#160;&#160;&#160;25</td></tr>
+<tr class="separator:a0bdd815c79bee3fd7243675de570e3c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3830320fe6287f717dca9669f417950"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3830320fe6287f717dca9669f417950"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SOUTH</b>&#160;&#160;&#160;26</td></tr>
+<tr class="separator:af3830320fe6287f717dca9669f417950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affb1a0defb8cb94cc31897c465e20a75"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="affb1a0defb8cb94cc31897c465e20a75"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SOUTHWEST</b>&#160;&#160;&#160;27</td></tr>
+<tr class="separator:affb1a0defb8cb94cc31897c465e20a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a755da365a2f771fdb9e15af22fee7d74"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a755da365a2f771fdb9e15af22fee7d74"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WEST</b>&#160;&#160;&#160;28</td></tr>
+<tr class="separator:a755da365a2f771fdb9e15af22fee7d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Definicje typów</h2></td></tr>
+<tr class="memitem:ab0412993a9e3f218f85f70474c80414c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0412993a9e3f218f85f70474c80414c"></a>
+typedef struct <a class="el" href="structNodeListDef.html">NodeListDef</a>&#160;</td><td class="memItemRight" valign="bottom"><b>NodeList</b></td></tr>
+<tr class="separator:ab0412993a9e3f218f85f70474c80414c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkcje</h2></td></tr>
+<tr class="memitem:a7100b301f75832992efcb62fc2701091"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7100b301f75832992efcb62fc2701091"></a>
+<a class="el" href="structTreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>findMyNextPeasant</b> (<a class="el" href="structTreeNode.html">TreeNode</a> **tree, int myNumber, int turns)</td></tr>
+<tr class="separator:a7100b301f75832992efcb62fc2701091"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6caa90f21778b1facba361b2a25d9bcb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6caa90f21778b1facba361b2a25d9bcb"></a>
+<a class="el" href="structTreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>findMyNextNotMovedKnight</b> (<a class="el" href="structTreeNode.html">TreeNode</a> **tree, int myNumber)</td></tr>
+<tr class="separator:a6caa90f21778b1facba361b2a25d9bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a037a4154eba49d8bae23ebe2f6042a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a037a4154eba49d8bae23ebe2f6042a"></a>
+<a class="el" href="structTreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>findKing</b> (<a class="el" href="structTreeNode.html">TreeNode</a> **tree, int myNumber, bool my)</td></tr>
+<tr class="separator:a5a037a4154eba49d8bae23ebe2f6042a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a851a8857e834cfa1b29170300f440c5c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a851a8857e834cfa1b29170300f440c5c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>printAllPieces</b> (<a class="el" href="structTreeNode.html">TreeNode</a> *tree)</td></tr>
+<tr class="separator:a851a8857e834cfa1b29170300f440c5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e0864d4fc7fa66f80a1f38a8b3d63ea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e0864d4fc7fa66f80a1f38a8b3d63ea"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>thisPieceIsMine</b> (int myNumber, char symbol)</td></tr>
+<tr class="separator:a5e0864d4fc7fa66f80a1f38a8b3d63ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c7051b0b17c3545851226bc503d2fce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c7051b0b17c3545851226bc503d2fce"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>itsCloserThanClosest</b> (<a class="el" href="structTreeNode.html">TreeNode</a> *tree, <a class="el" href="structTreeNode.html">TreeNode</a> *closest, <a class="el" href="structPiece.html">Piece</a> myPiece, int myNumber)</td></tr>
+<tr class="separator:a3c7051b0b17c3545851226bc503d2fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2140c1962bb7214d9b3629323377b893"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2140c1962bb7214d9b3629323377b893"></a>
+<a class="el" href="structTreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>closestEnemy</b> (<a class="el" href="structTreeNode.html">TreeNode</a> *tree, <a class="el" href="structPiece.html">Piece</a> myPiece, <a class="el" href="structTreeNode.html">TreeNode</a> *closest, int myNumber)</td></tr>
+<tr class="separator:a2140c1962bb7214d9b3629323377b893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3cdee659431e48af1f96436ed1c17cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab3cdee659431e48af1f96436ed1c17cf"></a>
+<a class="el" href="structNodeListDef.html">NodeList</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createMyUnitsList</b> (<a class="el" href="structTreeNode.html">TreeNode</a> **tree, char symbol, int myNumber, int turns)</td></tr>
+<tr class="separator:ab3cdee659431e48af1f96436ed1c17cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e3efb45a22a8fc130b186ce964f5421"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e3efb45a22a8fc130b186ce964f5421"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>listSize</b> (<a class="el" href="structNodeListDef.html">NodeList</a> *list)</td></tr>
+<tr class="separator:a6e3efb45a22a8fc130b186ce964f5421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12f4164db8c3b372c9dfa38ef5cd6eb8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12f4164db8c3b372c9dfa38ef5cd6eb8"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>defineDirection</b> (<a class="el" href="structPiece.html">Piece</a> from, <a class="el" href="structPiece.html">Piece</a> to)</td></tr>
+<tr class="separator:a12f4164db8c3b372c9dfa38ef5cd6eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65795ed21e57259c50fbc763f17e4417"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65795ed21e57259c50fbc763f17e4417"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>findBestDirection</b> (int previousDirection, int *i)</td></tr>
+<tr class="separator:a65795ed21e57259c50fbc763f17e4417"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74e5e4f306a83f1b79bf6a4da428d413"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74e5e4f306a83f1b79bf6a4da428d413"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isOnPiecesList</b> (int newX, int newY, <a class="el" href="structNodeListDef.html">NodeList</a> *myPiecesList)</td></tr>
+<tr class="separator:a74e5e4f306a83f1b79bf6a4da428d413"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac557f0cb03d289b4f1cadb3d77740c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac557f0cb03d289b4f1cadb3d77740c6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>giveNewCoordinates</b> (int *newX, int *newY, <a class="el" href="structPiece.html">Piece</a> piece, int direction, int n)</td></tr>
+<tr class="separator:aac557f0cb03d289b4f1cadb3d77740c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f5900299ad4acc854780b066e5f8ada"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f5900299ad4acc854780b066e5f8ada"></a>
+<a class="el" href="structPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><b>tryToCreateNewPiece</b> (<a class="el" href="structTreeNode.html">TreeNode</a> **tree, <a class="el" href="structNodeListDef.html">NodeList</a> **myPeasantsList, bool createPeasant, int direction, int n, int turns, int myNumber)</td></tr>
+<tr class="separator:a4f5900299ad4acc854780b066e5f8ada"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b83cf31cf9f44c124f5f6759deafb5d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b83cf31cf9f44c124f5f6759deafb5d"></a>
+<a class="el" href="structTreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>producePieceInBestPossibleSquare</b> (<a class="el" href="structTreeNode.html">TreeNode</a> **tree, <a class="el" href="structNodeListDef.html">NodeList</a> **myPeasantsList, bool <a class="el" href="engine_8h.html#a610df406fe7f88d89ded2c1854c7d3aa">producePeasant</a>, int direction, int n, int turns, int myNumber)</td></tr>
+<tr class="separator:a9b83cf31cf9f44c124f5f6759deafb5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72be22810c2f1e35df9934ea7bab1b08"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72be22810c2f1e35df9934ea7bab1b08"></a>
+<a class="el" href="structTreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>produceNewPieces</b> (<a class="el" href="structTreeNode.html">TreeNode</a> **tree, <a class="el" href="structNodeListDef.html">NodeList</a> **myPeasantsList, bool <a class="el" href="engine_8h.html#a610df406fe7f88d89ded2c1854c7d3aa">producePeasant</a>, int n, int turns, int myNum)</td></tr>
+<tr class="separator:a72be22810c2f1e35df9934ea7bab1b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a552be12b88c3dca3cc46d2992e81ee28"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a552be12b88c3dca3cc46d2992e81ee28"></a>
+<a class="el" href="structTreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>tryToMoveKnight</b> (<a class="el" href="structTreeNode.html">TreeNode</a> **tree, <a class="el" href="structNodeListDef.html">NodeList</a> **myNotMovedKnightsList, int direction, int n, int myNumber, bool *win)</td></tr>
+<tr class="separator:a552be12b88c3dca3cc46d2992e81ee28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8b974874f1ecf63fdd73691271ad9f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae8b974874f1ecf63fdd73691271ad9f5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteList</b> (<a class="el" href="structNodeListDef.html">NodeList</a> **list)</td></tr>
+<tr class="separator:ae8b974874f1ecf63fdd73691271ad9f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2254d5c72fef018fbbbbfecc26e37c5c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2254d5c72fef018fbbbbfecc26e37c5c"></a>
+<a class="el" href="structTreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>moveKnights</b> (<a class="el" href="structTreeNode.html">TreeNode</a> **tree, <a class="el" href="structNodeListDef.html">NodeList</a> **knightsList, int n, int myNumber, bool *win)</td></tr>
+<tr class="separator:a2254d5c72fef018fbbbbfecc26e37c5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14376896e70f2124b64debad28702f3b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ai_8c.html#a14376896e70f2124b64debad28702f3b">generateAction</a> (<a class="el" href="structTreeNode.html">TreeNode</a> **tree, int *turns, bool *myTurn, int myNum, int n)</td></tr>
+<tr class="memdesc:a14376896e70f2124b64debad28702f3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">AI generating all actions during current turn.  <a href="#a14376896e70f2124b64debad28702f3b">Więcej...</a><br/></td></tr>
+<tr class="separator:a14376896e70f2124b64debad28702f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Source file of AI. </p>
+<p>Contains all necessary functions to genrate all actions during a turn. Some of these funtions can be exported and used in engine (both modules are independent). </p>
+</div><h2 class="groupheader">Dokumentacja funkcji</h2>
+<a class="anchor" id="a14376896e70f2124b64debad28702f3b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int generateAction </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTreeNode.html">TreeNode</a> **&#160;</td>
+          <td class="paramname"><em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>turns</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>myTurn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>myNum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>AI generating all actions during current turn. </p>
+<p>The function is an AI. It produces a peasant if player has only one unit of this type, otherwise produces a knight. It produces new units towards closest enemy piece. It also moves every knight towards closest enemy piece. If it cannot move or produce in this direction, tries to do it into neighbouring squares (until possible squares are further to closest enemy unit than peasant). Finally, it ends turn, decreasing parameter *turns (if player's number is 2), negates *myTurn and returns result.</p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">**tree</td><td>Tree containing nodes with all pieces on board. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">*turns</td><td>Number of remaining turns. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">*myTurn</td><td>Parameter used in <a class="el" href="middle__ages_8c.html" title="Main funtion of a game. ">middle_ages.c</a> to define which turn it is: ai's (to generate action) or other player's (to parse his actions). Here only to be negated. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">myNum</td><td>Player's number (1 or 2). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Size (of a side) of a board.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Defined constant representing the result (WIN, DRAW, CONTINUE). </dd></dl>
+
+<p><div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="ai_8c_a14376896e70f2124b64debad28702f3b_cgraph.png" border="0" usemap="#ai_8c_a14376896e70f2124b64debad28702f3b_cgraph" alt=""/></div>
+<map name="ai_8c_a14376896e70f2124b64debad28702f3b_cgraph" id="ai_8c_a14376896e70f2124b64debad28702f3b_cgraph">
+<area shape="rect" id="node2" href="engine_8c.html#ad4a9988f23de955ff7858d69f6738f38" title="Ends a turn. " alt="" coords="173,5,245,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano Pt, 24 cze 2016 18:45:10 dla Średniowiecze programem &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>

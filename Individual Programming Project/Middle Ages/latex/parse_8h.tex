@@ -1,0 +1,66 @@
+\hypertarget{parse_8h}{\section{Dokumentacja pliku parse.\-h}
+\label{parse_8h}\index{parse.\-h@{parse.\-h}}
+}
+
+
+Interface of parser.  
+
+
+Ten wykres pokazuje, które pliki bezpośrednio lub pośrednio załączają ten plik\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{parse_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Struktury danych}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structCommand}{Command}
+\begin{DoxyCompactList}\small\item\em Struct of a \hyperlink{structCommand}{Command}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Definicje typów}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structCommand}{Command} \hyperlink{parse_8h_a1e070cd9ac686a0bb549183eaf77290e}{Command}
+\begin{DoxyCompactList}\small\item\em Struct of a \hyperlink{structCommand}{Command}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structCommand}{Command} $\ast$ \hyperlink{parse_8h_a74bb0ea1e7abe5fa86309d56646b2e48}{parse\-Command} ()
+\begin{DoxyCompactList}\small\item\em Reads a \hyperlink{structCommand}{Command}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Opis szczegółowy}
+Interface of parser. Contains all functions needed to parse \hyperlink{structCommand}{Command} from input. 
+
+\subsection{Dokumentacja definicji typów}
+\hypertarget{parse_8h_a1e070cd9ac686a0bb549183eaf77290e}{\index{parse.\-h@{parse.\-h}!Command@{Command}}
+\index{Command@{Command}!parse.h@{parse.\-h}}
+\subsubsection[{Command}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Command}  {\bf Command}}}\label{parse_8h_a1e070cd9ac686a0bb549183eaf77290e}
+
+
+Struct of a \hyperlink{structCommand}{Command}. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em name} & Name of a \hyperlink{structCommand}{Command} or \char`\"{}\-E\-R\-R\-O\-R\char`\"{} if unexpected name was parsed. \\
+\hline
+{\em data\mbox{[}$\,$\mbox{]}} & Necessary arguments for each \hyperlink{structCommand}{Command} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Dokumentacja funkcji}
+\hypertarget{parse_8h_a74bb0ea1e7abe5fa86309d56646b2e48}{\index{parse.\-h@{parse.\-h}!parse\-Command@{parse\-Command}}
+\index{parse\-Command@{parse\-Command}!parse.h@{parse.\-h}}
+\subsubsection[{parse\-Command}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Command}$\ast$ parse\-Command (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{parse_8h_a74bb0ea1e7abe5fa86309d56646b2e48}
+
+
+Reads a \hyperlink{structCommand}{Command}. 
+
+Returns \hyperlink{structCommand}{Command} with data points using '\hyperlink{structCommand}{Command}' structure. 

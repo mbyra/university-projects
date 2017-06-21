@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/smutnyjoe/Zaliczeniowe2AI/IPP-mb347056/src/engine.c
+stdio.h
+-
+stdlib.h
+-
+stdbool.h
+-
+assert.h
+-
+engine.h
+/home/smutnyjoe/Zaliczeniowe2AI/IPP-mb347056/src/engine.h
+
+/home/smutnyjoe/Zaliczeniowe2AI/IPP-mb347056/src/engine.h
+stdbool.h
+-
+

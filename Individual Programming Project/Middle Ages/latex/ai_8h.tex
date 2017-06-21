@@ -1,0 +1,81 @@
+\hypertarget{ai_8h}{\section{Dokumentacja pliku ai.\-h}
+\label{ai_8h}\index{ai.\-h@{ai.\-h}}
+}
+
+
+Interface of A\-I.  
+
+
+{\ttfamily \#include \char`\"{}engine.\-h\char`\"{}}\\*
+Wykres zależności załączania dla ai.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{ai_8h__incl}
+\end{center}
+\end{figure}
+Ten wykres pokazuje, które pliki bezpośrednio lub pośrednio załączają ten plik\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{ai_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{ai_8h_a14376896e70f2124b64debad28702f3b}{generate\-Action} (\hyperlink{structTreeNode}{Tree\-Node} $\ast$$\ast$tree, int $\ast$turns, bool $\ast$my\-Turn, int my\-Num, int n)
+\begin{DoxyCompactList}\small\item\em A\-I generating all actions during current turn. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Opis szczegółowy}
+Interface of A\-I. This A\-I is independent of \hyperlink{engine_8c}{engine.\-c}. Contains only one function, generate\-Action, which process all the turn (at a pinch modifies tree of pieces on board and other main variables) and returns proper result (represented by a constant). 
+
+\subsection{Dokumentacja funkcji}
+\hypertarget{ai_8h_a14376896e70f2124b64debad28702f3b}{\index{ai.\-h@{ai.\-h}!generate\-Action@{generate\-Action}}
+\index{generate\-Action@{generate\-Action}!ai.h@{ai.\-h}}
+\subsubsection[{generate\-Action}]{\setlength{\rightskip}{0pt plus 5cm}int generate\-Action (
+\begin{DoxyParamCaption}
+\item[{{\bf Tree\-Node} $\ast$$\ast$}]{tree, }
+\item[{int $\ast$}]{turns, }
+\item[{bool $\ast$}]{my\-Turn, }
+\item[{int}]{my\-Num, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{ai_8h_a14376896e70f2124b64debad28702f3b}
+
+
+A\-I generating all actions during current turn. 
+
+The function is an A\-I. It produces a peasant if player has only one unit of this type, otherwise produces a knight. It produces new units towards closest enemy piece. It also moves every knight towards closest enemy piece. If it cannot move or produce in this direction, tries to do it into neighbouring squares (until possible squares are further to closest enemy unit than peasant). Finally, it ends turn, decreasing parameter $\ast$turns (if player's number is 2), negates $\ast$my\-Turn and returns result.
+
+
+\begin{DoxyParams}[1]{Parametry}
+\mbox{\tt in,out}  & {\em $\ast$$\ast$tree} & Tree containing nodes with all pieces on board. \\
+\hline
+\mbox{\tt in,out}  & {\em $\ast$turns} & Number of remaining turns. \\
+\hline
+\mbox{\tt in,out}  & {\em $\ast$my\-Turn} & Parameter used in \hyperlink{middle__ages_8c}{middle\-\_\-ages.\-c} to define which turn it is\-: ai's (to generate action) or other player's (to parse his actions). Here only to be negated. \\
+\hline
+\mbox{\tt in}  & {\em my\-Num} & Player's number (1 or 2). \\
+\hline
+\mbox{\tt in}  & {\em n} & Size (of a side) of a board.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Defined constant representing the result (W\-I\-N, D\-R\-A\-W, C\-O\-N\-T\-I\-N\-U\-E). 
+\end{DoxyReturn}
+
+
+Oto graf wywołań dla tej funkcji\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{ai_8h_a14376896e70f2124b64debad28702f3b_cgraph}
+\end{center}
+\end{figure}
+
+

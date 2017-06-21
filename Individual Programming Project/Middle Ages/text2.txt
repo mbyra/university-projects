@@ -1,0 +1,126 @@
+Stwórz skrypt bashowy gry, game.sh, który rozgrywa i wizualizuje grę pomiędzy dwoma programami AI, programem AI a człowiekiem lub pomiędzy dwoma ludźmi, korzystając z dostarczonego programu interfejsu graficznego (GUI).
+
+Skrypt ten powinno się uruchamiać w następujący sposób:
+
+bash game.sh [-n n] [-k k] [-s s] [-p1 x1,y1] [-p2 x2,y2] [-ai1 ai1] [-ai2 ai2]
+
+Porządne programy i skrypty bashowe na ogół zakładają przemienność argumentów, ale można akceptować tylko powyższą kolejność (aczkowiek wszystkie argumenty są nadal opcjonalne). Kwadratowe nawiasy oznaczają opcjonalny argument. Wartości argumentów (np. 10) powinny występować jako kolejny argument po ich nazwie z myślnikiem (np. -n). Przyjmowane powinny być argumenty:
+
+n – wielkość planszy (domyślnie 10);
+k – maksymalna liczba tur na gracza (domyślnie 100);
+s – czas w sekundach, przez który skrypt ma poczekać pomiędzy wiadomością END_TURN, a rozpoczęciem tury kolejnego gracza, aby interfejs graficzny nadążył z wyświetlaniem animacji (domyślnie 1);
+x1,y1 – początkowa pozycja króla pierwszego gracza (jeśli nie zostanie podana, to będzie wybrana losowo);
+x2,y2 – początkowa pozycja króla drugiego gracza (jeśli nie zostanie podana, to będzie wybrana losowo);
+ai1 – ścieżka do programu AI pierwszego gracza (jeśli nie zostanie podana, to przyjmuje się, że będzie nim człowiek);
+ai2 – ścieżka do programu AI drugiego gracza (jeśli nie zostanie podana, to przyjmuje się, że będzie nim człowiek).
+Dokładny sposób losowania do wybierania początkowej pozycji nie jest narzucony, ale powinien być zgodny z regułami gry i niedeterministyczny. Idealne byłoby zrobienie rozkładu jednorodnego w przestrzeni wszystkich możliwych poprawnych początkowych pozycji obu graczy, ale nie jest to wymagane. Będzie sprawdzane, że przy 8-krotnym uruchomieniu gry AI/gracze z losowymi pozycjami początkowymi otrzymają conajmniej 4 różne INITy (max jest 16), gdy podany będzie argument -p1 albo -p2 i conajmniej 8 różnych INITów (max jest 16), gdy ani -p1 ani -p2 nie będą podane.
+
+Opcja -s służy do zapewnienia, że gdy grają dwa AI to animacja i oglądający człowiek są w stanie nadążyć za rozwojem sytuacji. Akceptowane powinny być tylko liczby naturalne (-s 0 oznacza, że nie powinno być żadnych sztucznych opóźnień w przesyłaniu wiadomości do GUI). Opcję -s mozna zignorować, gdy nie grają z sobą dwa AI, jako że skrypt gry nie ma kontroli nad szybkością tur gracza-człowieka.
+
+Pod opcjami -ai1 i -ai2 należy akceptować wyłącznie ścieżki do konkretnych plików, a nie komendy z argumentami.
+
+Ponadto zmodyfikuj program z części 1 na program AI, którego strategią jest niewykonywanie żadnego ruchu (czyli natychmiastowe kończenie swoich tur).
+
+Wejście i wyjście programu AI jest protokołem komunikacyjnym gracza. Na początku wszystkie AI powinny od skryptu gry otrzymać jedną wiadomość INIT z ich numerem gracza, a następnie albo całe standardowe wyjście drugiego programu AI, albo całe wyjście standardowe programu GUI, w zależności od tego, czy drugim graczem jest człowiek.
+
+AI powinny kończyć się z kodem błędu 42 w przypadku błędu wejścia, 2 w przypadku przegranej, 1 w przypadku remisu, a 0 w przypadku wygranej.
+
+Program GUI jest dostarczony w formie binarnej działającej na maszynie students. Przyjmuje on dwa opcjonalne argumenty: -human1 i -human2. Oznaczają one, że graczem o danym numerze steruje człowiek i sterowanie to ma być odpowiednio wizualizowane.
+
+Wejściem programu GUI jest protokół komunikacyjny aktualnie grającego gracza. Obowiązkowe jest przesłanie początkowych dwóch wiadomości INIT (od każdego gracza po jednej). Wysyłanie wiadomości z protokołu komunikacyjnego aktualnie grającego gracza powoduje aktualizację stanu planszy. Na standardowym wyjściu programu GUI będzie protokół aktualnie grającego gracza-człowieka (lub nic w przypadku AI). Program GUI przyjmuje protokół komunikacyjny gracza również w przypadku, gdy aktualnie gra człowiek (w celu ułatwienia debuggowania). Program GUI kończy się z kodem błędu 0, gdy użytkownik zamknie okno.
+
+Skrypt gry powinien zadbać o to, by wszystkie programy dostały na wejście odpowiednie wiadomości INIT, a następnie czytać wyjście od wszystkich programów i przekazywać na ich wejście protokół komunikacyjny aktualnie grającego gracza. Oznacza to, że gdy rozgrywka jest typu:
+
+ai vs ai - całe wyjście drugiego AI powinno trafiać na wejście drugiego programu AI. Ponadto wyjście programu, którego jest tura, powinno trafiać na wejście programu GUI. Skrypt gry nie powinien zakładać, że AI nie będzie pisało nic na wyjście w nie swojej turze (wznowienie czytania jego wyjścia powinno nastąpić w jego turze);
+człowiek vs ai - całe wyjście programu GUI powinno trafiać na wejście programu AI, a całe wyjście programu AI powinno trafiać na wejście programu GUI. Skrypt gry powinien zadbać, by wyjście programu AI trafiało na wejście GUI wyłącznie podczas jego tury - inaczej program GUI potraktuje to jak ruch gracza-człowieka;
+człowiek vs człowiek - program GUI powinien otrzymać początkowe wiadomości INIT, a skrypt gry powinien tylko poczekać na jego zakończenie.
+Skrypt gry powinien poprawnie przeprowadzać rozgrywkę nie tylko z stworzonym programem AI, ale z dowolnymi programami AI, które spełniają powyższe wymagania. W szczególności AI, które jest skryptem bashowym wypisującym wyjście jakiegoś pliku i ignorujące całe wejście też powinno być obsługiwane.
+
+W przypadku, gdy jeden z programów zakończy niepoprawnie swoje działanie (skrypt gry otrzyma niepoprawne parametry, program AI zakończy się z kodem błędu innym niż 0, 1, lub 2, program GUI zakończy się z kodem błędu różnym od 0), skrypt gry powinien się zakończyć z kodem błędu 1. Skrypt gry nie musi sprawdzać poprawności wszystkich wiadomości z protokołu komunikacyjnego gracza. Wystarczy, że będzie potrafił wykryć wiadomości END_TURN. Skrypt gry powinien po sobie posprzątać, tj. po jego zakończeniu z kodem błędu 0 nie powinny pozostać uruchomione żadne procesy uruchomione w tle przez skrypt gry. Nie jest konieczne rekurencyjne zabijanie procesów potomnych.
+
+Implementacja
+Zadanie to należy oddawać przez repozytorium z części 1. Przez moodla należy przesłać plik tekstowy, w którym będzie zawarty identyfikator commita z finalną wersją zadania 2. Na przykład:
+
+Finalna wersja mojego rozwiązania części 2 Średniowiecza znajduje
+się w repozytorium w commicie 518507a7e9ea50e099b33cb6ca3d3141bc1d6638.
+Skrypt bashowy game.sh umieść w swoim repozytorium w katalogu głównym. Program AI stwórz poprzez modyfikację programu z poprzedniego zadania i na tych samych zasadach (program powinien być odpowiednio udokumentowany, make doc tworzyć dokumentację, źródła powinny być w katalogu src, a program AI nazwany middle_ages powinien pojawić się w katalogu release po wywołaniu make.
+
+Nie wrzucaj plików programu GUI do repozytorium! Załóż, że program ten będzie dostępny w katalogu roboczym, że będzie sprawdzany na studentsie i że będzie możliwy do uruchomienia przez ./sredniowiecze_gui_with_libs.sh.
+
+Program GUI możesz pobrać:
+
+Ze strony http://www.mimuw.edu.pl/~xi/download/ipp-2015L/sredniowiecze_gui_linux64_v1.zip na większość Linuxów 64-bit (np. students);
+Ze strony http://www.mimuw.edu.pl/~xi/download/ipp-2015L/sredniowiecze_gui_win32_v1.zip na Windowsa 32-bit.
+Przepływ wiadomości
+Poniżej znajdują się schematy obrazujące przepływ wiadomości w skrypcie gry, tj. miejsce, w którym są utworzone i końcowe miejsca, do których trafiają.
+
+Przepływ wiadomości w przypadku AI vs AI:
+
+
+
+Przepływ wiadomości w przypadku AI vs HUMAN (lub HUMAN vs AI):
+
+
+Przepływ wiadomości w przypadku HUMAN vs HUMAN:
+
+
+Przykład rozgrywki
+Uruchomione polecenie: bash game.sh -n 10 -k 3 -s 1 -ai1 idle_ai -ai2 idle_ai
+
+< oznacza wejście programu, > jego wyjście, a # komentarz.
+
+AI 1
+
+< INIT 10 3 1 1 2 6 10
+# współrzędne są wybrane losowo, ale oddalone o co najmniej 8 w metryce maksimum
+> END_TURN
+# mijają 2 sekundy
+< END_TURN
+> END_TURN
+# mijają 2 sekundy
+< END_TURN
+> END_TURN
+# mijają 2 sekundy
+< END_TURN
+# zakończenie programu z kodem błędu 1 (remis)
+AI 2
+
+< INIT 10 3 2 1 2 6 10
+# to samo, ale z innym numerem gracza
+# mija 1 sekunda
+< END_TURN
+> END_TURN
+# mijają 2 sekundy
+< END_TURN
+> END_TURN
+# mijają 2 sekundy
+< END_TURN
+> END_TURN
+# zakończenie programu z kodem błędu 1 (remis)
+GUI
+
+< INIT 10 3 1 1 2 6 10
+< INIT 10 3 2 1 2 6 10
+# kolejność INIT nie jest istotna
+< END_TURN
+# mija 1 sekunda
+< END_TURN
+# mija 1 sekunda
+< END_TURN
+# mija 1 sekunda
+< END_TURN
+# mija 1 sekunda
+< END_TURN
+# mija 1 sekunda
+< END_TURN
+# zakończenie programu w dowolnym momencie z kodem błędu 0
+# wyjście programu GUI jest puste
+Punktacja
+Ilość punktów za rozwiązanie wynosi max(0, 20 - f), gdzie f to ilość nie przechodzących automatycznych testów. Nie ma ujemnych punktów za styl ani za warningi valgrinda.
+
+Automatyczne testy zostały dołączone do tego modułu. Są one skryptami bashowymi, który mockują (tj. zastępuje prawdziwe swoją wersją) GUI, często również mockują AI i sprawdzają czy odpowiednie są wejścia/wyjścia dla GUI i AI, odpowiednie kody błędów i że skrypt kończy się kodem błędu 1 w odpowiednich sytuacjach. Wszystkich testów jest 33, z czego większość jest na sprawdzanie poprawności samego skryptu gry (z mockowanym AI), część na same AI i część integracyjnych testujących skrypt gry wraz z dostarczonym programem AI.
+
+Skrypty sprawdzające powinny działać na studentsie i większości Linuxów. Używają polecenia realpath, więc mogą nie działać na np. OS X. Aby odpalić sprawdzarkę należy uruchomić program check_middle2.sh z argumentem będącym katalogiem z kodem źródłowym AI oraz game.sh. Wszelkie uwagi należy kierować na forum moodle.
+
+Debuggowanie
+Skrypt testujący uruchamia skrypt gry jak normalny plik wykonywalny. Pomocne w debuggowaniu może być ustawienie bashowej opcji -x w skrypcie gry (np. zamieniając pierwszą linijkę na #!/bin/bash -x), która powoduje wypisywanie wszystkich komend bashowych przed ich wykonanie. Więcej informacji tutaj.

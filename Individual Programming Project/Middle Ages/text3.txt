@@ -1,0 +1,51 @@
+Część 3
+Na maksymalnie 10 punktów
+Zmodyfikuj program AI, tak aby dla k > 2 * n był w stanie zawsze wygrać z programem kończącym od razu swoje tury. Aby to zrobić, wystarczy wysłać jednego rycerza w kierunku króla przeciwnika, omijając jego rycerzy.
+
+Na maksymalnie 20 punktów
+Zmodyfikuj program AI, tak aby dla k > 16 * n był w stanie wygrać co najmniej 3 razy na 4 gry z programem stosującym następującą strategię:
+
+król stoi w miejscu,
+chłop stoi w miejscu i bez przerwy produkuje rycerzy,
+wszyscy dostępni rycerze są wysyłani jedną z najkrótszych ścieżek do króla przeciwnika, ewentualnie atakując pionki, które napotkają po drodze.
+Strategią wygrywającą z powyższą jest wytworzenie najpierw jednego chłopa, a później tworzenie i wysyłanie rycerzy na najbliższą jednostkę przeciwnika.
+
+Wymagania dotyczące testów jednostkowych
+Pokrycie w 100% testami jednostkowymi całego programu jest zadaniem pracochłonnym, nawet bardziej niż zaimplementowanie samego rozwiązania, dlatego nie oczekujemy pełnego pokrycia. Należy wybrać jeden plik źródłowy programu, a w nim jedną funkcję przyjmującą co najmniej trzy prarametry, w tym przynajmniej jeden parametr będący wskaźnikem. Należy dokładnie pokryć testami tę wybraną funkcję, uwzględniając wartości graniczne parametrów. Należy dokładnie pokryć testami parsowanie i wykonywanie polecenia MOVE: sprawdzanie liczby i poprawności argumentów; sprawdzanie poprawności ruchu; wykrywanie, że dochodzi do walki; sprawdzanie, czy program się zakończył i jakim kodem; itd. W komentarzach do testów należy dokładnie opisać, co jest testowowane.
+
+Dalsze wymagania
+Niezależnie od wybranego do implementacji wariantu program wciąż powinien poprawnie działać i kończyć się z odpowiednim kodem błędu dla dowolnego wejścia.
+
+Jako rozwiązanie należy dostarczyć:
+
+pliki źródłowe rozwiązania,
+pliki źródłowe z testami jednostkowymi,
+plik CMakeLists.txt pozwalający na skompilowanie rozwiązania i testów.
+Testy jednostkowe mają wykorzystywać bibliotekę cmocka. Wynikiem kompilacji powinny być pliki wykonywalne middle_ages i middle_ages_tests.
+
+Rozwiązanie należy oddawać przez repozytorium GIT, jak przy poprzednich jego częściach. Przez Moodla należy przesłać plik tekstowy, w którym będzie zawarty identyfikator commita z finalną wersją zadania 3 oraz informacja, która wersja AI została zaimplementowana. Na przykład:
+
+Finalna wersja mojego rozwiązania części 3 Średniowiecza znajduje się w repozytorium w commicie 518507a7e9ea50e099b33cb6ca3d3141bc1d6638. Zaimplementowałem(am) AI w wersji na maksymalnie 20 pkt. 
+Proszę podawać hasz commita, a nie komentarz wpisywany przy commitowaniu.
+
+Punktacja
+Za w pełni poprawnie rozwiązane zadanie można uzyskać 10 lub 20 pkt. zależnie od zaimplementowanej wersji AI. Poniższe wartości dotyczą rozwiązania za 20 pkt. Dla rozwiązania za 10 pkt. wartości te należy podzielić przez 2.
+
+Za złe działanie AI można stracić co najwyżej 20 pkt.
+Za złe testy jednostkowe można stracić co najwyżej 8 pkt.
+Za wycieki pamięci można stracić co najwyżej 6 pkt.
+Za zły styl kodowania można stracić co najwyżej 4 pkt.
+W tym zadaniu możliwe jest dwukrotne sprawdzenie zadania przez prowadzącego pod pewnymy warunkami. Oficjalny termin został przesunięty z 19 czerwca 23:59 na 26 czerwca 23:59. Został ustawiony sztywny termin oddania zadania na 3 lipca godz. 23:59. W związku z tym ograniczyliśmy ilość ponowynych wysłań do jednego i ustaliliśmy sztywną karę na -3 pkt.
+
+Szczegółowe zasady:
+
+Osoba, która oddała program przed 26 czerwca 23:59 może wysłać program do ponownego sprawdzenia.
+Za program nadesłany do drugiego sprawdzenia jest kara -3 pkt.
+Jeżeli pierwszy program był oddany po 26 czerwca nie przysługuję drugie sprawdzenie i dodatkowo za ten program od razu będzie kara -3 pkt.
+Wyjątkowo kara za drugie sprawdzenie nie będzie przydzielana, jeżeli pierwsze wysłanie będzie w starym terminie, czyli przed 19 czerwca 23:59.
+Programy wysłane po 3 lipca nie będą sprawdzane.
+W II terminie obowiązują podobne zasady, przy czym:
+
+Termin oddania zadania to 3 września 23:59.
+Termin oddania na drugie sprawdzanie to 10 września 23:59.
+Za programy nadesłane na drugie sprawdzanie bądź po 3 września będzie naliczana kara -3 pkt.

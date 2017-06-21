@@ -1,0 +1,5 @@
+<map id="min" name="min">
+<area shape="rect" id="node2" href="$engine_8h.html#a407d2933a52398d81878fab4e6ca44a6" title="Recursive removal of node containing given piece from tree. " alt="" coords="101,29,197,56"/>
+<area shape="rect" id="node3" href="$engine_8h.html#aaa9b56690bf5f53d7d72d2e76d7ff74d" title="Finds lesser of two distances: between x or y coordinates. " alt="" coords="107,80,192,107"/>
+<area shape="rect" id="node4" href="$engine_8h.html#af5b804d6459b20c0bb9c976e720d8a25" title="Initializes a game with size of a board, number of rounds and positions of kings. ..." alt="" coords="129,131,170,157"/>
+</map>

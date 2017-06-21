@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Średniowiecze: Dokumentacja Zadania Średniowiecze</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Średniowiecze
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li class="current"><a href="index.html"><span>Strona&#160;główna</span></a></li>
+      <li><a href="annotated.html"><span>Struktury&#160;Danych</span></a></li>
+      <li><a href="files.html"><span>Pliki</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Struktury Danych</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pliki</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funkcje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Definicje typów</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Strony</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Dokumentacja Zadania Średniowiecze </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1>Średniowiecze</h1>
+<p>Uwaga: aktualna treść zadania znajduje się w <a href="https://moodle.mimuw.edu.pl/mod/assignment/view.php?id=18178">Moodle'u</a>.</p>
+<h3>Opis projektu</h3>
+<p>Dużym, trzyczęściowym projektem zaliczeniowym w tym roku jest implementacja deterministycznej turowej gry strategicznej z pełną wiedzą wraz ze sztuczną inteligencją (AI). Pierwsza część polega na zaimplementowaniu i przetestowaniu struktur danych oraz protokołu wejścia w programie AI. W drugiej części należy stworzyć nic nie robiącą AI oraz skrypt bash łączący program interfejsu graficznego i programy AI w symulator rozgrywki AI vs AI, AI vs człowiek lub człowiek vs człowiek. W trzeciej i ostatniej części należy stworzyć AI potrafiące wygrać przeciwko prostym strategiom.</p>
+<h3>Opis gry</h3>
+<p>Gra rozgrywa się na kwadratowej planszy <code>n*n</code> (<code>8 &lt; n &lt; 2^31</code>) i jest przeznaczona dla dwóch graczy wykonujących na zmianę swoje tury (rozpoczynając od pierwszego gracza). Każdy z graczy kontroluje swoje jednostki należące do jednego z trzech typów: król, rycerz, chłop. Na początku gry każdy gracz ma 1 króla, 1 chłopa i 2 rycerzy, ustawionych jeden obok drugiego w poziomej linii na planszy w kolejności król, chłop, rycerz, rycerz. Początkowe ustawienie jednostek następuje poprzez wylosowanie pozycji królów spośród pierwszych <code>n-3</code> kolumn, tak aby królowie byli od siebie oddaleni o co najmniej 8 w metryce maksimum.</p>
+<p>Podczas każdej tury gracz może ruszyć raz każdą swoją jednostką. Ruch składa się z przesunięcia jej o 1 pole pionowo, poziomo, na skos lub wykonania akcji (tylko przez chłopa). Gdy jednostka ruszy się na pole zajmowane przez inną jednostkę, następuje walka. Gdy walczą ze sobą dwie jednostki tego samego typu, obie giną. W przeciwnym wypadku rycerz pokonuje króla lub chłopa, a król pokonuje chłopa. Nie można ruszyć swojej jednostki na pole zajmowane przez inną swoją jednostkę (aczkolwiek można najpierw przesunąć jedną jednostkę, a drugą później przesunąć na zwolnione miejsce w tej samej turze). Akcją możliwą do wykonania przez chłopa jest wyprodukowanie nowego rycerza albo chłopa na jednym z sąsiednich (pionowo, poziomo lub po skosie) wolnych pól, pod warunkiem że chłop stał w miejscu, nie wykonując akcji przez poprzednie 2 tury. Innymi słowy chłop, który ruszył się w turze <code>k</code>, a potem się już nie ruszał, może dopiero wyprodukować jednostkę w turze <code>k+3</code>, następnie <code>k+6</code> itd. Nowymi jednostkami można się ruszać od razu po wyprodukowaniu (tj. gdy zostały wyprodukowane w turze <code>k</code>, to traktowane są jakby ostatnio wykonały ruch w turze <code>k-1</code>). Chłop, który od początku gry (tura 1) się nie ruszał, może wyprodukować pierwszą jednostkę w turze 3, a każda jednostka na początku gry może się od razu ruszyć.</p>
+<p>Gra kończy się w momencie, gdy król jednego z graczy zginie lub po <code>k</code>-tej (<code>1 &lt;= k &lt; 2^31</code>) turze drugiego gracza. Wygrywa gracz mający jedynego żywego króla. W przeciwnym wypadku mamy remis.</p>
+<h2>Część 1</h2>
+<p>Napisz program interpretujący protokół komunikacyjny gracza i obsługujący wiadomości dostawane na standardowym wejściu od obu graczy (w tym obie wiadomości <code>INIT</code>, o czym za chwilę). Po każdym ruchu (dokładniej, po każdej wiadomości innej niż <code>END_TURN</code>) program powinien wypisać na standardowe wyjście tekstową reprezentację górnego lewego rogu planszy (górne <code>10*10</code> pól, chyba że plansza jest mniejsza). Jednostki pierwszego gracza powinny być zaznaczone wielkimi literami <code>K</code>, <code>R</code>, <code>C</code> (odpowiednio król, rycerz, chłop), jednostki drugiego gracza małymi literami <code>k</code>, <code>r</code>, <code>c</code>, a puste pola kropką. Przykład planszy: </p>
+<pre class="fragment">..........
+.KRRC.....
+..........
+..........
+....r.r...
+.....k....
+.....c....
+..........
+..........
+..........
+</pre><p>Na wyjściu nie powinno być żadnych dodatkowych znaków. Po każdej planszy powinna zostać wypisana pojedyncza pusta linia.</p>
+<h3>Protokół komunikacyjny gracza</h3>
+<p>Program powinien obsługiwać następujące polecenia: <code>INIT n k p x1 y1 x2 y2</code> – informacja o stanie początkowym gry, osobno dla każdego gracza: n – wielkość planszy, k – maksymalna liczba tur (na gracza), p – numer gracza (1 lub 2), (x1, y1) – początkowe współrzędne króla pierwszego gracza, (x2, y2) – początkowe współrzędne króla drugiego gracza; <code>MOVE x1 y1 x2 y2</code> – ruch jednostką z pozycji (x1, y1) na (x2, y2); <code>PRODUCE_KNIGHT x1 y1 x2 y2</code> – wyprodukowanie przez chłopa znajdującego się na polu (x1, y1) rycerza na sąsiednie pole (x2, y2); <code>PRODUCE_PEASANT x1 y1 x2 y2</code> – wyprodukowanie przez chłopa znajdującego się na polu (x1, y1) chłopa na sąsiednie pole (x2, y2); <code>END_TURN</code> – informacja o końcu tury obecnie poruszającego się gracza.</p>
+<p>Każda wiadomość musi być zakończona znakiem nowej linii (<code>\n</code>), a poszczególne jej argumenty mogą być oddzielone wyłącznie pojedynczymi spacjami. Na końcu wiadomości nie ma spacji.</p>
+<p>Górny lewy róg planszy ma współrzędne (1, 1). Współrzędna <code>x</code> to numer kolumny, a współrzędna <code>y</code> to numer wiersza.</p>
+<h3>Wyjście programu</h3>
+<p>Program powinien wykrywać, kiedy gra się zakończyła i wtedy po przeprowadzeniu ostatniego ruchu wypisać na standardowe wyjście diagnostyczne (<code>stderr</code>) jeden z komunikatów: <code>player 1 won</code>, <code>player 2 won</code> lub <code>draw</code> i zakończyć się z kodem 0.</p>
+<p>W przypadku otrzymania niepoprawnego wejścia program powinien wypisać na standardowe wyjście diagnostyczne <code>input error</code> i zakończyć się z kodem błędu 42. Żadne poprawne polecenie nie jest dłuższe niż 100 znaków, ale program powinien się poprawnie zakończyć nawet w przypadku dowolnie długiej linii (uwaga na <code>gets</code> albo <code>scanf("%s")</code>).</p>
+<h3>Implementacja</h3>
+<p>W repozytorium XXX znajduje się wstępna implementacja rozwiązania tego zadania. Zadanie to należy oddawać właśnie przez to repozytorium. W repozytorium, które pobierzesz, będą znajdowały się następujące pliki: <em><a class="el" href="middle__ages_8c.html" title="Main funtion of a game. ">src/middle_ages.c</a></em> – główny plik programu, w którym wczytujemy dane wejściowe i uruchamiamy silnik gry; plik ten nie powinien znać szczegółów implementacji silnika gry; <em>src/engine.c</em> – plik biblioteki „silnika” gry zawierający wszystkie struktury i funkcje potrzebne do przeprowadzenia rozgrywki; <em><a class="el" href="engine_8h.html" title="Interface of game engine. ">src/engine.h</a></em> – plik nagłówkowy biblioteki silnika gry; <em>src/parse.c</em> – plik biblioteki wczytującej i parsującej polecenia; <em><a class="el" href="parse_8h.html" title="Interface of parser. ">src/parse.h</a></em> – plik nagłówkowy biblioteki wczytującej i parsującej polecenia; <em>CMakeLists.txt</em> – plik konfiguracyjny CMake'a; <em>Doxyfile.in</em> – plik konfiguracyjny Doxygena; <em>MainPage.dox</em> – strona główna dokumentacji Doxygena.</p>
+<p>Projekt można zaimportować do CLiona i tam zbudować. Można też zbudować go (będąc w katalogu głównym) przy użyciu poleceń: </p>
+<pre class="fragment">mkdir build
+cd build
+cmake ..
+</pre><p>Po wywołaniu <code>make</code> w katalogu <em>build</em> pojawi się wykonywalny plik <em>middle_ages</em>. Twoim zadaniem jest rozbudowanie tego projektu tak, aby program <em>middle_ages</em> reagował na polecenia ze standardowego wejścia zgodnie ze specyfikacją opisaną w sekcji Protokół komunikacyjny gracza**. Projekt może zawierać inne pliki niż wyżej wymienione, a zaproponowane funkcjonalności poszczególnych plików można dalej dzielić na moduły (ale nie łączyć).</p>
+<h3>Dokumentacja Doxygen</h3>
+<p>Polecenie <code>make doc</code> wywołane w katalogu <em>build</em> generuje dokumentację Doxygena całego projektu na podstawie komentarzy umieszczonych w poszczególnych plikach. Twoje rozwiązanie powinno zawierać komentarze Doxygena co najmniej do każdego pliku oraz do wszystkich funkcji eksportowanych na zewnątrz pliku, w którym się znajdują.</p>
+<h3>Punktacja</h3>
+<p>Za w pełni poprawnie rozwiązane zadanie można uzyskać 20 pkt. Za złe działanie programu na planszach większych niż 1000 x 1000 można stracić co najwyżej 8 pkt. Za złe parsowanie niepoprawnych poleceń można stracić co najwyżej 3 pkt. Za wycieki pamięci można stracić co najwyżej 6 pkt. Za błędy związane z dokumentacją Doxygen można stracić co najwyżej 3 pkt. Za zły styl kodowania można stracić co najwyżej 3 pkt. </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano N, 15 maj 2016 23:46:29 dla Średniowiecze programem &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>
